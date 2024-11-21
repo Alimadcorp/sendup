@@ -1,97 +1,186 @@
-/* General Styling */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #110033;
-  color: #fff;
+  font-family: "Lexend Deca", sans-serif;
+  background: linear-gradient(135deg, #040409, #1a1a2e);
   text-align: center;
   margin: 0;
   padding: 0;
-  font-size: 8px; /* Smaller font size */
+  width: 100vw;
+  height: 100vh;
+  font-size: 17px;
+  color: #fff;
+  overflow:hidden;
 }
 
 h1 {
-  color: #ddd;
-  margin-top: 5px;
-  font-size: 15px; /* Small header */
+  color: #d6e6ff;
+  margin-top: 50px;
+  font-size: 6vw;
+  animation: fadeIn 2s ease-out;
 }
 
-/* Input Container Styling */
+#time {
+  font-size: 3vw;
+  color: #aad4ff;
+  animation: fadeIn 1.5s ease-out;
+}
+
 .input-container {
-  margin-top: 10px;
+  margin-top: 20px;
+  animation: slideIn 1s ease-out;
 }
 
 input {
-  padding: 5px;
-  font-size: 10px; /* Small input font */
-  margin: 5px;
-  border: 1px solid #333;
-  border-radius: 3px;
-  width: 70%; /* Responsive input size */
-  max-width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px;
+  border: 2px solid #3399ff;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #111, #222);
+  color: #fff;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+input:focus {
+  border-color: #4caf50;
+  outline: none;
+  transform: scale(1.05);
 }
 
 button {
-  padding: 5px 10px;
-  font-size: 10px;
-  background-color: #3C5;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: linear-gradient(135deg, #4caf50, #45a0f9);
   color: white;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 button:hover {
-  background-color: #45a049;
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
+.table-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0a0f2d, #111733);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
 
-
-/* Table Styling */
 table {
-  font-size: 8px;
-  width: 50%; /* Small table size */
-  margin: 10px auto; /* Centered table */
+  width: 100%;
   border-collapse: collapse;
-  border: 1px solid #ccc;
-  font-size: 8px; /* Small table text */
+  font-size: 4vw;
+  background: linear-gradient(135deg, #0a0f2d, #111733);
 }
 
-th, td {
-font-size: 8px;
-  padding: 1px; /* Small padding for cells */
-  text-align: center; /* Center-align content */
-  border: 1px solid #ddd;
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  color: #eef;
+  border: none;
 }
 
 th {
-font-size: 8px;
-  background-color: #0000;
-  font-weight: bold;
+  background: linear-gradient(135deg, #223566, #1b2c4a);
 }
 
 tr:nth-child(even) {
-font-size: 8px;
-  background-color: #0000;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 tr:hover {
-  background-color: #fff6;
+  background: linear-gradient(135deg, #3369, #446c99);
+  transition: background-color 0.3s;
 }
 
-/* Footer Note Styling */
-.footer-note {
-  margin-top: 20px;
-  font-size: 8px; /* Small footer text */
-  color: #555;
+
+.footer {
+  text-align: center;
+  font-size: 15px;
+  bottom: 0;
 }
 
-/* Additional Styling for Layout */
-html, body {
-  height: 100vh;
-  overflow: hidden; /* No scrolling */
+.container {
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  user-select: none;
 }
 
-#scheduleTable {
-  max-height: calc(100vh - 200px); /* Adjust table height for viewport */
-  overflow-y: none; /* Allow internal scrolling if necessary */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #333, #555);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.container:hover input ~ .checkmark {
+  background-color: #666;
+  transform: scale(1.1);
+}
+
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+  transform: scale(1.1);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

@@ -1,44 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sendup Schedule Calculator</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="icon.png" />
   </head>
   <body>
-    <h1>Calculate Sendup Schedule</h1>
+    <div id="rest">
+      <h1>Calculate Your Sendup Schedule</h1>
 
-    <div class="input-container">
-      <label for="rollNoInput">Enter Your Complete Roll Number:</label>
-      <input id="rollNoInput" placeholder="e.g., 3686-1-24" />
-      <button onclick="generateSchedule()">Get Schedule</button>
+      <div class="input-container">
+        <label for="rollNoInput" style="font-size:20px;"
+          >Enter Your Complete Roll Number:</label
+        >
+        <input id="rollNoInput" placeholder="e.g., 3686-1-24" />
+        <br>
+      <label class="container" for="extra"
+        >Include Extra Subjects
+        <input type="checkbox" id="extra" /><span class="checkmark"></span
+      ></label>
+        <br><br>
+        <button onclick="generateSchedule()">Get Schedule</button>
+      </div>
+
+      <p id="errorMessage" style="font-weight: bold; color: red;"></p>
     </div>
-
-    <div class="toggle-container">
-      <input type="checkbox" id="extra" />
-      <label for="extra">Show Extra Subjects</label>
-    </div>
-
-    <p id="errorMessage" style="font-weight: bold; color: red;"></p>
-
     <table id="scheduleTable" style="display: none;">
       <thead>
         <tr>
-          <th>No.</th>
+          <th>#</th>
           <th>Day</th>
           <th>Date</th>
           <th>Subject</th>
           <th>Room</th>
-          <th>Time</th>
         </tr>
       </thead>
       <tbody></tbody>
     </table>
-
-    <p class="footer-note">Made by <strong>Muhammad Ali</strong>. Data is currently incomplete and unverified.</p>
-
+    <p id="time"></p>
+    <button onclick="back()" id="bb" style="display: none;">Back</button>
+    <p class="footer">
+      Made by<strong>&nbspMuhammad Ali</strong>. Data is currently incomplete
+      and unverified.
+    </p>
     <script src="fetch.js"></script>
     <script src="script.js"></script>
     <script src="generate.js"></script>
