@@ -8,7 +8,7 @@ body {
   height: 100vh;
   font-size: 17px;
   color: #fff;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 h1 {
@@ -76,10 +76,17 @@ button:hover {
 table {
   width: 100%;
   border-collapse: collapse;
-  font-size: clamp(6px, 2.5vw, 15px);
   background: linear-gradient(135deg, #0a0f2d, #111733);
 }
-
+@media (orientation: landscape) {
+  table {
+    font-size: 18px;
+  }
+}@media (orientation: portrait) {
+  table {
+    font-size: clamp(6px, 3.6vw, 15px);
+  }
+}
 th,
 td {
   padding: 10px;
@@ -100,7 +107,6 @@ tr:hover {
   background: linear-gradient(135deg, #3369, #446c99);
   transition: background-color 0.3s;
 }
-
 
 .footer {
   text-align: center;
