@@ -10,10 +10,12 @@ English II,399-444,NB-114
 English II,445-513,NB-201
 English II,514-552,NB-202
 English II,553-598,NB-203
-English II,599-637,NB-204  English II,638-677,NB-205
+English II,599-637,NB-204
+English II,638-677,NB-205
 English II,678-704,NB-206
 English II,705-728,NB-207 - A
-English II,729-758,NB-208 - A  English II,801-830,NB-210
+English II,729-758,NB-208 - A
+English II,801-830,NB-210
 English II,831-872,NB-213
 English II,873-914,NB-214
 English II,915- 934,NB-301
@@ -115,7 +117,8 @@ English I,3136- 3165,NB-320
 English I,3166- 3220,Chem. Deptt Seminar Hall 1st Floor
 English I,3221- 3302,CNLT
 English I,3303- 3357,PHY Seminar Room
-English I,3358- 3418,PHY Jr. Theatre  English I,3511- 3621,BOT Lr. Room 2
+English I,3358- 3418,PHY Jr. Theatre
+English I,3511- 3621,BOT Lr. Room 2
 English I,3622- 3656,BOT Lr. Room 7
 English I,3657- 3706,EE Room 214 Seminar Hall
 English I,3707- 3741,EE Room 216
@@ -188,7 +191,8 @@ H. & P. Edu. II, ,1893-2089
  ,Isl Std. (Ele) I,All Students
  ,Geog I,1289-2024
  ,Geog I,2025-3247
-Fine Arts I,All Students,  Math II,081-670,Basement
+Fine Arts I,All Students,
+Math II,081-670,Basement
 Math II,671-710,NB-101
 Math II,711-740,NB-102
 Math II,741-779,NB-103
@@ -200,7 +204,8 @@ Math II,923-967,NB-203
 Math II,968- 1007,NB-204
 Math II,1008- 1047,NB-205
 Math II,1048- 1089,NB-209
-Math II,1090- 1119,NB-210  Math II,1120- 1161, 
+Math II,1090- 1119,NB-210  
+Math II,1120- 1161, 
 Math II,1162- 1205, 
 Math II,1206- 1251, 
 Math II,1252- 1294, 
@@ -224,8 +229,10 @@ Pak. St. II,357-398,NB-113
 Pak. St. II,399-444,NB-114
 Pak. St. II,445-513,NB-201
 Pak. St. II,514-552,NB-202
-Pak. St. II,553-598,NB-203  Pak. St. II,599-637,NB-204
-Pak. St. II,638-677,NB-205  Pak. St. II,705-728,NB-207 -A
+Pak. St. II,553-598,NB-203  
+Pak. St. II,599-637,NB-204
+Pak. St. II,638-677,NB-205  
+Pak. St. II,705-728,NB-207 -A
 Pak. St. II,729-758,NB-208 -A
 Pak. St. II,759-800,NB-209
 Pak. St. II,801-830,NB-210
@@ -237,8 +244,10 @@ Pak. St. II,977- 1018,NB-303
 Pak. St. II,1019- 1063,NB-304
 Pak. St. II,1064- 1108,NB-305
 Pak. St. II,1109-1150,NB-306
-Pak. St. II,1151-1184,NB-307  Pak. St. II,1185-1206,NB-308
-Pak. St. II,1207-1246,NB-310  Pak. St. II,1292-1341, 
+Pak. St. II,1151-1184,NB-307  
+Pak. St. II,1185-1206,NB-308
+Pak. St. II,1207-1246,NB-310  
+Pak. St. II,1292-1341, 
 Pak. St. II,1342-1518, 
 Pak. St. II,1519-1567, 
 Pak. St. II,1568-1725, 
@@ -254,13 +263,15 @@ Econ I, ,1594- 1751
 Econ I, ,1752-3247
 Economics II,All Students, 
 Comm. Geo. II,All Students, 
-Economics II,All Students,   Isl Std. I,001-170,Basement
+Economics II,All Students,   
+Isl Std. I,001-170,Basement
 Ethics I,All Students, 
 Isl Std. I,171-209,NB-101
 Isl Std. I,210-239,NB-102
 Isl Std. I,240-278,NB-103
 Isl Std. I,279-308,NB-105
-Isl Std. I,309-332,NB-106  Isl Std. I,355-524,NB-113
+Isl Std. I,309-332,NB-106  
+Isl Std. I,355-524,NB-113
 Isl Std. I,525-566,NB-114
 Isl Std. I,567-604,NB-201b
 Isl Std. I,605-643,NB-202
@@ -283,14 +294,16 @@ Isl Std. I,1283-1514,NB-305
 Isl Std. I,1515-1556,NB-306
 Isl Std. I,1557-1589,NB-307
 Isl Std. I,1590-1611,NB-308
-Isl Std. I,1612-1731,NB-310  Isl Std. I,1732-1925,NB-311
+Isl Std. I,1612-1731,NB-310  
+Isl Std. I,1732-1925,NB-311
 Isl Std. I,1926-1973,NB-312
 Isl Std. I,1974-2019,NB-313
 Isl Std. I,2020-2067,NB-314
 Isl Std. I,2068-3004,NB-315
 Isl Std. I,3005-3052,NB-316
 Isl Std. I,3053-3106,NB-318
-Isl Std. I,3107-3135,NB-319  Isl Std. I,3166-3220, 
+Isl Std. I,3107-3135,NB-319  
+Isl Std. I,3166-3220, 
 Isl Std. I,3221-3302, 
 Isl Std. I,3303-3357, 
 Isl Std. I,3358-3418, 
@@ -376,9 +389,11 @@ Civics II,1763-1837,NB-314
 Civics II,1840-2145,NB-316
 Persian II,All Students, 
 Stat I,All Students,Basement
-Stat I,All Students,Basement  Urdu II,001-171,Basement
+Stat I,All Students,Basement  
+Urdu II,001-171,Basement
 Pak Culture II,All Students, 
-Urdu II,172-210,NB-101  Urdu II,241-279,NB-103
+Urdu II,172-210,NB-101  
+Urdu II,241-279,NB-103
 Urdu II,280-309,NB-105
 Urdu II,310-333,NB-106
 Urdu II,334-356,NB-107
@@ -387,11 +402,13 @@ Urdu II,399-444,NB-114
 Urdu II,445-513,NB-201
 Urdu II,514-552,NB-202
 Urdu II,553-598,NB-203
-Urdu II,599-637,NB-204  Urdu II,638-677,NB-205
+Urdu II,599-637,NB-204  
+Urdu II,638-677,NB-205
 Urdu II,678-704,NB-206
 Urdu II,705-728,NB-207 - A
 Urdu II,729-758,NB-208 - A
-Urdu II,759-800,NB-209  Urdu II,831-872,NB-213
+Urdu II,759-800,NB-209  
+Urdu II,831-872,NB-213
 Urdu II,873-914,NB-214
 Urdu II,915-934,NB-301
 Urdu II,935-976,NB-302
@@ -400,11 +417,13 @@ Urdu II,1019- 1063,NB-304
 Urdu II,1064- 1108,NB-305
 Urdu II,1109-1150,NB-306
 Urdu II,1151-1184,NB-307
-Urdu II,1185-1206,NB-308  Urdu II,1207-1246,NB-310
+Urdu II,1185-1206,NB-308  
+Urdu II,1207-1246,NB-310
 Urdu II,1247-1291,NB-311
 Urdu II,1292-1341,NB-312
 Urdu II,1342-1518,NB-313
-Urdu II,1519-1567,NB-314  Urdu II,1726-1773,NB-316
+Urdu II,1519-1567,NB-314  
+Urdu II,1726-1773,NB-316
 Urdu II,1774-1827,NB-318
 Urdu II,1828- 1857,NB-319
 Urdu II,1858- 1894,NB-320
@@ -435,7 +454,8 @@ Urdu I,605-643,
 Urdu I,644-688, 
   
 Urdu I,728-767,NB-205
-Urdu I,768-794,NB-206  Urdu I,795-818,NB-207A
+Urdu I,768-794,NB-206  
+Urdu I,795-818,NB-207A
 Urdu I,819-848,NB-208A
 Urdu I,849-1019,NB-209
 Urdu I,1020- 1049,NB-210
@@ -450,7 +470,8 @@ Urdu I,1515- 1556,NB-306
 Urdu I,1557- 1589,NB-307
 Urdu I,1590- 1611,NB-308
 Urdu I,1612- 1731,NB-310
-Urdu I,1732- 1925,NB-311  Urdu I,1974-2019,NB-313
+Urdu I,1732- 1925,NB-311  
+Urdu I,1974-2019,NB-313
 Urdu I,2020-2067,NB-314
 Urdu I,3742- 3777,BioTech Class Room IIB-1
 Urdu I,2068-3004,NB-315
@@ -536,13 +557,15 @@ Civics I,1289-1931,
 Civics I,1934-2025, 
 Civics I,2026-3385, 
 Urdu Advance I,All Students, 
-French I,All Students,   Translation of the Holy Quran II,001-171,
+French I,All Students,   
+Translation of the Holy Quran II,001-171,
 Translation of the Holy Quran II,172-210,
 Translation of the Holy Quran II,211-240,
 Translation of the Holy Quran II,241-279,
 Translation of the Holy Quran II,280-309,
 Translation of the Holy Quran II,310-333,
-Translation of the Holy Quran II,334-356,  Translation of the Holy Quran II,399-444,NB-114
+Translation of the Holy Quran II,334-356,  
+Translation of the Holy Quran II,399-444,NB-114
 Translation of the Holy Quran II,445-513,NB-201
 Translation of the Holy Quran II,514-552,NB-202
 Translation of the Holy Quran II,553-598,NB-203
