@@ -76,7 +76,7 @@ button:hover {
 table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 4vw;
+  font-size: clamp(6px, 2.5vw, 15px);
   background: linear-gradient(135deg, #0a0f2d, #111733);
 }
 
