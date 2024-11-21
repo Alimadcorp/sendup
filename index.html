@@ -15,8 +15,11 @@
       <input id="rollNoInput" placeholder="e.g., 3686-1-24" />
       <button onclick="generateSchedule()">Get Schedule</button>
     </div>
-    <input type="checkbox" id="extra" />
-    <label for="extra">Show Extra Subjects</label>
+
+    <div class="toggle-container">
+      <input type="checkbox" id="extra" />
+      <label for="extra">Show Extra Subjects</label>
+    </div>
 
     <p id="errorMessage" style="font-weight: bold; color: red;"></p>
 
@@ -33,9 +36,9 @@
       </thead>
       <tbody></tbody>
     </table>
-    <footer style="position: fixed; bottom: 0; width: 100%; text-align: center; padding: 10px; background-color: #f1f1f1;">
-        <p>Made by <strong>Muhammad Ali</strong>. Data is currently incomplete and unverified.</p>
-    </footer>
+
+    <p class="footer-note">Made by <strong>Muhammad Ali</strong>. Data is currently incomplete and unverified.</p>
+
     <script src="fetch.js"></script>
     <script src="script.js"></script>
     <script src="generate.js"></script>
