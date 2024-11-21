@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam Schedule Finder</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="icon.png" />
+  </head>
+  <body>
+    <h1>Find Your Exam Schedule</h1>
+
+    <div class="input-container">
+      <label for="rollNoInput">Enter Your Complete Roll Number:</label>
+      <input id="rollNoInput" placeholder="e.g., 3686-1-24" />
+      <button onclick="generateSchedule()">Get Schedule</button>
+    </div>
+    <input type="checkbox" id="extra" />
+    <label for="extra">Show Extra Subjects</label>
+
+    <p id="errorMessage" style="font-weight: bold; color: red;"></p>
+
+    <table id="scheduleTable" style="display: none;">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Day</th>
+          <th>Date</th>
+          <th>Subject</th>
+          <th>Room</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <footer style="position: fixed; bottom: 0; width: 100%; text-align: center; padding: 10px; background-color: #f1f1f1;">
+        <p>Made by <strong>Muhammad Ali</strong>. Data is currently incomplete and unverified.</p>
+    </footer>
+    <script src="fetch.js"></script>
+    <script src="script.js"></script>
+    <script src="generate.js"></script>
+  </body>
+</html>
