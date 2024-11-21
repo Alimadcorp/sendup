@@ -2,6 +2,7 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #110033;
+  color: #fff;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -43,13 +44,11 @@ button:hover {
   background-color: #45a049;
 }
 
-/* Toggle Container Styling */
-.toggle-container {
-  
-  }
+
 
 /* Table Styling */
 table {
+  font-size: 8px;
   width: 50%; /* Small table size */
   margin: 10px auto; /* Centered table */
   border-collapse: collapse;
@@ -58,17 +57,20 @@ table {
 }
 
 th, td {
+font-size: 8px;
   padding: 1px; /* Small padding for cells */
   text-align: center; /* Center-align content */
   border: 1px solid #ddd;
 }
 
 th {
+font-size: 8px;
   background-color: #0000;
   font-weight: bold;
 }
 
 tr:nth-child(even) {
+font-size: 8px;
   background-color: #0000;
 }
 
