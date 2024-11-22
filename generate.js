@@ -7,6 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+document.addEventListener("DOMContentLoaded", () => {
+  history.pushState(null, null, location.href);
+  window.addEventListener("popstate", () => {
+    back();
+    history.pushState(null, null, location.href);
+  });
+});
+
 window.onload = function () {
   const savedOption = localStorage.getItem("selectedSubject") || "ICS";
   document.querySelector(
@@ -43,7 +51,7 @@ async function generateSchedule() {
   const log = document.getElementById("log");
   let rollNoInput = inputElement.value;
   let extras = extra.checked;
-  let logs = "&nbsp&nbsp1.47.1vMS";
+  let logs = "&nbsp&nbsp1.48.1vMS";
   localStorage.setItem("xtra", extra.checked ? "yes" : "no");
   if (validate(rollNoInput)) {
     bb.style.display = "inline";
