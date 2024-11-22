@@ -42,7 +42,7 @@ async function generateSchedule() {
   const log = document.getElementById("log");
   let rollNoInput = inputElement.value;
   let extras = extra.checked;
-  let logs = "MSv36";
+  let logs = "39vMS";
   localStorage.setItem("xtra", extra.checked ? "yes" : "no");
   if (validate(rollNoInput)) {
     bb.style.display = "inline";
@@ -89,7 +89,7 @@ async function generateSchedule() {
                 if (firsubs[i][j] == sub) {
                   da = days[i].slice(0, 3);
                   dat = formatDate(dates[i]);
-                  await delay(100);
+                  await delay(20);
                   break;
                 }
               }
@@ -135,7 +135,7 @@ async function generateSchedule() {
                   if (firsubs[i][j] == sub) {
                     da = days[i].slice(0, 3);
                     dat = formatDate(dates[i]);
-                    await delay(100);
+                    await delay(20);
                     break;
                   }
                 }
@@ -159,7 +159,7 @@ async function generateSchedule() {
                 if (secsubs[i][j] == sub) {
                   da = days[i].slice(0, 3);
                   dat = formatDate(dates[i]);
-                  await delay(100);
+                  await delay(20);
                   break;
                 }
               }
@@ -204,7 +204,7 @@ async function generateSchedule() {
                   if (secsubs[i][j] == sub) {
                     da = days[i].slice(0, 3);
                     dat = formatDate(dates[i]);
-                    await delay(100);
+                    await delay(20);
                     break;
                   }
                 }
@@ -259,10 +259,14 @@ function addRow(number, day, date, subject, room, time) {
   const newCell5 = document.createElement("td");
   newCell5.textContent = room;
   newRow.appendChild(newCell5);
+  newRow.classList.add("new-row"); // Initially invisible
 
   /*const newCell6 = document.createElement("td");
   newCell6.textContent = time;
   newRow.appendChild(newCell6);*/
 
   tableBody.appendChild(newRow);
+  setTimeout(() => {
+        newRow.classList.add("visible");
+      }, 10);
 }
