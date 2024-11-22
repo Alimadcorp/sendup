@@ -10,7 +10,9 @@ body {
   color: #fff;
   overflow-x: hidden;
 }
-
+a{
+  color: #77f;
+} 
 h1 {
   color: #d6e6ff;
   margin-top: 50px;
