@@ -25,6 +25,11 @@ h1 {
   color: #aad4ff;
   animation: fadeIn 1.5s ease-out;
 }
+#log {
+  font-size: 5px;
+  color: #ccccffaa;
+  text-align:left;
+}
 
 .input-container {
   margin-top: 20px;
