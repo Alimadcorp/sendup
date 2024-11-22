@@ -26,7 +26,7 @@ h1 {
   animation: fadeIn 1.5s ease-out;
 }
 #log {
-  font-size: 5px;
+  font-size: 9px;
   color: #ccccffaa;
   text-align:left;
 }
