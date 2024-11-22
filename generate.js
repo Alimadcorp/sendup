@@ -21,6 +21,7 @@ document.querySelectorAll('input[name="subject"]').forEach((radio) => {
 });
 
 function back() {
+  document.getElementById("log").innerHTML = "";
   const table = document.getElementById("scheduleTable");
   const other = document.getElementById("rest");
   const bb = document.getElementById("bb");
@@ -36,16 +37,29 @@ function generateSchedule() {
   const other = document.getElementById("rest");
   const bb = document.getElementById("bb");
   const extra = document.getElementById("extra");
+  const log = document.getElementById("log");
   let rollNoInput = inputElement.value;
   let extras = extra.checked;
+  let logs = "MSv35";
   localStorage.setItem("xtra", extra.checked ? "yes" : "no");
   if (validate(rollNoInput)) {
     bb.style.display = "inline";
     let rollNo, grade;
     rollNo = extract(rollNoInput).rollNo;
     grade = extract(rollNoInput).grade;
+    logs = logs + rollNo.toString() + grade.toString();
+    logs += extras ? "Y" : "N";
+    let selected = document.querySelector(
+                'input[name="subject"]:checked'
+              );
+    let newadd = "I";
+    if(selected.value!="ICS") {
+      if(selected.value=="PE") { newadd = "E"; } 
+      if(selected.value=="PM") {newadd = "M";} 
+    } 
+    logs += newadd;
+    log.innerHTML = logs;
     localStorage.setItem("roll", rollNoInput);
-
     let time = "Unavailable";
     if (grade == 2) {
       time = "9 AM to 12 PM";
