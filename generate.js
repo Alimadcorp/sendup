@@ -20,7 +20,7 @@ document.querySelectorAll('input[name="subject"]').forEach((radio) => {
   });
 });
 function delay(ms) {
-  ms = 50;
+  ms = 30;
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 function back() {
@@ -43,7 +43,7 @@ async function generateSchedule() {
   const log = document.getElementById("log");
   let rollNoInput = inputElement.value;
   let extras = extra.checked;
-  let logs = "   44vMS";
+  let logs = "&nbsp&nbsp46vMS";
   localStorage.setItem("xtra", extra.checked ? "yes" : "no");
   if (validate(rollNoInput)) {
     bb.style.display = "inline";
