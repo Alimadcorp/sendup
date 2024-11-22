@@ -43,7 +43,7 @@ async function generateSchedule() {
   const log = document.getElementById("log");
   let rollNoInput = inputElement.value;
   let extras = extra.checked;
-  let logs = "&nbsp&nbsp46vMS";
+  let logs = "&nbsp&nbsp1.47.1vMS";
   localStorage.setItem("xtra", extra.checked ? "yes" : "no");
   if (validate(rollNoInput)) {
     bb.style.display = "inline";
