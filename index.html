@@ -23,6 +23,21 @@
         >
         <input id="rollNoInput" placeholder="e.g., 3686-1-24" />
         <br>
+        <div class="radio-group">
+          <label class="radio-container">ICS
+            <input type="radio" name="subject" value="ICS" />
+            <span class="radio-mark"></span>
+          </label>
+          <label class="radio-container">PE
+            <input type="radio" name="subject" value="PE" />
+            <span class="radio-mark"></span>
+          </label>
+          <label class="radio-container">PM
+            <input type="radio" name="subject" value="PM" />
+            <span class="radio-mark"></span>
+          </label>
+        </div>
+        <br>
       <label class="container" for="extra"
         >Include Extra Subjects
         <input type="checkbox" id="extra" /><span class="checkmark"></span
@@ -48,8 +63,7 @@
     <p id="time"></p>
     <button onclick="back()" id="bb" style="display: none;">Back</button>
     <p class="footer">
-      Made by<strong>&nbspMuhammad Ali</strong>. Data is currently incomplete
-      and unverified.
+      Made by<strong>&nbspMuhammad Ali</strong>. In case of any errors, please report.
     </p>
     <script src="fetch.js"></script>
     <script src="script.js"></script>

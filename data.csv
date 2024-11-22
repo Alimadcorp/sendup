@@ -126,8 +126,8 @@ English I,3657- 3706,EE Room 214 Seminar Hall
 English I,3707- 3741,EE Room 216 
 English I,3742- 3777,BioTech Class Room IIB-1 
 English I,3779- 3816,BioTech Class Room IIB-2  
-Business Stat II,All Students,Basement (Row 1-5)   
-Isl Std. (Ele) II,All Students,Basement (Row 6-8)  
+Business Math II,All Students,Basement (Row 1-5)   
+Islamiyat Elective II,All Students,Basement (Row 6-8)  
 Geog II,1704-1788,NB-113 
 Geog II,1795-2145,NB-114 
 Fine Arts II,All Students,NB-101  
@@ -187,7 +187,7 @@ Biology II,454-3005,NB- 208A
 H. & P. Edu. II,1322-1886,NB-213 
 H. & P. Edu. II,1893-2089,NB-214 
 Business Math I,All Students,Basement Row (1-6)    
-Isl Std. (Ele) I,All Students,Basement Row (6-8)  
+Islamiyat Elective I,All Students,Basement Row (6-8)  
 Geog I,1289-2024,NB-113  
 Geog I,2025-3247,NB-114 
 Fine Arts I,All Students, 
@@ -213,9 +213,8 @@ Math II,1342- 1758,NB-305
 Math II,1760- 2024,NB-306 
 Math II,2025- 2105,NB-311 
 Math II,2106- 3408,NB-312 
-,Subject,
-History of Pakistan I,,   
-History of Muslim India I,,    
+History of Pakistan I,All Students,Basement (Row 1-5)
+History of Muslim India I,All Students,Basement (Row 6-8)
 Pak. St. II,001-171,Basement       
 Pak. St. II,172-210,NB-101 
 Pak. St. II,211-240,NB-102 
@@ -555,96 +554,96 @@ Civics I,1934-2025,Chem Seminar Hall
 Civics I,2026-3385,EE Room 214 Seminar Hall 
 Urdu Advance I,All Students,BJLT 
 French I,All Students,BJLT
-Translation of the Holy Quran II,001-171,Basement       
-Translation of the Holy Quran II,172-210,NB-101 
-Translation of the Holy Quran II,211-240,NB-102 
-Translation of the Holy Quran II,241-279,NB-103 
-Translation of the Holy Quran II,280-309,NB-105 
-Translation of the Holy Quran II,310-333,NB-106 
-Translation of the Holy Quran II,334-356,NB-107 
-Translation of the Holy Quran II,357-398,NB-113 
-Translation of the Holy Quran II,399-444,NB-114 
-Translation of the Holy Quran II,445-513,NB-201 
-Translation of the Holy Quran II,514-552,NB-202 
-Translation of the Holy Quran II,553-598,NB-203  
-Translation of the Holy Quran II,599-637,NB-204 
-Translation of the Holy Quran II,638-677,NB-205 
-Translation of the Holy Quran II,678-704,NB-206 
-Translation of the Holy Quran II,705-728,NB-207 -A 
-Translation of the Holy Quran II,729-758,NB-208 -A 
-Translation of the Holy Quran II,759-800,NB-209 
-Translation of the Holy Quran II,801-830,NB-210 
-Translation of the Holy Quran II,831-872,NB-213 
-Translation of the Holy Quran II,873-914,NB-214 
-Translation of the Holy Quran II,915- 934,NB-301 
-Translation of the Holy Quran II,935- 976,NB-302 
-Translation of the Holy Quran II,977- 1018,NB-303 
-Translation of the Holy Quran II,1019- 1063,NB-304 
-Translation of the Holy Quran II,1064- 1108,NB-305 
-Translation of the Holy Quran II,1109- 1150,NB-306 
-Translation of the Holy Quran II,1151- 1184,NB-307  
-Translation of the Holy Quran II,1185- 1206,NB-308 
-Translation of the Holy Quran II,1207- 1246,NB-310 
-Translation of the Holy Quran II,1247- 1291,NB-311 
-Translation of the Holy Quran II,1292- 1341,NB-312 
-Translation of the Holy Quran II,1342- 1518,NB-313 
-Translation of the Holy Quran II,1519- 1567,NB-314 
-Translation of the Holy Quran II,1568- 1725,NB-315 
-Translation of the Holy Quran II,1726- 1773,NB-316 
-Translation of the Holy Quran II,1774- 1827,NB-318 
-Translation of the Holy Quran II,1828- 1857,NB-319 
-Translation of the Holy Quran II,1858- 1894,NB-320 
-Translation of the Holy Quran II,1895- 2042,PHY Seminar Room 
-Translation of the Holy Quran II,2043- 2137,PHY Jr. Theatre  
-Translation of the Holy Quran II,2138- 3408,EE Room 214 Seminar Hall  
-Translation of the Holy Quran I,001-170,Basement    
+Al Quran II,001-171,Basement       
+Al Quran II,172-210,NB-101 
+Al Quran II,211-240,NB-102 
+Al Quran II,241-279,NB-103 
+Al Quran II,280-309,NB-105 
+Al Quran II,310-333,NB-106 
+Al Quran II,334-356,NB-107 
+Al Quran II,357-398,NB-113 
+Al Quran II,399-444,NB-114 
+Al Quran II,445-513,NB-201 
+Al Quran II,514-552,NB-202 
+Al Quran II,553-598,NB-203  
+Al Quran II,599-637,NB-204 
+Al Quran II,638-677,NB-205 
+Al Quran II,678-704,NB-206 
+Al Quran II,705-728,NB-207 -A 
+Al Quran II,729-758,NB-208 -A 
+Al Quran II,759-800,NB-209 
+Al Quran II,801-830,NB-210 
+Al Quran II,831-872,NB-213 
+Al Quran II,873-914,NB-214 
+Al Quran II,915- 934,NB-301 
+Al Quran II,935- 976,NB-302 
+Al Quran II,977- 1018,NB-303 
+Al Quran II,1019- 1063,NB-304 
+Al Quran II,1064- 1108,NB-305 
+Al Quran II,1109- 1150,NB-306 
+Al Quran II,1151- 1184,NB-307  
+Al Quran II,1185- 1206,NB-308 
+Al Quran II,1207- 1246,NB-310 
+Al Quran II,1247- 1291,NB-311 
+Al Quran II,1292- 1341,NB-312 
+Al Quran II,1342- 1518,NB-313 
+Al Quran II,1519- 1567,NB-314 
+Al Quran II,1568- 1725,NB-315 
+Al Quran II,1726- 1773,NB-316 
+Al Quran II,1774- 1827,NB-318 
+Al Quran II,1828- 1857,NB-319 
+Al Quran II,1858- 1894,NB-320 
+Al Quran II,1895- 2042,PHY Seminar Room 
+Al Quran II,2043- 2137,PHY Jr. Theatre  
+Al Quran II,2138- 3408,EE Room 214 Seminar Hall  
+Al Quran I,001-170,Basement    
 Ethics I,All Students,Basement
-Translation of the Holy Quran I,171-209,NB-101 
-Translation of the Holy Quran I,210-239,NB-102 
-Translation of the Holy Quran I,240-278,NB-103 
-Translation of the Holy Quran I,279-308,NB-105 
-Translation of the Holy Quran I,309-332,NB-106 
-Translation of the Holy Quran I,333-354,NB-107 
-Translation of the Holy Quran I,355-524,NB-113 
-Translation of the Holy Quran I,525-566,NB-114 
-Translation of the Holy Quran I,567-604,NB-201b 
-Translation of the Holy Quran I,605-643,NB-202  
-Translation of the Holy Quran I,644-688,NB-203 
-Translation of the Holy Quran I,689-727,NB-204 
-Translation of the Holy Quran I,728-767,NB-205 
-Translation of the Holy Quran I,768-794,NB-206 
-Translation of the Holy Quran I,795-818,NB-207A 
-Translation of the Holy Quran I,819-848,NB-208A 
-Translation of the Holy Quran I,849-1019,NB-209 
-Translation of the Holy Quran I,1020- 1049,NB-210 
-Translation of the Holy Quran I,1050- 1091,NB-213 
-Translation of the Holy Quran I,1092- 1133,NB-214 
-Translation of the Holy Quran I,1134- 1153,NB-301 
-Translation of the Holy Quran I,1154- 1195,NB-302 
-Translation of the Holy Quran I,1196- 1237,NB-303 
-Translation of the Holy Quran I,1238- 1282,NB-304  
-Translation of the Holy Quran I,1283- 1514,NB-305 
-Translation of the Holy Quran I,1515- 1556,NB-306 
-Translation of the Holy Quran I,1557- 1589,NB-307 
-Translation of the Holy Quran I,1590- 1611,NB-308 
-Translation of the Holy Quran I,1612- 1731,NB-310 
-Translation of the Holy Quran I,1732- 1925,NB-311 
-Translation of the Holy Quran I,1926- 1973,NB-312 
-Translation of the Holy Quran I,1974-2019,NB-313 
-Translation of the Holy Quran I,2020-2067,NB-314 
-Translation of the Holy Quran I,2068-3004,NB-315 
-Translation of the Holy Quran I,3005- 3052,NB-316 
-Translation of the Holy Quran I,3053- 3106,NB-318 
-Translation of the Holy Quran I,3107- 3135,NB-319 
-Translation of the Holy Quran I,3136- 3165,NB-320  
-Translation of the Holy Quran I,3166- 3220,Chem. Deptt Seminar Hall 1st Floor 
-Translation of the Holy Quran I,3221- 3302,CNLT 
-Translation of the Holy Quran I,3303- 3357,PHY Seminar Room 
-Translation of the Holy Quran I,3358- 3418,PHY Jr. Theatre 
-Translation of the Holy Quran I,3419- 3510,BJLT 
-Translation of the Holy Quran I,3511- 3621,BOT Lr. Room 2 
-Translation of the Holy Quran I,3622- 3656,BOT Lr. Room 7 
-Translation of the Holy Quran I,3657- 3706,EE Room 214 Seminar Hall 
-Translation of the Holy Quran I,3707- 3741,EE Room 216 
-Translation of the Holy Quran I,3742- 3777,BioTech Class Room IIB-1 
-Translation of the Holy Quran I,3779- 3816,BioTech Class Room IIB-2 
+Al Quran I,171-209,NB-101 
+Al Quran I,210-239,NB-102 
+Al Quran I,240-278,NB-103 
+Al Quran I,279-308,NB-105 
+Al Quran I,309-332,NB-106 
+Al Quran I,333-354,NB-107 
+Al Quran I,355-524,NB-113 
+Al Quran I,525-566,NB-114 
+Al Quran I,567-604,NB-201b 
+Al Quran I,605-643,NB-202  
+Al Quran I,644-688,NB-203 
+Al Quran I,689-727,NB-204 
+Al Quran I,728-767,NB-205 
+Al Quran I,768-794,NB-206 
+Al Quran I,795-818,NB-207A 
+Al Quran I,819-848,NB-208A 
+Al Quran I,849-1019,NB-209 
+Al Quran I,1020- 1049,NB-210 
+Al Quran I,1050- 1091,NB-213 
+Al Quran I,1092- 1133,NB-214 
+Al Quran I,1134- 1153,NB-301 
+Al Quran I,1154- 1195,NB-302 
+Al Quran I,1196- 1237,NB-303 
+Al Quran I,1238- 1282,NB-304  
+Al Quran I,1283- 1514,NB-305 
+Al Quran I,1515- 1556,NB-306 
+Al Quran I,1557- 1589,NB-307 
+Al Quran I,1590- 1611,NB-308 
+Al Quran I,1612- 1731,NB-310 
+Al Quran I,1732- 1925,NB-311 
+Al Quran I,1926- 1973,NB-312 
+Al Quran I,1974-2019,NB-313 
+Al Quran I,2020-2067,NB-314 
+Al Quran I,2068-3004,NB-315 
+Al Quran I,3005- 3052,NB-316 
+Al Quran I,3053- 3106,NB-318 
+Al Quran I,3107- 3135,NB-319 
+Al Quran I,3136- 3165,NB-320  
+Al Quran I,3166- 3220,Chem. Deptt Seminar Hall 1st Floor 
+Al Quran I,3221- 3302,CNLT 
+Al Quran I,3303- 3357,PHY Seminar Room 
+Al Quran I,3358- 3418,PHY Jr. Theatre 
+Al Quran I,3419- 3510,BJLT 
+Al Quran I,3511- 3621,BOT Lr. Room 2 
+Al Quran I,3622- 3656,BOT Lr. Room 7 
+Al Quran I,3657- 3706,EE Room 214 Seminar Hall 
+Al Quran I,3707- 3741,EE Room 216 
+Al Quran I,3742- 3777,BioTech Class Room IIB-1 
+Al Quran I,3779- 3816,BioTech Class Room IIB-2 
