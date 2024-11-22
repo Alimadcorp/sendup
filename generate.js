@@ -19,7 +19,9 @@ document.querySelectorAll('input[name="subject"]').forEach((radio) => {
     localStorage.setItem("selectedSubject", this.value);
   });
 });
-
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 function back() {
   document.getElementById("log").innerHTML = "";
   const table = document.getElementById("scheduleTable");
@@ -31,7 +33,7 @@ function back() {
   other.style.display = "inline";
 }
 //document.getElementById("extra").addEventListener("change", function () {});
-function generateSchedule() {
+async function generateSchedule() {
   const inputElement = document.getElementById("rollNoInput");
   const table = document.getElementById("scheduleTable");
   const other = document.getElementById("rest");
@@ -40,7 +42,7 @@ function generateSchedule() {
   const log = document.getElementById("log");
   let rollNoInput = inputElement.value;
   let extras = extra.checked;
-  let logs = "MSv35";
+  let logs = "MSv36";
   localStorage.setItem("xtra", extra.checked ? "yes" : "no");
   if (validate(rollNoInput)) {
     bb.style.display = "inline";
@@ -87,6 +89,7 @@ function generateSchedule() {
                 if (firsubs[i][j] == sub) {
                   da = days[i].slice(0, 3);
                   dat = formatDate(dates[i]);
+                  await delay(100);
                   break;
                 }
               }
@@ -132,6 +135,7 @@ function generateSchedule() {
                   if (firsubs[i][j] == sub) {
                     da = days[i].slice(0, 3);
                     dat = formatDate(dates[i]);
+                    await delay(100);
                     break;
                   }
                 }
@@ -155,6 +159,7 @@ function generateSchedule() {
                 if (secsubs[i][j] == sub) {
                   da = days[i].slice(0, 3);
                   dat = formatDate(dates[i]);
+                  await delay(100);
                   break;
                 }
               }
@@ -199,6 +204,7 @@ function generateSchedule() {
                   if (secsubs[i][j] == sub) {
                     da = days[i].slice(0, 3);
                     dat = formatDate(dates[i]);
+                    await delay(100);
                     break;
                   }
                 }
