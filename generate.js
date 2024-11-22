@@ -118,8 +118,6 @@ function generateSchedule() {
                   if (firsubs[i][j] == sub) {
                     da = days[i].slice(0, 3);
                     dat = formatDate(dates[i]);
-
-                    if (sub == "Civics") console.log(firsubs[i][j], sub);
                     break;
                   }
                 }
