@@ -105,14 +105,27 @@ td {
 th {
   background: linear-gradient(135deg, #223566, #1b2c4a);
 }
+    /* Animation for the new row */
+tr.new-row {
+  opacity: 0; /* Initially invisible */
+  height: 0;  /* Initially no height */
+  transition: opacity 0.5s ease, height 0.5s ease; /* Smooth transition */
+}
 
+tr.new-row.visible {
+  opacity: 1; /* Fully visible */
+  height: 48px; /* Normal height of the row (adjust as per your table) */
+} 
+tr {
+  transition: background-color 0.3s;
+} 
 tr:nth-child(even) {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
 tr:hover {
-  background: linear-gradient(135deg, #3369, #446c99);
-  transition: background-color 0.3s;
+  background: #446c99aa;
+  
 }
 
 .footer {
