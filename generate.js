@@ -84,37 +84,42 @@ function generateSchedule() {
               let room = centers[i];
               let sub = fsubjects[i];
               let da, dat;
+
               let elig = false;
               let selected = document.querySelector(
                 'input[name="subject"]:checked'
               );
-              if (selected.value == "ICS") {
-                for (let i = 0; i < ICSA1.length; i++) {
-                  if (sub == ICSA1[i]) {
-                    elig = true;
+              if (!extras) {
+                if (selected.value == "ICS") {
+                  for (let i = 0; i < ICSA1.length; i++) {
+                    if (sub == ICSA1[i]) {
+                      elig = true;
+                    }
+                  }
+                } else if (selected.value == "PE") {
+                  for (let i = 0; i < PEA1.length; i++) {
+                    if (sub == PEA1[i]) {
+                      elig = true;
+                    }
+                  }
+                } else if (selected.value == "PM") {
+                  for (let i = 0; i < PMA1.length; i++) {
+                    if (sub == PMA1[i]) {
+                      elig = true;
+                    }
                   }
                 }
-              } else if (selected.value == "PE") {
-                for (let i = 0; i < PEA1.length; i++) {
-                  if (sub == PEA1[i]) {
-                    elig = true;
-                  }
+                if (!elig) {
+                  continue;
                 }
-              } else if (selected.value == "PM") {
-                for (let i = 0; i < PMA1.length; i++) {
-                  if (sub == PMA1[i]) {
-                    elig = true;
-                  }
-                }
-              }
-              if (!elig) {
-                continue;
               }
               for (let i = 0; i < firsubs.length; i++) {
                 for (let j = 0; j < firsubs[i].length; j++) {
                   if (firsubs[i][j] == sub) {
                     da = days[i].slice(0, 3);
                     dat = formatDate(dates[i]);
+
+                    if (sub == "Civics") console.log(firsubs[i][j], sub);
                     break;
                   }
                 }
@@ -153,27 +158,29 @@ function generateSchedule() {
               let selected = document.querySelector(
                 'input[name="subject"]:checked'
               );
-              if (selected.value == "ICS") {
-                for (let i = 0; i < ICSA2.length; i++) {
-                  if (sub == ICSA2[i]) {
-                    elig = true;
+              if (!extras) {
+                if (selected.value == "ICS") {
+                  for (let i = 0; i < ICSA2.length; i++) {
+                    if (sub == ICSA2[i]) {
+                      elig = true;
+                    }
+                  }
+                } else if (selected.value == "PE") {
+                  for (let i = 0; i < PEA2.length; i++) {
+                    if (sub == PEA2[i]) {
+                      elig = true;
+                    }
+                  }
+                } else if (selected.value == "PM") {
+                  for (let i = 0; i < PMA2.length; i++) {
+                    if (sub == PMA2[i]) {
+                      elig = true;
+                    }
                   }
                 }
-              } else if (selected.value == "PE") {
-                for (let i = 0; i < PEA2.length; i++) {
-                  if (sub == PEA2[i]) {
-                    elig = true;
-                  }
+                if (!elig) {
+                  continue;
                 }
-              } else if (selected.value == "PM") {
-                for (let i = 0; i < PMA2.length; i++) {
-                  if (sub == PMA2[i]) {
-                    elig = true;
-                  }
-                }
-              }
-              if (!elig) {
-                continue;
               }
               for (let i = 0; i < secsubs.length; i++) {
                 for (let j = 0; j < secsubs[i].length; j++) {
