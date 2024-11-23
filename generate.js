@@ -24,7 +24,7 @@ function download() {
 
   const container = document.createElement("div");
   container.style.position = "absolute";
-  container.style.background-color = "#040409";
+  container.style.background = "#040409";
   container.style.padding = "20px";
   container.style.top = "0";
   container.style.left = "0";
