@@ -91,9 +91,10 @@ function throwError(err) {
 
 function func(inp) {
   if(inp > 0){
-    try{}
+    try{
   const table = document.getElementById("scheduleTable");
   table.deleteRow(inp);
+    }
   catch(error){
     console.log(error + "Laaaaaaaaaa");
     }
