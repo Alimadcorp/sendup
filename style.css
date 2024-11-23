@@ -14,6 +14,9 @@ body {
 a {
   color: #77f;
 }
+#more{
+  transform:scale(0.8);
+}
 
 h1 {
   color: #d6e6ff;
@@ -25,7 +28,6 @@ h1 {
 #time {
   font-size: 3vw;
   color: #aad4ff;
-  animation: fadeIn 1.5s ease-out;
 }
 
 #log {
@@ -57,7 +59,7 @@ input:focus {
 }
 
 button {
-  padding: 10px 20px;
+  padding: 5px 10px;
   font-size: 16px;
   background: linear-gradient(135deg, #4caf50, #45a0f9);
   color: #fff;
@@ -115,13 +117,11 @@ th {
 
 tr.new-row {
   opacity: 0;
-  height: 0;
-  transition: opacity 0.5s ease, height 0.5s ease;
+  transition: opacity 0.5s ease, height 0.5s ease, width 0.5s ease;
 }
 
 tr.new-row.visible {
   opacity: 1;
-  height: 48px;
 }
 
 tr {
@@ -141,7 +141,6 @@ tr:hover {
   font-size: 15px;
   bottom: 0;
 }
-
 .container {
   position: relative;
   padding-left: 35px;
@@ -171,12 +170,10 @@ tr:hover {
 
 .container:hover input ~ .checkmark {
   background-color: #666;
-  transform: scale(1.1);
 }
 
 .container input:checked ~ .checkmark {
   background-color: #2196F3;
-  transform: scale(1.1);
 }
 
 .checkmark:after {
