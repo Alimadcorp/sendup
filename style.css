@@ -10,9 +10,11 @@ body {
   color: #fff;
   overflow-x: hidden;
 }
-a{
+
+a {
   color: #77f;
-} 
+}
+
 h1 {
   color: #d6e6ff;
   margin-top: 50px;
@@ -25,10 +27,11 @@ h1 {
   color: #aad4ff;
   animation: fadeIn 1.5s ease-out;
 }
+
 #log {
   font-size: 9px;
   color: #ccccffaa;
-  text-align:left;
+  text-align: left;
 }
 
 .input-container {
@@ -57,7 +60,7 @@ button {
   padding: 10px 20px;
   font-size: 16px;
   background: linear-gradient(135deg, #4caf50, #45a0f9);
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -85,15 +88,19 @@ table {
   border-collapse: collapse;
   background: linear-gradient(135deg, #0a0f2d, #111733);
 }
+
 @media (orientation: landscape) {
   table {
     font-size: 18px;
   }
-}@media (orientation: portrait) {
+}
+
+@media (orientation: portrait) {
   table {
     font-size: clamp(6px, 3.6vw, 15px);
   }
 }
+
 th,
 td {
   padding: 10px;
@@ -105,27 +112,28 @@ td {
 th {
   background: linear-gradient(135deg, #223566, #1b2c4a);
 }
-    /* Animation for the new row */
+
 tr.new-row {
-  opacity: 0; /* Initially invisible */
-  height: 0;  /* Initially no height */
-  transition: opacity 0.5s ease, height 0.5s ease; /* Smooth transition */
+  opacity: 0;
+  height: 0;
+  transition: opacity 0.5s ease, height 0.5s ease;
 }
 
 tr.new-row.visible {
-  opacity: 1; /* Fully visible */
-  height: 48px; /* Normal height of the row (adjust as per your table) */
-} 
+  opacity: 1;
+  height: 48px;
+}
+
 tr {
   transition: background-color 0.3s;
-} 
+}
+
 tr:nth-child(even) {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
 tr:hover {
   background-color: #446c99aa;
-  
 }
 
 .footer {
@@ -183,10 +191,11 @@ tr:hover {
   top: 5px;
   width: 5px;
   height: 10px;
-  border: solid white;
+  border: solid #fff;
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
 }
+
 .radio-group {
   display: flex;
   justify-content: center;
@@ -246,11 +255,9 @@ tr:hover {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: white;
+  background: #fff;
 }
 
-
-/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
