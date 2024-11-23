@@ -90,7 +90,7 @@ async function generateSchedule() {
   const gs = document.getElementById("GS").checked;
   let rollNoInput = inputElement.value;
   let extras = extra.checked;
-  let logs = "&nbsp&nbsp1.53.3vMS";
+  let logs = "&nbsp&nbsp1.54.2vMS";
   localStorage.setItem("xtra", extra.checked ? "yes" : "no");
   if (validate(rollNoInput)) {
     bb.style.display = "inline";
