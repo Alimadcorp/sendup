@@ -14,14 +14,14 @@ function download() {
   const rollNo = document.getElementById("rollNoInput").value || "Schedule";
   const fileName = `${rollNo}_Schedule.png`;
   const table = document.getElementById("scheduleTable");
+  const log = document.getElementById("log");
   const timeElement = document.getElementById("time");
 
-  if (!table || !timeElement || timeElement.innerText.trim() === "") {
+  if (!table || !log || !timeElement || timeElement.innerText.trim() === "") {
     alert("Please generate the schedule before downloading!");
     return;
   }
 
-  // Wrap table and time in a temporary container
   const container = document.createElement("div");
   container.style.position = "absolute";
   container.style.background = "white";
@@ -30,36 +30,16 @@ function download() {
   container.style.left = "0";
   container.style.width = `${table.offsetWidth}px`;
 
-  // Clone the table and time into the container
+  container.appendChild(log.cloneNode(true));
   container.appendChild(table.cloneNode(true));
   container.appendChild(timeElement.cloneNode(true));
+  document.body.appendChild(container);
 
-  document.body.appendChild(container); // Temporarily add to DOM
-
-  // Use html2canvas with height to capture the full content
-  html2canvas(container, {
-    backgroundColor: null,
-    scrollX: 0,
-    scrollY: 0,
-    useCORS: true,
-    scale: 2, // For high-quality output
-  }).then((canvas) => {
-    const croppedCanvas = document.createElement("canvas");
-    const ctx = croppedCanvas.getContext("2d");
-
-    // Set the canvas size to the content height
-    croppedCanvas.width = canvas.width;
-    croppedCanvas.height = canvas.height;
-
-    // Draw the full content onto the new canvas
-    ctx.drawImage(canvas, 0, 0);
-
+  html2canvas(container, { backgroundColor: null, scrollX: 0, scrollY: 0, useCORS: true, scale: 2 }).then((canvas) => {
     const link = document.createElement("a");
-    link.href = croppedCanvas.toDataURL("image/png");
+    link.href = canvas.toDataURL("image/png");
     link.download = fileName;
     link.click();
-
-    // Clean up the temporary container
     document.body.removeChild(container);
   });
 }
@@ -93,7 +73,7 @@ async function generateSchedule() {
   const log = document.getElementById("log");
   let rollNoInput = inputElement.value;
   let extras = extra.checked;
-  let logs = "&nbsp&nbsp1.53.1vMS";
+  let logs = "&nbsp&nbsp1.53.2vMS";
   localStorage.setItem("xtra", extra.checked ? "yes" : "no");
   if (validate(rollNoInput)) {
     bb.style.display = "inline";
