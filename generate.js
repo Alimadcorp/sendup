@@ -7,9 +7,13 @@ document.addEventListener("DOMContentLoaded", function () {
   history.pushState(null, null, location.href);
   window.addEventListener("popstate", () => {
     back();
+    
     history.pushState(null, null, location.href);
   });
 });
+function clean(){
+  
+}
 function download() {
   const rollNo = document.getElementById("rollNoInput").value || "Schedule";
   const fileName = `${rollNo}_Schedule.png`;
@@ -35,7 +39,13 @@ function download() {
   container.appendChild(timeElement.cloneNode(true));
   document.body.appendChild(container);
 
-  html2canvas(container, { backgroundColor: null, scrollX: 0, scrollY: 0, useCORS: true, scale: 2 }).then((canvas) => {
+  html2canvas(container, {
+    backgroundColor: null,
+    scrollX: 0,
+    scrollY: 0,
+    useCORS: true,
+    scale: 2,
+  }).then((canvas) => {
     const link = document.createElement("a");
     link.href = canvas.toDataURL("image/png");
     link.download = fileName;
@@ -45,7 +55,9 @@ function download() {
 }
 window.onload = () => {
   const savedOption = localStorage.getItem("selectedSubject") || "ICS";
-  document.querySelector(`input[name="subject"][value="${savedOption}"]`).checked = true;
+  document.querySelector(
+    `input[name="subject"][value="${savedOption}"]`
+  ).checked = true;
 };
 
 document.querySelectorAll('input[name="subject"]').forEach((radio) =>
@@ -60,7 +72,9 @@ function back() {
   document.getElementById("log").innerHTML = "";
   document.getElementById("scheduleTable").style.display = "none";
   document.getElementById("bb").style.display = "none";
+  document.getElementById("clean").style.display = "none";
   document.getElementById("down").style.display = "none";
+  document.getElementById("more").style.display = "inline";
   document.getElementById("rest").style.display = "inline";
   document.getElementById("time").innerHTML = "";
 }
@@ -71,6 +85,9 @@ async function generateSchedule() {
   const bb = document.getElementById("bb");
   const extra = document.getElementById("extra");
   const log = document.getElementById("log");
+  const art = document.getElementById("ART").checked;
+  const com = document.getElementById("COM").checked;
+  const gs = document.getElementById("GS").checked;
   let rollNoInput = inputElement.value;
   let extras = extra.checked;
   let logs = "&nbsp&nbsp1.53.3vMS";
@@ -78,19 +95,23 @@ async function generateSchedule() {
   if (validate(rollNoInput)) {
     bb.style.display = "inline";
     document.getElementById("down").style.display = "inline";
+    
+    document.getElementById("more").style.display = "none";
     let rollNo, grade;
     rollNo = extract(rollNoInput).rollNo;
     grade = extract(rollNoInput).grade;
     logs = logs + rollNo.toString() + grade.toString();
     logs += extras ? "Y" : "N";
-    let selected = document.querySelector(
-                'input[name="subject"]:checked'
-              );
+    let selected = document.querySelector('input[name="subject"]:checked');
     let newadd = "I";
-    if(selected.value!="ICS") {
-      if(selected.value=="PE") { newadd = "E"; } 
-      if(selected.value=="PM") {newadd = "M";} 
-    } 
+    if (selected.value != "ICS") {
+      if (selected.value == "PE") {
+        newadd = "E";
+      }
+      if (selected.value == "PM") {
+        newadd = "M";
+      }
+    }
     logs += newadd;
     log.innerHTML = logs;
     localStorage.setItem("roll", rollNoInput);
@@ -154,6 +175,27 @@ async function generateSchedule() {
                 } else if (selected.value == "PM") {
                   for (let i = 0; i < PMA1.length; i++) {
                     if (sub == PMA1[i]) {
+                      elig = true;
+                    }
+                  }
+                }
+                if (art) {
+                  for (let i = 0; i < ARTA1.length; i++) {
+                    if (sub == ARTA1[i]) {
+                      elig = true;
+                    }
+                  }
+                }
+                if (com) {
+                  for (let i = 0; i < COMA1.length; i++) {
+                    if (sub == COMA1[i]) {
+                      elig = true;
+                    }
+                  }
+                }
+                if (gs) {
+                  for (let i = 0; i < GSA1.length; i++) {
+                    if (sub == GSA1[i]) {
                       elig = true;
                     }
                   }
@@ -227,6 +269,27 @@ async function generateSchedule() {
                     }
                   }
                 }
+                if (art) {
+                  for (let i = 0; i < ARTA2.length; i++) {
+                    if (sub == ARTA2[i]) {
+                      elig = true;
+                    }
+                  }
+                }
+                if (com) {
+                  for (let i = 0; i < COMA2.length; i++) {
+                    if (sub == COMA2[i]) {
+                      elig = true;
+                    }
+                  }
+                }
+                if (gs) {
+                  for (let i = 0; i < GSA2.length; i++) {
+                    if (sub == GSA2[i]) {
+                      elig = true;
+                    }
+                  }
+                }
                 if (!elig) {
                   continue;
                 }
@@ -269,6 +332,8 @@ function formatDate(inputDate) {
   return `${day} ${months[parseInt(month) - 1]}`;
 }
 function addRow(number, day, date, subject, room, time) {
+  if(number > 7){
+  document.getElementById("clean").style.display = "inline";}
   const tableBody = document.querySelector("#scheduleTable tbody");
   const newRow = document.createElement("tr");
 
@@ -299,6 +364,6 @@ function addRow(number, day, date, subject, room, time) {
 
   tableBody.appendChild(newRow);
   setTimeout(() => {
-        newRow.classList.add("visible");
-      }, 10);
-                     }
+    newRow.classList.add("visible");
+  }, 10);
+}
