@@ -90,12 +90,14 @@ function throwError(err) {
 }
 
 function func(inp) {
-  inp = constrain(inp, 1, document.getElementById("scheduleTable").rows.length);
+  if(inp > 0){
+    try{}
   const table = document.getElementById("scheduleTable");
   table.deleteRow(inp);
-}
-function constrain(value, min, max) {
-  return Math.min(Math.max(value, min), max);
+  catch(error){
+    console.log(error + "Laaaaaaaaaa");
+    }
+  }
 }
 
 function settb(val) {
