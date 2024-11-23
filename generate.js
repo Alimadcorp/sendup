@@ -10,7 +10,41 @@ document.addEventListener("DOMContentLoaded", function () {
     history.pushState(null, null, location.href);
   });
 });
+function download() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
 
+    const rollNoInput = document.getElementById("rollNoInput").value || "Unknown";
+    const time = document.getElementById("time").innerText || "Exam Time: Unavailable";
+
+    doc.setFillColor(0, 0, 139);
+    doc.rect(0, 0, doc.internal.pageSize.getWidth(), doc.internal.pageSize.getHeight(), "F");
+
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(14);
+    doc.text(`Roll Number: ${rollNoInput}`, doc.internal.pageSize.getWidth() / 2, 20, { align: "center" });
+    doc.text(time, doc.internal.pageSize.getWidth() / 2, 30, { align: "center" });
+
+    doc.autoTable({
+        html: "#scheduleTable",
+        startY: 40,
+        styles: {
+            textColor: [255, 255, 255],
+            halign: "center",
+            fillColor: [30, 30, 30],
+        },
+        headStyles: {
+            fillColor: [50, 50, 50],
+        },
+        bodyStyles: {
+            fillColor: [20, 20, 20],
+        },
+    });
+    const finalY = doc.lastAutoTable.finalY;
+    doc.text(document.getElementById("log").value , 105, finalY + 10, { align: "left" }); 
+    doc.text("Genrated by MadSchedule. An app by Muhammad Ali. ", 105, finalY + 30, { align: "center" }); 
+    doc.save(`${rollNoInput}_Schedule.pdf`);
+}
 window.onload = () => {
   const savedOption = localStorage.getItem("selectedSubject") || "ICS";
   document.querySelector(`input[name="subject"][value="${savedOption}"]`).checked = true;
@@ -28,6 +62,7 @@ function back() {
   document.getElementById("log").innerHTML = "";
   document.getElementById("scheduleTable").style.display = "none";
   document.getElementById("bb").style.display = "none";
+  document.getElementById("down").style.display = "none";
   document.getElementById("rest").style.display = "inline";
   document.getElementById("time").innerHTML = "";
 }
@@ -42,7 +77,7 @@ async function generateSchedule() {
   const other = document.getElementById("rest");
   const extras = extra ? "Y" : "N";
   const newadd = selected.value === "PE" ? "E" : selected.value === "PM" ? "M" : "I";
-  let logs = `&nbsp&nbsp1.50.1vMS${rollNoInput}${extras}${newadd}`;
+  let logs = `&nbsp&nbsp1.51.1vMS${rollNoInput}${extras}${newadd}`;
   let time = "Unavailable";
 
   localStorage.setItem("xtra", extra ? "yes" : "no");
@@ -51,6 +86,7 @@ async function generateSchedule() {
   if (!validate(rollNoInput)) return;
 
   bb.style.display = "inline";
+  document.getElementById("down").style.display = "inline"; 
   const { rollNo, grade } = extract(rollNoInput);
   logs += rollNo + grade;
   log.innerHTML = logs;
