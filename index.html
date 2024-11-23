@@ -1,62 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" href="icon.png">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <meta charset="UTF-8" />
-    <meta name="theme-color" content="#1a1a2e"/>
-    <meta name="color-scheme" content="dark"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sendup Schedule Calculator</title>
-    <link rel="stylesheet" href="style.css" />
-      <meta property="og:title" content="GCU Sendup Schedule Generator" />
-  <meta property="og:description" content="Calculates your sendup schedule. A small project by Muhammad Ali. " />
-  <meta property="og:image" content="https://img.itch.zone/aW1hZ2UvMjg4NzEyNy8xODY4NTE0NC5wbmc=/original/ZPsh%2Bb.png"/>
-  <meta property="og:url" content="https://alimadcorp.github.io/sendup" />
-  <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="style.css">
+    <meta property="og:title" content="GCU Sendup Schedule Generator">
+    <meta property="og:description" content="Calculates your sendup schedule. A small project by Muhammad Ali.">
+    <meta property="og:image" content="https://img.itch.zone/aW1hZ2UvMjg4NzEyNy8xODY4NTE0NC5wbmc=/original/ZPsh%2Bb.png">
+    <meta property="og:url" content="https://alimadcorp.github.io/sendup">
+    <meta property="og:type" content="website">
   </head>
   <body>
     <div id="rest">
       <h1>Calculate Your Sendup Schedule</h1>
-
       <div class="input-container">
-        <label for="rollNoInput" style="font-size:20px;"
-          >Enter Your Complete Roll Number:</label
-        >
-        <input id="rollNoInput" placeholder="e.g., 3686-1-24" />
-        <br>
+        <label for="rollNoInput" style="font-size:20px;">Enter Your Complete Roll Number:</label>
+        <input id="rollNoInput" placeholder="e.g., 3686-1-24"><br>
         <div class="radio-group">
-          <label class="radio-container">ICS
-            <input type="radio" name="subject" value="ICS" />
-            <span class="radio-mark"></span>
-          </label>
-          <label class="radio-container">PE
-            <input type="radio" name="subject" value="PE" />
-            <span class="radio-mark"></span>
-          </label>
-          <label class="radio-container">PM
-            <input type="radio" name="subject" value="PM" />
-            <span class="radio-mark"></span>
-          </label>
+          <label class="radio-container">ICS<input type="radio" name="subject" value="ICS"><span class="radio-mark"></span></label>
+          <label class="radio-container">PE<input type="radio" name="subject" value="PE"><span class="radio-mark"></span></label>
+          <label class="radio-container">PM<input type="radio" name="subject" value="PM"><span class="radio-mark"></span></label>
         </div>
         <br>
-      <label class="container" for="extra"
-        >Include Extra Subjects
-        <input type="checkbox" id="extra" /><span class="checkmark"></span
-      ></label>
+        <label class="container" for="extra">Include Extra Subjects<input type="checkbox" id="extra"><span class="checkmark"></span></label>
         <br><br>
         <button onclick="generateSchedule()">Get Schedule</button><br><br>
-        
       </div>
-
       <p id="errorMessage" style="font-weight: bold; color: red;"></p>
     </div>
-    
     <table id="scheduleTable" style="display: none;">
       <thead>
         <tr>
@@ -71,22 +49,22 @@
     </table>
     <p id="log"></p><br>
     <p id="time"></p>
-    
     <button onclick="back()" id="bb" style="display: none;">Back</button>
     <br><br>
-    <details><summary style="color:#fffc"><strong>Abbreviations</strong></summary>
-          <strong>NB.</strong> - New Block<br>
-          <strong>BJLT</strong> - Bio Junior Lecture Theatre<br>
-          <strong>CNLT</strong> - Chemistry New Lecture Theatre<br>
-          <strong>EE</strong> - Electrical Engineering <br>
-          <strong>PE</strong> - Pre Engineering<br>
-          <strong>PM</strong> - Pre Medical<br>
+    <details>
+      <summary style="color:#fffc"><strong>Abbreviations</strong></summary>
+      <strong>NB.</strong> - New Block<br>
+      <strong>BJLT</strong> - Bio Junior Lecture Theatre<br>
+      <strong>CNLT</strong> - Chemistry New Lecture Theatre<br>
+      <strong>EE</strong> - Electrical Engineering<br>
+      <strong>PE</strong> - Pre Engineering<br>
+      <strong>PM</strong> - Pre Medical<br>
     </details>
     <p class="footer">
       Made by<a href="https://alimadcorp.github.io/site/social.html"><strong>&nbspMuhammad Ali</strong></a>. In case of any errors, please <a href="https://github.com/Alimadcorp/sendup/issues/new"><strong>report</strong></a>.
     </p>
     <p style="font-size:9px">
-      All data is taken from official <a href="https://gcu.edu.pk/Events/Updates/Gazzette-Inter-Part-IandII-SendUpTest-2024.pdf">GCU website</a>. 
+      All data is taken from official <a href="https://gcu.edu.pk/Events/Updates/Gazzette-Inter-Part-IandII-SendUpTest-2024.pdf">GCU website</a>.
     </p>
     <script src="fetch.js"></script>
     <script src="script.js"></script>
