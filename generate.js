@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     history.pushState(null, null, location.href);
   });
 });
-function downloadAsPNG() {
+function download() {
   const rollNo = document.getElementById("rollNoInput").value || "Schedule";
   const fileName = `${rollNo}_Schedule.png`;
   const table = document.getElementById("scheduleTable");
@@ -93,7 +93,7 @@ async function generateSchedule() {
   const log = document.getElementById("log");
   let rollNoInput = inputElement.value;
   let extras = extra.checked;
-  let logs = "&nbsp&nbsp1.52.4vMS";
+  let logs = "&nbsp&nbsp1.53.1vMS";
   localStorage.setItem("xtra", extra.checked ? "yes" : "no");
   if (validate(rollNoInput)) {
     bb.style.display = "inline";
