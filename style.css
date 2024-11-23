@@ -14,9 +14,6 @@ body {
 a {
   color: #77f;
 }
-#more{
-  transform:scale(0.8);
-}
 
 h1 {
   color: #d6e6ff;
@@ -61,7 +58,7 @@ input:focus {
 button {
   padding: 5px 10px;
   font-size: 16px;
-  background: linear-gradient(135deg, #4caf50, #45a0f9);
+  background: linear-gradient(135deg, #4caa50, #45a0a9);
   color: #fff;
   border: none;
   border-radius: 5px;

@@ -1,19 +1,21 @@
 let initialhtm;
 document.addEventListener("DOMContentLoaded", function () {
-  const roll = localStorage.getItem("roll");
-  const xtra = localStorage.getItem("xtra");
-  if (roll) document.getElementById("rollNoInput").value = roll;
-  if (xtra === "yes") document.getElementById("extra").checked = true;
+  fetchCSV("schedule.csv", (data) => {
+    schedule = data;
+    mapschedule();
+  });
+
+  fetchCSV("data.csv", (data) => {
+    datac = data;
+    mapdata();
+  });
   history.pushState(null, null, location.href);
   window.addEventListener("popstate", () => {
     back();
-    
+
     history.pushState(null, null, location.href);
   });
 });
-function clean(){
-  
-}
 function download() {
   const rollNo = document.getElementById("rollNoInput").value || "Schedule";
   const fileName = `${rollNo}_Schedule.png`;
@@ -53,6 +55,16 @@ function download() {
     document.body.removeChild(container);
   });
 }
+function nullCheck() {
+  const table = document.getElementById("scheduleTable");
+  if (table.style.display != "none") {
+    let n = table.rows.length;
+    if (n <= 1) {
+      generateSchedule();
+    }
+  }
+}
+setInterval(nullCheck, 500);
 window.onload = () => {
   const savedOption = localStorage.getItem("selectedSubject") || "ICS";
   document.querySelector(
@@ -88,6 +100,9 @@ async function generateSchedule() {
   const art = document.getElementById("ART").checked;
   const com = document.getElementById("COM").checked;
   const gs = document.getElementById("GS").checked;
+  localStorage.setItem("art", art);
+  localStorage.setItem("com", com);
+  localStorage.setItem("gs", gs);
   let rollNoInput = inputElement.value;
   let extras = extra.checked;
   let logs = "&nbsp&nbsp1.54.2vMS";
@@ -95,7 +110,7 @@ async function generateSchedule() {
   if (validate(rollNoInput)) {
     bb.style.display = "inline";
     document.getElementById("down").style.display = "inline";
-    
+
     document.getElementById("more").style.display = "none";
     let rollNo, grade;
     rollNo = extract(rollNoInput).rollNo;
@@ -332,8 +347,9 @@ function formatDate(inputDate) {
   return `${day} ${months[parseInt(month) - 1]}`;
 }
 function addRow(number, day, date, subject, room, time) {
-  if(number > 7){
-  document.getElementById("clean").style.display = "inline";}
+  if (number > 7) {
+    document.getElementById("clean").style.display = "inline";
+  }
   const tableBody = document.querySelector("#scheduleTable tbody");
   const newRow = document.createElement("tr");
 

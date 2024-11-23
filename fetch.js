@@ -2,20 +2,17 @@ let schedule, datac;
 
 const fetchCSV = (url, callback) => {
   fetch(url)
-    .then((res) => (res.ok ? res.text() : Promise.reject(`HTTP error! Status: ${res.status}`)))
+    .then((res) =>
+      res.ok ? res.text() : Promise.reject(`HTTP error! Status: ${res.status}`)
+    )
     .then((data) => callback(transposeArray(csvToArray(data))))
     .catch(console.error);
 };
 
-fetchCSV("schedule.csv", (data) => {
-  schedule = data;
-  mapschedule();
-});
 
-fetchCSV("data.csv", (data) => {
-  datac = data;
-  mapdata();
-});
-
-const csvToArray = (csv) => csv.trim().split("\n").map((row) => row.split(","));
+const csvToArray = (csv) =>
+  csv
+    .trim()
+    .split("\n")
+    .map((row) => row.split(","));
 const transposeArray = (arr) => arr[0].map((_, i) => arr.map((row) => row[i]));

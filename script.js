@@ -31,6 +31,18 @@ function mapdata() {
   centers = datac[2];
   mins = ranges.map((r) => parseRange(r).min);
   maxes = ranges.map((r) => parseRange(r).max);
+  const roll = localStorage.getItem("roll");
+  const xtra = localStorage.getItem("xtra");
+  if (roll) {
+    document.getElementById("rollNoInput").value = roll;
+    document.getElementById("ART").checked =
+      localStorage.getItem("art") == "true";
+    document.getElementById("COM").checked =
+      localStorage.getItem("com") == "true";
+    document.getElementById("GS").checked =
+      localStorage.getItem("gs") == "true";
+  }
+  if (xtra === "yes") document.getElementById("extra").checked = true;
 }
 
 function mapschedule() {
@@ -60,7 +72,7 @@ function saparator(input, delimiter) {
 }
 
 function parseRange(input) {
-  if (input === "All Students") return { min: 0, max: 0 };
+  if (input === "All Students") return { min: 0, max: 10000 };
   let [min, max] = input.split("-").map(Number);
   return { min, max };
 }
