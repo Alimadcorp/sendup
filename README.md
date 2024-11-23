@@ -35,9 +35,9 @@ cd student-exam-schedule-generator
 
 
 
-Project Structure
+# Project Structure
 
-student-exam-schedule-generator/  
+## sendup/  
 ├── index.html          # Main HTML file  
 ├── style.css           # CSS styles  
 ├── fetch.js            # Fetch exam data (if applicable)  
@@ -46,7 +46,7 @@ student-exam-schedule-generator/
 ├── icon.png            # Favicon for the site  
 └── README.md           # Project documentation
 
-Roadmap
+# Roadmap
 
 Add support for saving schedules locally or exporting as PDF.
 
@@ -55,7 +55,7 @@ Enable integration with external APIs for real-time exam updates.
 Implement a login system for personalized experiences.
 
 
-Contributing
+# Contributing
 
 1. Fork the repository.
 
@@ -79,10 +79,10 @@ git push origin feature-name
 
 
 
-License
+## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-Acknowledgments
+## Acknowledgments
 
 Created by Muhammad Ali.
