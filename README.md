@@ -63,19 +63,19 @@ Implement a login system for personalized experiences.
 2. Create a new branch:
 
    ```bash
-git checkout -b feature-name
+   git checkout -b brach-name
 
 
 3. Commit your changes:
 
    ```bash
-git commit -m "Added feature-name"
+   git commit -m "Added feature"
 
 
 4. Push to the branch:
 
    ```bash
-git push origin feature-name
+   git push origin branch-name
 
 
 5. Create a pull request.
