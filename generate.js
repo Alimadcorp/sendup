@@ -24,7 +24,7 @@ function download() {
 
   const container = document.createElement("div");
   container.style.position = "absolute";
-  container.style.background = "white";
+  container.style.background-color = "#040409";
   container.style.padding = "20px";
   container.style.top = "0";
   container.style.left = "0";
@@ -73,7 +73,7 @@ async function generateSchedule() {
   const log = document.getElementById("log");
   let rollNoInput = inputElement.value;
   let extras = extra.checked;
-  let logs = "&nbsp&nbsp1.53.2vMS";
+  let logs = "&nbsp&nbsp1.53.3vMS";
   localStorage.setItem("xtra", extra.checked ? "yes" : "no");
   if (validate(rollNoInput)) {
     bb.style.display = "inline";
