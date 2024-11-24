@@ -13,14 +13,14 @@ MadSchedule v1.6.1
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/student-exam-schedule-generator.git
+   git clone https://github.com/alimadcorp/sendup.git
 
 2. Open the project folder:
+   ```bash
+   cd sendup-main
 
-cd student-exam-schedule-generator
 
-
-3. Open the index.html file in your browser.
+4. Open the index.html file in your browser.
 
 ## License
 
