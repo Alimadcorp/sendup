@@ -105,7 +105,7 @@ async function generateSchedule() {
   localStorage.setItem("gs", gs);
   let rollNoInput = inputElement.value;
   let extras = extra.checked;
-  let logs = "&nbsp&nbsp1.6.1vMS";
+  let logs = "&nbsp&nbsp1.6.2vMS";
   localStorage.setItem("xtra", extra.checked ? "yes" : "no");
   if (validate(rollNoInput)) {
     bb.style.display = "inline";
@@ -127,6 +127,15 @@ async function generateSchedule() {
         newadd = "M";
       }
     }
+    if(art){
+      newadd += "A";
+    } 
+    if(com){
+      newadd += "C";
+    } 
+    if(gs){
+      newadd += "G";
+    } 
     logs += newadd;
     log.innerHTML = logs;
     localStorage.setItem("roll", rollNoInput);
