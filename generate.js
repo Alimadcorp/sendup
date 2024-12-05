@@ -1,5 +1,6 @@
 let initialhtm;
 let generating = false;
+let v = "1.6.4v";
 document.addEventListener("DOMContentLoaded", function () {
   fetchCSV("schedule.csv", (data) => {
     schedule = data;
@@ -10,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     datac = data;
     mapdata();
   });
+  document.getElementById("logg").innerHTML = v;
   history.pushState(null, null, location.href);
   window.addEventListener("popstate", () => {
     back();
@@ -110,7 +112,7 @@ async function generateSchedule() {
   localStorage.setItem("gs", gs);
   
   let extras = extra.checked;
-  let logs = "&nbsp&nbsp1.6.3vMS";
+  let logs = "&nbsp&nbsp" + v + "MS";
   localStorage.setItem("xtra", extra.checked ? "yes" : "no");
     document.body.style.background = "linear-gradient(135deg, #dd0409, #2e1a1a)";
     bb.style.display = "inline";
