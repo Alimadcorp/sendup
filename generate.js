@@ -92,11 +92,11 @@ function back() {
   document.getElementById("time").innerHTML = "";
 }
 async function generateSchedule() {
+  const inputElement = document.getElementById("rollNoInput"); 
   let rollNoInput = inputElement.value;
   if (validate(rollNoInput)) {
   if(generating) return;
   generating = true;
-  const inputElement = document.getElementById("rollNoInput");
   const table = document.getElementById("scheduleTable");
   const other = document.getElementById("rest");
   const bb = document.getElementById("bb");
