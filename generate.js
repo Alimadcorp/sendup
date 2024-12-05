@@ -1,4 +1,5 @@
 let initialhtm;
+let generating = false;
 document.addEventListener("DOMContentLoaded", function () {
   fetchCSV("schedule.csv", (data) => {
     schedule = data;
@@ -91,6 +92,10 @@ function back() {
   document.getElementById("time").innerHTML = "";
 }
 async function generateSchedule() {
+  let rollNoInput = inputElement.value;
+  if (validate(rollNoInput)) {
+  if(generating) return;
+  generating = true;
   const inputElement = document.getElementById("rollNoInput");
   const table = document.getElementById("scheduleTable");
   const other = document.getElementById("rest");
@@ -103,11 +108,11 @@ async function generateSchedule() {
   localStorage.setItem("art", art);
   localStorage.setItem("com", com);
   localStorage.setItem("gs", gs);
-  let rollNoInput = inputElement.value;
+  
   let extras = extra.checked;
-  let logs = "&nbsp&nbsp1.6.2vMS";
+  let logs = "&nbsp&nbsp1.6.3vMS";
   localStorage.setItem("xtra", extra.checked ? "yes" : "no");
-  if (validate(rollNoInput)) {
+    document.body.style.background = "linear-gradient(135deg, #dd0409, #2e1a1a)";
     bb.style.display = "inline";
     document.getElementById("down").style.display = "inline";
 
@@ -336,6 +341,8 @@ async function generateSchedule() {
       }
     }
   }
+  document.body.style.background = "linear-gradient(135deg, #040409, #1a1a2e)";
+  generating = false;
 }
 function formatDate(inputDate) {
   const months = [
