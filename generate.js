@@ -1,6 +1,6 @@
 let initialhtm;
 let generating = false;
-let v = "1.6.4v";
+let v = "1.6.5v";
 document.addEventListener("DOMContentLoaded", function () {
   fetchCSV("schedule.csv", (data) => {
     schedule = data;
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     datac = data;
     mapdata();
   });
-  document.getElementById("logg").innerHTML = v;
+  document.getElementById("logg").innerHTML = "&nbsp&nbsp" + v;
   history.pushState(null, null, location.href);
   window.addEventListener("popstate", () => {
     back();
@@ -92,6 +92,8 @@ function back() {
   document.getElementById("more").style.display = "inline";
   document.getElementById("rest").style.display = "inline";
   document.getElementById("time").innerHTML = "";
+  document.getElementById("logg").style.display = "inline";
+
 }
 async function generateSchedule() {
   const inputElement = document.getElementById("rollNoInput"); 
@@ -114,8 +116,8 @@ async function generateSchedule() {
   let extras = extra.checked;
   let logs = "&nbsp&nbsp" + v + "MS";
   localStorage.setItem("xtra", extra.checked ? "yes" : "no");
-    document.body.style.background = "linear-gradient(135deg, #dd0409, #2e1a1a)";
     bb.style.display = "inline";
+    document.getElementById("logg").style.display = "none";
     document.getElementById("down").style.display = "inline";
 
     document.getElementById("more").style.display = "none";
@@ -343,7 +345,7 @@ async function generateSchedule() {
       }
     }
   }
-  document.body.style.background = "linear-gradient(135deg, #040409, #1a1a2e)";
+  document.querySelectorAll("th").forEach(th => th.style.background = "linear-gradient(135deg, #223566, #1b2c4a)");
   generating = false;
 }
 function formatDate(inputDate) {
@@ -397,6 +399,7 @@ function addRow(number, day, date, subject, room, time) {
   newRow.appendChild(newCell6);*/
 
   tableBody.appendChild(newRow);
+  document.querySelectorAll("th").forEach(th => th.style.background = "linear-gradient(135deg, #663522, #4a2c1b)");
   setTimeout(() => {
     newRow.classList.add("visible");
   }, 10);
