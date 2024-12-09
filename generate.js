@@ -1,6 +1,6 @@
 let initialhtm;
 let generating = false;
-let v = "1.6.5v";
+let v = "1.7.1v";
 document.addEventListener("DOMContentLoaded", function () {
   fetchCSV("schedule.csv", (data) => {
     schedule = data;
