@@ -23,7 +23,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
+const appname = "sendup";
 // DOM Elements
 const feedbackForm = document.getElementById("feedbackForm");
 const commentTextarea = document.getElementById("comment");
@@ -44,7 +44,16 @@ async function addComment(commentText) {
     console.error("Error adding comment: ", error);
   }
 }
-
+function fetchVersion(){
+  const versionCheck = query(collection(db, "version"));
+  onSnapshot(versionCheck, (snapshot) => {
+    snapshot.forEach((doc) => {
+      let name = doc.data();
+      let version = doc.id;
+      if(version == appname){ setversion(name.version); }
+    });
+  });
+}
 // Fetch comments from Firestore
 function fetchComments() {
   const commentsRef = query(collection(db, "sendup"), orderBy("timestamp"));
@@ -123,4 +132,4 @@ document.getElementById("sub").addEventListener("click", () => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", () => {fetchComments()}) ;
+document.addEventListener("DOMContentLoaded", () => {fetchComments(); fetchVersion();}) ;

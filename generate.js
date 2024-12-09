@@ -1,6 +1,46 @@
 let initialhtm;
 let generating = false;
-let v = "1.7.1v";
+let v = "Loading...";
+function setversion(ver) {
+  v = ver + "v";
+  document.getElementById("logg").innerHTML = "&nbsp&nbsp" + v;
+
+  if (log.style.display != "none") {
+    const inputElement = document.getElementById("rollNoInput");
+    let rollNoInput = inputElement.value;
+    let extras = extra.checked;
+    let rollNo, grade;
+    let logs = "&nbsp&nbsp" + v + "MS";
+    rollNo = extract(rollNoInput).rollNo;
+    grade = extract(rollNoInput).grade;
+    logs = logs + rollNo.toString() + grade.toString();
+    logs += extras ? "Y" : "N";
+    const art = document.getElementById("ART").checked;
+    const com = document.getElementById("COM").checked;
+    const gs = document.getElementById("GS").checked;
+    let selected = document.querySelector('input[name="subject"]:checked');
+    let newadd = "I";
+    if (selected.value != "ICS") {
+      if (selected.value == "PE") {
+        newadd = "E";
+      }
+      if (selected.value == "PM") {
+        newadd = "M";
+      }
+    }
+    if (art) {
+      newadd += "A";
+    }
+    if (com) {
+      newadd += "C";
+    }
+    if (gs) {
+      newadd += "G";
+    }
+    logs += newadd;
+    log.innerHTML = logs;
+  }
+}
 document.addEventListener("DOMContentLoaded", function () {
   fetchCSV("schedule.csv", (data) => {
     schedule = data;
@@ -84,7 +124,7 @@ document.querySelectorAll('input[name="subject"]').forEach((radio) =>
 const delay = (ms = 30) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function back() {
-  document.getElementById("log").innerHTML = "";
+  document.getElementById("log").style.display = "none";
   document.getElementById("scheduleTable").style.display = "none";
   document.getElementById("bb").style.display = "none";
   document.getElementById("clean").style.display = "none";
@@ -93,31 +133,31 @@ function back() {
   document.getElementById("rest").style.display = "inline";
   document.getElementById("time").innerHTML = "";
   document.getElementById("logg").style.display = "inline";
-
 }
 async function generateSchedule() {
-  const inputElement = document.getElementById("rollNoInput"); 
+  const inputElement = document.getElementById("rollNoInput");
   let rollNoInput = inputElement.value;
   if (validate(rollNoInput)) {
-  if(generating) return;
-  generating = true;
-  const table = document.getElementById("scheduleTable");
-  const other = document.getElementById("rest");
-  const bb = document.getElementById("bb");
-  const extra = document.getElementById("extra");
-  const log = document.getElementById("log");
-  const art = document.getElementById("ART").checked;
-  const com = document.getElementById("COM").checked;
-  const gs = document.getElementById("GS").checked;
-  localStorage.setItem("art", art);
-  localStorage.setItem("com", com);
-  localStorage.setItem("gs", gs);
-  
-  let extras = extra.checked;
-  let logs = "&nbsp&nbsp" + v + "MS";
-  localStorage.setItem("xtra", extra.checked ? "yes" : "no");
+    if (generating) return;
+    generating = true;
+    const table = document.getElementById("scheduleTable");
+    const other = document.getElementById("rest");
+    const bb = document.getElementById("bb");
+    const extra = document.getElementById("extra");
+    const log = document.getElementById("log");
+    const art = document.getElementById("ART").checked;
+    const com = document.getElementById("COM").checked;
+    const gs = document.getElementById("GS").checked;
+    localStorage.setItem("art", art);
+    localStorage.setItem("com", com);
+    localStorage.setItem("gs", gs);
+
+    let extras = extra.checked;
+    let logs = "&nbsp&nbsp" + v + "MS";
+    localStorage.setItem("xtra", extra.checked ? "yes" : "no");
     bb.style.display = "inline";
     document.getElementById("logg").style.display = "none";
+    document.getElementById("log").style.display = "inline";
     document.getElementById("down").style.display = "inline";
 
     document.getElementById("more").style.display = "none";
@@ -136,15 +176,15 @@ async function generateSchedule() {
         newadd = "M";
       }
     }
-    if(art){
+    if (art) {
       newadd += "A";
-    } 
-    if(com){
+    }
+    if (com) {
       newadd += "C";
-    } 
-    if(gs){
+    }
+    if (gs) {
       newadd += "G";
-    } 
+    }
     logs += newadd;
     log.innerHTML = logs;
     localStorage.setItem("roll", rollNoInput);
@@ -345,7 +385,12 @@ async function generateSchedule() {
       }
     }
   }
-  document.querySelectorAll("th").forEach(th => th.style.background = "linear-gradient(135deg, #223566, #1b2c4a)");
+  document
+    .querySelectorAll("th")
+    .forEach(
+      (th) =>
+        (th.style.background = "linear-gradient(135deg, #223566, #1b2c4a)")
+    );
   generating = false;
 }
 function formatDate(inputDate) {
@@ -399,7 +444,12 @@ function addRow(number, day, date, subject, room, time) {
   newRow.appendChild(newCell6);*/
 
   tableBody.appendChild(newRow);
-  document.querySelectorAll("th").forEach(th => th.style.background = "linear-gradient(135deg, #663522, #4a2c1b)");
+  document
+    .querySelectorAll("th")
+    .forEach(
+      (th) =>
+        (th.style.background = "linear-gradient(135deg, #663522, #4a2c1b)")
+    );
   setTimeout(() => {
     newRow.classList.add("visible");
   }, 10);
