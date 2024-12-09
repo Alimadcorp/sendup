@@ -89,8 +89,7 @@
       <tbody></tbody>
     </table>
     <p id="log"></p>
-    <p id="logg"></p>
-    <br />
+    <center><p id="logg"></p></center>
     <p id="time"></p>
     <button onclick="download()" id="down" style="display: none;">
       Download
@@ -98,7 +97,6 @@
     
     <button onclick="cleanup()" id="clean" style="display: none;">Clean Up</button>
     <button onclick="back()" id="bb" style="display: none; background: linear-gradient(135deg, #cf4410, #f9a045);">Back</button>
-    <br /><br />
     <details>
       <summary style="color:#fffc"><strong>Abbreviations</strong></summary>
       <strong>NB.</strong> - New Block<br />
@@ -110,6 +108,15 @@
       <strong>COM</strong> - Commerce<br />
       <strong>GS</strong> - General Sciences<br />
     </details>
+    <div class="feedback-container">
+        <div id="comments-section">
+            <div id="comments-list"></div>
+        </div><h1>Leave a Comment</h1>
+        <form id="feedbackForm">
+            <textarea id="comment" placeholder="Write your comment here..." required></textarea>
+        </form>
+          <button id="sub">Submit</button>
+    </div>
     <p class="footer">
       Made by<a href="https://alimadcorp.github.io/site/social.html"
         ><strong>&nbspMuhammad Ali</strong></a
@@ -141,6 +148,7 @@
     <script src="fetch.js"></script>
     <script src="script.js"></script>
     <script src="popup.js"></script>
+    <script type="module" src="comments.js"></script>
     <script src="generate.js"></script>
   </body>
 </html>
