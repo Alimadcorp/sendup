@@ -294,14 +294,14 @@ tr:hover {
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 25%; /* Adjusted width */
+    width: 18%; /* Adjusted width */
     position: fixed;
     bottom: 1rem;
     left: 1rem;
     overflow-x: hidden;
     overflow-y: auto;
     z-index: 9999;
-    max-height: 90%;
+    max-height: 70%;
   }
   textarea {
   font-size: 1rem;
