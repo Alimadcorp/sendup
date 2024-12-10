@@ -108,27 +108,27 @@ function fetchComments() {
 // Function to format the timestamp dynamically
 function formatTimeAgo(timestamp) {
   const now = new Date();
-  const diffInSeconds = Math.floor((now - timestamp) / 1000);
+  
+const diffInSeconds = Math.floor((now - timestamp) / 1000);
 
-  if (diffInSeconds < 60) {
-    return diffInSeconds === 0 ? "Just now" : `${diffInSeconds} seconds ago`;
-  }
+if (diffInSeconds < 60) {
+  return diffInSeconds <= 0 ? "Just now" : `${diffInSeconds} second${diffInSeconds === 1 ? "" : "s"} ago`;
+}
 
-  const diffInMinutes = Math.floor(diffInSeconds / 60);
-  if (diffInMinutes < 60) {
-    return `${diffInMinutes} minutes ago`;
-  }
+const diffInMinutes = Math.floor(diffInSeconds / 60);
+if (diffInMinutes < 60) {
+  return `${diffInMinutes} minute${diffInMinutes === 1 ? "" : "s"} ago`;
+}
 
-  const diffInHours = Math.floor(diffInMinutes / 60);
-  if (diffInHours < 24) {
-    return `${diffInHours} hours ago`;
-  }
+const diffInHours = Math.floor(diffInMinutes / 60);
+if (diffInHours < 24) {
+  return `${diffInHours} hour${diffInHours === 1 ? "" : "s"} ago`;
+}
 
-  const diffInDays = Math.floor(diffInHours / 24);
-  if (diffInDays <= 14) {
-    return `${diffInDays} days ago`;
-  }
-
+const diffInDays = Math.floor(diffInHours / 24);
+if (diffInDays <= 14) {
+  return `${diffInDays} day${diffInDays === 1 ? "" : "s"} ago`;
+} 
   // Return exact date if more than 14 days ago
   return timestamp.toLocaleDateString("en-US", {
     day: "2-digit",
