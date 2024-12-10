@@ -97,6 +97,36 @@
     
     <button onclick="cleanup()" id="clean" style="display: none;">Clean Up</button>
     <button onclick="back()" id="bb" style="display: none; background: linear-gradient(135deg, #cf4410, #f9a045);">Back</button>
+      <button id="subscribeBtn">YouTube Channel</button>
+  <p id="status"></p>
+      <script>
+    const subscribeBtn = document.getElementById('subscribeBtn');
+    const statusText = document.getElementById('status');
+
+    subscribeBtn.addEventListener('click', () => {
+      const lastClick = localStorage.getItem('lastSubscribeClick');
+      const currentTime = Date.now(); // Current timestamp in milliseconds
+subscribeBtn.disabled = true;
+setTimeout(() => {
+  subscribeBtn.disabled = false;
+}, 6000);
+      if (lastClick) {
+        const timeSinceLastClick = (currentTime - lastClick) / 1000; // Convert to seconds
+
+        if (timeSinceLastClick >= 6) {
+          statusText.textContent = "Thank you for subscribing!";
+          // Mark user as subscribed (e.g., save to database or show confirmation)
+        } else {
+          statusText.textContent = `Please wait ${(6 - timeSinceLastClick).toFixed(1)} more seconds.`;
+        }
+      } else {
+        statusText.textContent = "Please click again after 6 seconds to confirm subscription.";
+      }
+
+      // Update the last click time
+      localStorage.setItem('lastSubscribeClick', currentTime);
+    });
+      </script>
     <details>
       <summary style="color:#fffc"><strong>Abbreviations</strong></summary>
       <strong>NB.</strong> - New Block<br />
