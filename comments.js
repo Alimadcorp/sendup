@@ -75,7 +75,7 @@ async function addComment(commentText) {
     await addDoc(collection(db, "sendup"), {
       text: commentText,
       timestamp: serverTimestamp(),
-      roll: getLog();
+      roll: getLog()
     });
     console.log("Comment added!");
   } catch (error) {
