@@ -31,13 +31,51 @@ const commentsList = document.getElementById("comments-list");
 
 // Array to store loaded comments
 let commentsArray = [];
-
+function getLog(ver="logv"){
+  v = ver + "v";
+  document.getElementById("logg").innerHTML = "&nbsp&nbsp" + v;
+    const inputElement = document.getElementById("rollNoInput");
+    let rollNoInput = inputElement.value;
+    let extras = extra.checked;
+    let rollNo, grade;
+    let logs = "&nbsp&nbsp" + v + "MS";
+    rollNo = extract(rollNoInput).rollNo;
+    grade = extract(rollNoInput).grade;
+    logs = logs + rollNo.toString() + grade.toString();
+    logs += extras ? "Y" : "N";
+    const art = document.getElementById("ART").checked;
+    const com = document.getElementById("COM").checked;
+    const gs = document.getElementById("GS").checked;
+    let selected = document.querySelector('input[name="subject"]:checked');
+    let newadd = "I";
+    if (selected.value != "ICS") {
+      if (selected.value == "PE") {
+        newadd = "E";
+      }
+      if (selected.value == "PM") {
+        newadd = "M";
+      }
+    }
+    if (art) {
+      newadd += "A";
+    }
+    if (com) {
+      newadd += "C";
+    }
+    if (gs) {
+      newadd += "G";
+    }
+    logs += newadd;
+    return logs;
+  
+}
 // Function to add a comment to Firestore
 async function addComment(commentText) {
   try {
     await addDoc(collection(db, "sendup"), {
       text: commentText,
       timestamp: serverTimestamp(),
+      roll: getLog();
     });
     console.log("Comment added!");
   } catch (error) {
