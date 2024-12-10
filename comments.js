@@ -137,7 +137,7 @@ function formatTimeAgo(timestamp) {
   });
 }
 function scrollToBottom() {
-  const commentsContainer = document.getElementById("comments-list");
+  const commentsContainer = document.getElementById("comments-section");
   commentsContainer.scrollTop = commentsContainer.scrollHeight;
 }
 // Async function to display comments with a delay
@@ -160,7 +160,7 @@ async function displayCommentsWithDelay() {
 
     commentsList.appendChild(commentElement);
   }
-  await new Promise((resolve) => setTimeout(resolve, 50));
+  await new Promise((resolve) => setTimeout(resolve, 500));
   scrollToBottom();
 }
 
