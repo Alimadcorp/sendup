@@ -101,7 +101,10 @@ function formatTimeAgo(timestamp) {
     year: "numeric",
   });
 }
-
+function scrollToBottom() {
+  const commentsContainer = document.getElementById("comments-list");
+  commentsContainer.scrollTop = commentsContainer.scrollHeight;
+}
 // Async function to display comments with a delay
 async function displayCommentsWithDelay() {
   commentsList.innerHTML = ""; // Clear the list
@@ -122,6 +125,8 @@ async function displayCommentsWithDelay() {
 
     commentsList.appendChild(commentElement);
   }
+  await new Promise((resolve) => setTimeout(resolve, 50));
+  scrollToBottom();
 }
 
 document.getElementById("sub").addEventListener("click", () => {
