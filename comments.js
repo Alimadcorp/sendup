@@ -31,14 +31,12 @@ const commentsList = document.getElementById("comments-list");
 
 // Array to store loaded comments
 let commentsArray = [];
-function getLog(ver="logv"){
-  v = ver + "v";
-  document.getElementById("logg").innerHTML = "&nbsp&nbsp" + v;
+function getLog(){
     const inputElement = document.getElementById("rollNoInput");
     let rollNoInput = inputElement.value;
     let extras = extra.checked;
     let rollNo, grade;
-    let logs = "&nbsp&nbsp" + v + "MS";
+    let logs = "MS";
     rollNo = extract(rollNoInput).rollNo;
     grade = extract(rollNoInput).grade;
     logs = logs + rollNo.toString() + grade.toString();
@@ -67,7 +65,6 @@ function getLog(ver="logv"){
     }
     logs += newadd;
     return logs;
-  
 }
 // Function to add a comment to Firestore
 async function addComment(commentText) {
