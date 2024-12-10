@@ -102,9 +102,10 @@
       <script>
     const subscribeBtn = document.getElementById('subscribeBtn');
     const statusText = document.getElementById('status');
-
+    document.addEventListener('DOMContentLoaded', () => {if(localStorage.getItem("subbed") == "Y") {subscribeBtn.style.display="none";statusText.style.display="none";} });
     subscribeBtn.addEventListener('click', () => {
       const lastClick = localStorage.getItem('lastSubscribeClick');
+      window.open('https://www.youtube.com/@alimadco', '_blank');
       const currentTime = Date.now(); // Current timestamp in milliseconds
 subscribeBtn.disabled = true;
 setTimeout(() => {
@@ -115,6 +116,7 @@ setTimeout(() => {
 
         if (timeSinceLastClick >= 6) {
           statusText.textContent = "Thank you for subscribing!";
+          localStorage.setItem("subbed", "Y");
           // Mark user as subscribed (e.g., save to database or show confirmation)
         } else {
           statusText.textContent = `Please wait ${(6 - timeSinceLastClick).toFixed(1)} more seconds.`;
