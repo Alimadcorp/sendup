@@ -9,7 +9,6 @@ import {
   serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
-// Your Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBR1UeKEAJV4x3YOjzMFDsaSUwQiLgJNFQ",
   authDomain: "commentspagetests.firebaseapp.com",
@@ -20,16 +19,12 @@ const firebaseConfig = {
   measurementId: "G-HYDSZ89BLH",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const appname = "sendup";
-// DOM Elements
 const feedbackForm = document.getElementById("feedbackForm");
 const commentTextarea = document.getElementById("comment");
 const commentsList = document.getElementById("comments-list");
-
-// Array to store loaded comments
 let commentsArray = [];
 let userArray = [];
 function getLog(){
@@ -70,7 +65,6 @@ function getLog(){
     logs += newadd;
     return logs;
 }
-// Function to add a comment to Firestore
 async function addComment(commentText) {
   try {
     await addDoc(collection(db, "sendup"), {
@@ -94,73 +88,79 @@ function fetchVersion(){
     });
   });
 }
-
-// Fetch comments from Firestore
 function fetchComments() {
   const commentsRef = query(collection(db, "sendup"), orderBy("timestamp"));
   onSnapshot(commentsRef, (snapshot) => {
-    commentsArray = []; // Clear previous comments
+    commentsArray = []; 
     snapshot.forEach((doc) => {
       const commentData = doc.data();
-      commentData.id = doc.id; // Add document ID for uniqueness
-      commentsArray.push(commentData); // Push to the comments array
+      commentData.id = doc.id;
+      commentsArray.push(commentData); 
     });
-
-    // Display comments one by one with a delay
-    displayCommentsWithDelay();
+    displayCommentsWithDelay(true);
   });
 }
 function fetchUsers() {
   const userRef = query(collection(db, "user"));
   onSnapshot(userRef, (snapshot) => {
-    userArray = []; // Clear previous comments
+    userArray = []; 
     snapshot.forEach((doc) => {
       const userData = doc.data();
-      userData.id = doc.id; // Add document ID for uniqueness
-      userArray.push(userData); // Push to the comments array
+      userData.id = doc.id; 
+      userArray.push(userData); 
     });
 
     fetchComments();
   });
 } 
-// Function to format the timestamp dynamically
 function formatTimeAgo(timestamp) {
   const now = new Date();
   
 const diffInSeconds = Math.floor((now - timestamp) / 1000);
-
 if (diffInSeconds < 60) {
   return diffInSeconds <= 0 ? "Just now" : `${diffInSeconds} second${diffInSeconds === 1 ? "" : "s"} ago`;
 }
-
 const diffInMinutes = Math.floor(diffInSeconds / 60);
 if (diffInMinutes < 60) {
   return `${diffInMinutes} minute${diffInMinutes === 1 ? "" : "s"} ago`;
 }
-
 const diffInHours = Math.floor(diffInMinutes / 60);
 if (diffInHours < 24) {
   return `${diffInHours} hour${diffInHours === 1 ? "" : "s"} ago`;
 }
-
 const diffInDays = Math.floor(diffInHours / 24);
 if (diffInDays <= 14) {
   return `${diffInDays} day${diffInDays === 1 ? "" : "s"} ago`;
 } 
-  // Return exact date if more than 14 days ago
   return timestamp.toLocaleDateString("en-US", {
     day: "2-digit",
     month: "short",
     year: "numeric",
   });
 }
+
+function refreshCom(){
+  let newArray = [];
+  const commentsRef = query(collection(db, "sendup"), orderBy("timestamp"));
+  onSnapshot(commentsRef, (snapshot) => {
+    snapshot.forEach((doc) => {
+      const commentData = doc.data();
+      commentData.id = doc.id;
+      newArray.push(commentData); 
+    });
+    if(newArray.length != commentsArray.length){
+      displayCommentsWithDelay(false);
+    }
+  });
+} 
+
+
 function scrollToBottom() {
   const commentsContainer = document.getElementById("comments-section");
   commentsContainer.scrollTop = commentsContainer.scrollHeight;
 }
-// Async function to display comments with a delay
-async function displayCommentsWithDelay() {
-  commentsList.innerHTML = ""; // Clear the list
+async function displayCommentsWithDelay(scrolll) {
+  commentsList.innerHTML = "";
   
   for (const comment of commentsArray) {
     await new Promise((resolve) => setTimeout(resolve, 5)); // 50ms delay
@@ -196,7 +196,8 @@ async function displayCommentsWithDelay() {
     commentsList.appendChild(commentElement);
   }
   await new Promise((resolve) => setTimeout(resolve, 50));
-  scrollToBottom();
+  if(scrolll) scrollToBottom();
+  setInterval(refreshCom(), 8000);
 }
 
 document.getElementById("sub").addEventListener("click", () => {
