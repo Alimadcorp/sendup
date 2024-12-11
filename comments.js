@@ -200,7 +200,7 @@ async function displayCommentsWithDelay(scrolll) {
   }
   await new Promise((resolve) => setTimeout(resolve, 50));
   if(scrolll) scrollToBottom();
-  setInterval(refreshCom(), 8000);
+  adding = false;
 }
 
 document.getElementById("sub").addEventListener("click", () => {
@@ -211,4 +211,4 @@ document.getElementById("sub").addEventListener("click", () => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", () => {fetchUsers(); fetchVersion();}) ;
+document.addEventListener("DOMContentLoaded", () => {fetchUsers(); fetchVersion(); setInterval(refreshCom(), 8000);}) ;
