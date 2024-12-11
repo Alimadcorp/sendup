@@ -89,6 +89,7 @@ function fetchVersion(){
   });
 }
 function fetchComments() {
+  console.log("fetching");
   const commentsRef = query(collection(db, "sendup"), orderBy("timestamp"));
   onSnapshot(commentsRef, (snapshot) => {
     commentsArray = []; 
@@ -160,8 +161,10 @@ function scrollToBottom() {
 }
 let adding = false;
 async function displayCommentsWithDelay(scrolll) {
+  console.log(adding);
   if(adding) return;
   adding = true;
+  
   commentsList.innerHTML = "";
   for (const comment of commentsArray) {
     if(scrolll) { await new Promise((resolve) => setTimeout(resolve, 10));} // 50ms delay
