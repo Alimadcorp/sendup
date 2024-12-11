@@ -148,13 +148,12 @@ function refreshCom(){
       commentData.id = doc.id;
       newArray.push(commentData); 
     });
-    if(newArray.length != commentsArray.length){
-      displayCommentsWithDelay(false);
+    if (JSON.stringify(newArray) !== JSON.stringify(commentsArray)) {
+  commentsArray = newArray;
+  displayCommentsWithDelay(false);
     }
   });
 } 
-
-
 function scrollToBottom() {
   const commentsContainer = document.getElementById("comments-section");
   commentsContainer.scrollTop = commentsContainer.scrollHeight;
@@ -164,9 +163,8 @@ async function displayCommentsWithDelay(scrolll) {
   if(adding) return;
   adding = true;
   commentsList.innerHTML = "";
-  
   for (const comment of commentsArray) {
-    await new Promise((resolve) => setTimeout(resolve, 5)); // 50ms delay
+    if(scrolll) { await new Promise((resolve) => setTimeout(resolve, 10));} // 50ms delay
     const timestamp = comment.timestamp
       ? comment.timestamp.toDate()
       : new Date();
