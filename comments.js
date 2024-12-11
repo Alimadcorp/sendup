@@ -159,7 +159,10 @@ function scrollToBottom() {
   const commentsContainer = document.getElementById("comments-section");
   commentsContainer.scrollTop = commentsContainer.scrollHeight;
 }
+let adding = false;
 async function displayCommentsWithDelay(scrolll) {
+  if(adding) return;
+  adding = true;
   commentsList.innerHTML = "";
   
   for (const comment of commentsArray) {
