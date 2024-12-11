@@ -31,6 +31,7 @@ const commentsList = document.getElementById("comments-list");
 
 // Array to store loaded comments
 let commentsArray = [];
+let userArray = [];
 function getLog(){
     const inputElement = document.getElementById("rollNoInput");
     let rollNoInput = inputElement.value;
@@ -93,7 +94,7 @@ function fetchVersion(){
     });
   });
 }
-let userArray = [];
+
 // Fetch comments from Firestore
 function fetchComments() {
   const commentsRef = query(collection(db, "sendup"), orderBy("timestamp"));
@@ -172,7 +173,9 @@ async function displayCommentsWithDelay() {
     const roll = comment.roll;
     if(roll!=null) {
       for(const dat of userArray){
-        if(roll.includes(dat.roll)){
+        console.log(dat.roll);
+        console.log(roll);
+        if(roll.includes(dat.roll.trim())){
           name = dat.name;
         }
       } 
