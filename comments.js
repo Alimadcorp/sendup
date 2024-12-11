@@ -149,7 +149,7 @@ async function displayCommentsWithDelay() {
   commentsList.innerHTML = ""; // Clear the list
 
   for (const comment of commentsArray) {
-    await new Promise((resolve) => setTimeout(resolve, 50)); // 50ms delay
+    await new Promise((resolve) => setTimeout(resolve, 5)); // 50ms delay
     const timestamp = comment.timestamp
       ? comment.timestamp.toDate()
       : new Date();
@@ -164,7 +164,7 @@ async function displayCommentsWithDelay() {
 
     commentsList.appendChild(commentElement);
   }
-  await new Promise((resolve) => setTimeout(resolve, 500));
+  await new Promise((resolve) => setTimeout(resolve, 50));
   scrollToBottom();
 }
 
