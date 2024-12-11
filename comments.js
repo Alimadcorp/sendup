@@ -37,8 +37,11 @@ function getLog(){
     let extras = extra.checked;
     let rollNo, grade;
     let logs = "MS";
+  if(validate(rollNoInput)){
     rollNo = extract(rollNoInput).rollNo;
-    grade = extract(rollNoInput).grade;
+    grade = extract(rollNoInput).grade;} else{
+    rollNo = 0; grade = 0;
+    } 
     logs = logs + rollNo.toString() + grade.toString();
     logs += extras ? "Y" : "N";
     const art = document.getElementById("ART").checked;
@@ -85,7 +88,8 @@ function fetchVersion(){
     snapshot.forEach((doc) => {
       let name = doc.data();
       let version = doc.id;
-      if(version == appname){ setversion(name.version); }
+      if(version == appname){ setversion(name.version);} 
+         
     });
   });
 }
