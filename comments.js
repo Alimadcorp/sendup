@@ -161,8 +161,7 @@ function scrollToBottom() {
 // Async function to display comments with a delay
 async function displayCommentsWithDelay() {
   commentsList.innerHTML = ""; // Clear the list
-  console.log(commentsArray);
-  console.log(userArray);
+  
   for (const comment of commentsArray) {
     await new Promise((resolve) => setTimeout(resolve, 5)); // 50ms delay
     const timestamp = comment.timestamp
@@ -173,8 +172,7 @@ async function displayCommentsWithDelay() {
     const roll = comment.roll;
     if(roll!=null) {
       for(const dat of userArray){
-        console.log(dat.roll);
-        console.log(roll);
+        
         if(roll.includes(dat.roll.trim())){
           name = dat.name;
           break;
