@@ -177,6 +177,7 @@ async function displayCommentsWithDelay() {
         console.log(roll);
         if(roll.includes(dat.roll.trim())){
           name = dat.name;
+          break;
         }
       } 
     } 
