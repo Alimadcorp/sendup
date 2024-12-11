@@ -209,4 +209,4 @@ document.getElementById("sub").addEventListener("click", () => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", () => {fetchUsers(); fetchVersion(); setInterval(refreshCom, 8000);}) ;
+document.addEventListener("DOMContentLoaded", () => {fetchUsers(); fetchVersion(); /*setInterval(refreshCom, 8000);*/}) ;
