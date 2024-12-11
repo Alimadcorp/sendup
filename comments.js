@@ -93,6 +93,7 @@ function fetchVersion(){
     });
   });
 }
+let userArray = [];
 // Fetch comments from Firestore
 function fetchComments() {
   const commentsRef = query(collection(db, "sendup"), orderBy("timestamp"));
@@ -108,7 +109,19 @@ function fetchComments() {
     displayCommentsWithDelay();
   });
 }
+function fetchUsers() {
+  const userRef = query(collection(db, "user"));
+  onSnapshot(userRef, (snapshot) => {
+    userArray = []; // Clear previous comments
+    snapshot.forEach((doc) => {
+      const userData = doc.data();
+      userData.id = doc.id; // Add document ID for uniqueness
+      userArray.push(userData); // Push to the comments array
+    });
 
+    fetchComments();
+  });
+} 
 // Function to format the timestamp dynamically
 function formatTimeAgo(timestamp) {
   const now = new Date();
@@ -153,15 +166,30 @@ async function displayCommentsWithDelay() {
     const timestamp = comment.timestamp
       ? comment.timestamp.toDate()
       : new Date();
+    let name = "";
     const timeAgo = formatTimeAgo(timestamp);
-
+    const roll = comment.roll;
+    if(roll!=null) {
+      for(const dat of userArray){
+        if(roll.includes(dat.roll)){
+          name = dat.name;
+        }
+      } 
+    } 
     const commentElement = document.createElement("div");
     commentElement.classList.add("comment");
+    if(name!=""){
+      commentElement.innerHTML = `
+      <p><strong>${name}:</strong> ${comment.text}</p>
+      <div class="comment-time">${timeAgo}</div>
+    `;
+    } 
+    else{
     commentElement.innerHTML = `
       <p>${comment.text}</p>
       <div class="comment-time">${timeAgo}</div>
     `;
-
+ }   
     commentsList.appendChild(commentElement);
   }
   await new Promise((resolve) => setTimeout(resolve, 50));
@@ -176,4 +204,4 @@ document.getElementById("sub").addEventListener("click", () => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", () => {fetchComments(); fetchVersion();}) ;
+document.addEventListener("DOMContentLoaded", () => {fetchUsers(); fetchVersion();}) ;
