@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
     history.pushState(null, null, location.href);
   });
 });
+
 function download() {
   const rollNo = document.getElementById("rollNoInput").value || "Schedule";
   const fileName = `${rollNo}_Schedule.png`;
@@ -91,13 +92,42 @@ function download() {
     useCORS: true,
     scale: 2,
   }).then((canvas) => {
-    const link = document.createElement("a");
-    link.href = canvas.toDataURL("image/png");
-    link.download = fileName;
-    link.click();
+    // Convert the canvas to a Blob
+    canvas.toBlob((blob) => {
+      if (window.showSaveFilePicker) {
+        // Use the File System Access API for modern browsers
+        (async () => {
+          try {
+            const handle = await window.showSaveFilePicker({
+              suggestedName: fileName,
+              types: [
+                {
+                  description: "Image file",
+                  accept: { "image/png": [".png"] },
+                },
+              ],
+            });
+            const writable = await handle.createWritable();
+            await writable.write(blob);
+            await writable.close();
+          } catch (err) {
+            console.error("Save operation canceled or failed", err);
+          }
+        })();
+      } else {
+        // Fallback for older browsers
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = fileName;
+        link.click();
+        URL.revokeObjectURL(link.href);
+      }
+    }, "image/png");
+
     document.body.removeChild(container);
   });
 }
+
 function nullCheck() {
   const table = document.getElementById("scheduleTable");
   if (table.style.display != "none") {
