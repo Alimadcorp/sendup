@@ -154,6 +154,19 @@ function refreshCom(){
     }
   });
 } 
+function forceRefresh(){
+  let newArray = [];
+  const commentsRef = query(collection(db, "sendup"), orderBy("timestamp"));
+  onSnapshot(commentsRef, (snapshot) => {
+    snapshot.forEach((doc) => {
+      const commentData = doc.data();
+      commentData.id = doc.id;
+      newArray.push(commentData); 
+    });
+      commentsArray = newArray;
+      displayCommentsWithDelay(false);
+  });
+} 
 function scrollToBottom() {
   const commentsContainer = document.getElementById("comments-section");
   commentsContainer.scrollTop = commentsContainer.scrollHeight;
@@ -209,4 +222,4 @@ document.getElementById("sub").addEventListener("click", () => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", () => {fetchUsers(); fetchVersion(); setInterval(refreshCom, 8000);});
+document.addEventListener("DOMContentLoaded", () => {fetchUsers(); fetchVersion(); setInterval(refreshCom, 8000); setInterval(forceRefresh, 61234);});
