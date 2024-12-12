@@ -1,6 +1,6 @@
 let initialhtm;
 let generating = false;
-let v = "1.8.8v";
+let v = "1.8.9b";
 function setversion(ver) {
   v = ver + "v";
   document.getElementById("logg").innerHTML = "&nbsp&nbsp" + v;
