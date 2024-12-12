@@ -1,6 +1,6 @@
 let initialhtm;
 let generating = false;
-let v = "Loading...";
+let v = "1.8.7";
 function setversion(ver) {
   v = ver + "v";
   document.getElementById("logg").innerHTML = "&nbsp&nbsp" + v;
@@ -93,38 +93,33 @@ function download() {
   }).then((canvas) => {
     // Convert the canvas to a Blob
     canvas.toBlob((blob) => {
-      if (window.showSaveFilePicker) {
-        // Use the File System Access API for modern browsers
-        (async () => {
-          try {
-            const handle = await window.showSaveFilePicker({
-              suggestedName: fileName,
-              types: [
-                {
-                  description: "Image file",
-                  accept: { "image/png": [".png"] },
-                },
-              ],
-            });
-            const writable = await handle.createWritable();
-            await writable.write(blob);
-            await writable.close();
-          } catch (err) {
-            console.error("Save operation canceled or failed", err);
-          }
-        })();
-      } else {
-        // Fallback for older browsers
-        const link = document.createElement("a");
-        link.href = URL.createObjectURL(blob);
-        link.download = fileName;
-        link.click();
-        URL.revokeObjectURL(link.href);
-      }
+      // Use the provided `downloaad` function to save the file
+      downloaad(blob, fileName, "image/png");
     }, "image/png");
 
     document.body.removeChild(container);
   });
+}
+
+// Provided `downloaad` function
+function downloaad(data, filename, type) {
+  var file = new Blob([data], { type: type });
+  if (window.navigator.msSaveOrOpenBlob) {
+    // IE10+ support
+    window.navigator.msSaveOrOpenBlob(file, filename);
+  } else {
+    // Other browsers
+    var a = document.createElement("a"),
+      url = URL.createObjectURL(file);
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () {
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    }, 0);
+  }
 }
 
 function nullCheck() {
