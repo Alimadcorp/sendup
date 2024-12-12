@@ -42,7 +42,6 @@ function setversion(ver) {
   }
 }
 document.addEventListener("DOMContentLoaded", function () {
-document.addEventListener("DOMContentLoaded", function () {
   fetchCSV(schedule, (data) => {
     schedule = data;
     mapschedule();
