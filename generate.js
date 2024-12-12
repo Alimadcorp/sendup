@@ -1,6 +1,6 @@
 let initialhtm;
 let generating = false;
-let v = "1.8.7";
+let v = "1.8.8v";
 function setversion(ver) {
   v = ver + "v";
   document.getElementById("logg").innerHTML = "&nbsp&nbsp" + v;
@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
     history.pushState(null, null, location.href);
   });
 });
+
 function download() {
   const rollNo = document.getElementById("rollNoInput").value || "Schedule";
   const fileName = `${rollNo}_Schedule.png`;
@@ -91,35 +92,26 @@ function download() {
     useCORS: true,
     scale: 2,
   }).then((canvas) => {
-    // Convert the canvas to a Blob
+    // Generate a Blob from the canvas
     canvas.toBlob((blob) => {
-      // Use the provided `downloaad` function to save the file
-      downloaad(blob, fileName, "image/png");
+      const url = window.URL.createObjectURL(blob); // Create URL from Blob
+      saveFile(fileName, url); // Use the saveFile function
     }, "image/png");
 
     document.body.removeChild(container);
   });
 }
 
-// Provided `downloaad` function
-function downloaad(data, filename, type) {
-  var file = new Blob([data], { type: type });
-  if (window.navigator.msSaveOrOpenBlob) {
-    // IE10+ support
-    window.navigator.msSaveOrOpenBlob(file, filename);
-  } else {
-    // Other browsers
-    var a = document.createElement("a"),
-      url = URL.createObjectURL(file);
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(function () {
-      document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);
-    }, 0);
-  }
+// saveFile function
+function saveFile(fileName, urlFile) {
+  let a = document.createElement("a");
+  a.style = "display: none";
+  document.body.appendChild(a);
+  a.href = urlFile;
+  a.download = fileName;
+  a.click();
+  window.URL.revokeObjectURL(urlFile); // Revoke the created URL
+  a.remove();
 }
 
 function nullCheck() {
