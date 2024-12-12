@@ -42,24 +42,24 @@ function setversion(ver) {
   }
 }
 document.addEventListener("DOMContentLoaded", function () {
-  fetchCSV("schedule.csv", (data) => {
+document.addEventListener("DOMContentLoaded", function () {
+  fetchCSV(schedule, (data) => {
     schedule = data;
     mapschedule();
   });
 
-  fetchCSV("data.csv", (data) => {
+  fetchCSV(datac, (data) => {
     datac = data;
     mapdata();
   });
+
   document.getElementById("logg").innerHTML = "&nbsp&nbsp" + v;
   history.pushState(null, null, location.href);
   window.addEventListener("popstate", () => {
     back();
-
     history.pushState(null, null, location.href);
   });
 });
-
 function download() {
   const rollNo = document.getElementById("rollNoInput").value || "Schedule";
   const fileName = `${rollNo}_Schedule.png`;
