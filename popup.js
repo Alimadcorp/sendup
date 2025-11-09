@@ -18,7 +18,7 @@ function hidePopup() {
 
 document.getElementById("popup-ok").addEventListener("click", () => {
   const input = document.getElementById("popup-input").value;
-  let errore = false; // Initialize error state
+  let errore = false;
   const table = document.getElementById("scheduleTable");
   let n = table.rows.length;
   try {

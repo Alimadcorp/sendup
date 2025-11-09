@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
       rel="stylesheet"
     />
-      <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
     <meta name="theme-color" content="#1a1a2e" />
     <meta name="color-scheme" content="dark" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,7 +23,7 @@
       property="og:image"
       content="https://img.itch.zone/aW1hZ2UvMjg4NzEyNy8xODY4NTE0NC5wbmc=/original/ZPsh%2Bb.png"
     />
-    <meta property="og:url" content="https://alimadcorp.github.io/sendup" />
+    <meta property="og:url" content="https://sendup.alimad.co" />
     <meta property="og:type" content="website" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   </head>
@@ -31,7 +31,7 @@
     <div id="rest">
       <h1>Calculate Your Sendup Schedule</h1>
       <div class="input-container">
-        <label for="rollNoInput" style="font-size:20px;"
+        <label for="rollNoInput" style="font-size: 20px"
           >Enter Your Complete Roll Number:</label
         >
         <input id="rollNoInput" placeholder="e.g., 3686-1-24" /><br />
@@ -54,16 +54,22 @@
         </div>
         <br />
         <div id="more">
-        <label class="container" for="ART">ARTS&nbsp
-          <input type="checkbox" id="ART" />
-          <span class="checkmark"></span></label>
-        <label class="container" for="COM">COM&nbsp
-          <input type="checkbox" id="COM" />
-          <span class="checkmark"></span></label>
-        <label class="container" for="GS">GS&nbsp
-          <input type="checkbox" id="GS" />
-          <span class="checkmark"></span></label>
-        <br />
+          <label class="container" for="ART"
+            >ARTS&nbsp
+            <input type="checkbox" id="ART" />
+            <span class="checkmark"></span
+          ></label>
+          <label class="container" for="COM"
+            >COM&nbsp
+            <input type="checkbox" id="COM" />
+            <span class="checkmark"></span
+          ></label>
+          <label class="container" for="GS"
+            >GS&nbsp
+            <input type="checkbox" id="GS" />
+            <span class="checkmark"></span
+          ></label>
+          <br />
         </div>
         <br />
         <label class="container" for="extra"
@@ -72,11 +78,13 @@
           ></span
         ></label>
         <br /><br />
-        <button onclick="generateSchedule()" style="padding:10px 20px;"><strong>Get Schedule</strong></button><br /><br />
+        <button onclick="generateSchedule()" style="padding: 10px 20px">
+          <strong>Get Schedule</strong></button
+        ><br /><br />
       </div>
-      <p id="errorMessage" style="font-weight: bold; color: red;"></p>
+      <p id="errorMessage" style="font-weight: bold; color: red"></p>
     </div>
-    <table id="scheduleTable" style="display: none;">
+    <table id="scheduleTable" style="display: none">
       <thead>
         <tr>
           <th>#</th>
@@ -88,50 +96,67 @@
       </thead>
       <tbody></tbody>
     </table>
-    <p id="log" style="display:none;"></p>
-    <center><p id="logg"></p></center>
+    <p id="log" style="display: none"></p>
+    <center><p id="logg" style="display: inline;"></p></center>
     <p id="time"></p>
 
-<button onclick="download()" id="down" style="display: none;">
+    <button onclick="download()" id="down" style="display: none">
       Download
-</button>
-    
-    <button onclick="cleanup()" id="clean" style="display: none;">Clean Up</button>
-    <button onclick="back()" id="bb" style="display: none; background: linear-gradient(135deg, #cf4410, #f9a045);">Back</button>
-      <button id="subscribeBtn">YouTube Channel</button>
-  <p id="status"></p>
-      <script>
-    const subscribeBtn = document.getElementById('subscribeBtn');
-    const statusText = document.getElementById('status');
-    document.addEventListener('DOMContentLoaded', () => {if(localStorage.getItem("subbed") == "Y") {subscribeBtn.style.display="none";statusText.style.display="none";} });
-    subscribeBtn.addEventListener('click', () => {
-      const lastClick = localStorage.getItem('lastSubscribeClick');
-      window.open('https://www.youtube.com/@alimadco', '_blank');
-      const currentTime = Date.now(); // Current timestamp in milliseconds
-subscribeBtn.disabled = true;
-setTimeout(() => {
-  subscribeBtn.disabled = false;
-}, 6000);
-      if (lastClick) {
-        const timeSinceLastClick = (currentTime - lastClick) / 1000; // Convert to seconds
+    </button>
 
-        if (timeSinceLastClick >= 6) {
-          statusText.textContent = "Thank you for subscribing!";
-          localStorage.setItem("subbed", "Y");
-          // Mark user as subscribed (e.g., save to database or show confirmation)
-        } else {
-          statusText.textContent = `Please wait ${(6 - timeSinceLastClick).toFixed(1)} more seconds.`;
+    <button onclick="cleanup()" id="clean" style="display: none">
+      Clean Up
+    </button>
+    <button
+      onclick="back()"
+      id="bb"
+      style="
+        display: none;
+        background: linear-gradient(135deg, #cf4410, #f9a045);
+      "
+    >
+      Back
+    </button>
+    <button id="subscribeBtn">YouTube Channel</button>
+    <p id="status"></p>
+    <script>
+      const subscribeBtn = document.getElementById("subscribeBtn");
+      const statusText = document.getElementById("status");
+      document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("subbed") == "Y") {
+          subscribeBtn.style.display = "none";
+          statusText.style.display = "none";
         }
-      } else {
-        statusText.textContent = "Please click again after 6 seconds to confirm subscription.";
-      }
+      });
+      subscribeBtn.addEventListener("click", () => {
+        const lastClick = localStorage.getItem("lastSubscribeClick");
+        window.open("https://www.youtube.com/@alimadco", "_blank");
+        const currentTime = Date.now();
+        subscribeBtn.disabled = true;
+        setTimeout(() => {
+          subscribeBtn.disabled = false;
+        }, 6000);
+        if (lastClick) {
+          const timeSinceLastClick = (currentTime - lastClick) / 1000;
 
-      // Update the last click time
-      localStorage.setItem('lastSubscribeClick', currentTime);
-    });
-      </script>
+          if (timeSinceLastClick >= 6) {
+            statusText.textContent = "Thank you for subscribing!";
+            localStorage.setItem("subbed", "Y");
+          } else {
+            statusText.textContent = `Please wait ${(
+              6 - timeSinceLastClick
+            ).toFixed(1)} more seconds.`;
+          }
+        } else {
+          statusText.textContent =
+            "Please click again after 6 seconds to confirm subscription.";
+        }
+
+        localStorage.setItem("lastSubscribeClick", currentTime);
+      });
+    </script>
     <details>
-      <summary style="color:#fffc"><strong>Abbreviations</strong></summary>
+      <summary style="color: #fffc"><strong>Abbreviations</strong></summary>
       <strong>NB.</strong> - New Block<br />
       <strong>BJLT</strong> - Bio Junior Lecture Theatre<br />
       <strong>CNLT</strong> - Chemistry New Lecture Theatre<br />
@@ -142,271 +167,330 @@ setTimeout(() => {
       <strong>GS</strong> - General Sciences<br />
     </details>
     <div class="feedback-container">
-        <div id="comments-section">
-            <div id="comments-list"></div>
-        </div><h1>Leave a Comment</h1>
-        <form id="feedbackForm">
-            <textarea id="comment" placeholder="Write your comment here..." required></textarea>
-        </form>
-          <button id="sub">Submit</button>
+      <div id="comments-section">
+        <div id="comments-list"></div>
+      </div>
+      <h1>Leave a Comment</h1>
+      <form id="feedbackForm">
+        <textarea
+          id="comment"
+          placeholder="Write your comment here..."
+          required
+        ></textarea>
+      </form>
+      <button id="sub">Submit</button>
     </div>
     <p class="footer">
-      Made by<a href="https://alimadcorp.github.io/site/social.html"
-        ><strong>&nbspMuhammad Ali</strong></a
+      Made by&nbsp<a href="https://alimad.co"><strong>Muhammad Ali</strong></a
       >. In case of any errors, please
       <a href="https://github.com/Alimadcorp/sendup/issues/new"
         ><strong>report</strong></a
       >.
     </p>
-    <p style="font-size:9px">
+    <p style="font-size: 9px">
       All data is taken from official
       <a
         href="https://gcu.edu.pk/Events/Updates/Gazzette-Inter-Part-IandII-SendUpTest-2024.pdf"
         >GCU website</a
       >.
     </p>
-    <div id="popup-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1000; justify-content: center; align-items: center;">
-  <div style="background: #00003388; padding: 20px; border-radius: 10px; text-align: center; width: 300px; backdrop-filter:blur(4px);">
-    <h2 id="popup-title">Title</h2>
-    <p id="popup-description">Description</p>
-    <p id="cleanerr" style="color:red;"><strong></strong></p>
-    <input id="popup-input" type="text" placeholder="e.g., 3, 6-11" style="width: 90%; margin-bottom: 20px;" />
-    <div>
-      <button id="popup-cancel" style="
-  background: linear-gradient(135deg, #cf4410, #f9a045);">Cancel</button>
-      <button id="popup-ok" style="margin-right: 10px;">OK</button>
+    <div
+      id="popup-overlay"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div
+        style="
+          background: #00003388;
+          padding: 20px;
+          border-radius: 10px;
+          text-align: center;
+          width: 300px;
+          backdrop-filter: blur(4px);
+        "
+      >
+        <h2 id="popup-title">Title</h2>
+        <p id="popup-description">Description</p>
+        <p id="cleanerr" style="color: red"><strong></strong></p>
+        <input
+          id="popup-input"
+          type="text"
+          placeholder="e.g., 3, 6-11"
+          style="width: 90%; margin-bottom: 20px"
+        />
+        <div>
+          <button
+            id="popup-cancel"
+            style="background: linear-gradient(135deg, #cf4410, #f9a045)"
+          >
+            Cancel
+          </button>
+          <button id="popup-ok" style="margin-right: 10px">OK</button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
     <script src="fetch.js"></script>
     <script src="script.js"></script>
     <script src="popup.js"></script>
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  query,
-  orderBy,
-  onSnapshot,
-  addDoc,
-  serverTimestamp,
-} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+      import {
+        getFirestore,
+        collection,
+        query,
+        orderBy,
+        onSnapshot,
+        addDoc,
+        serverTimestamp,
+      } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBR1UeKEAJV4x3YOjzMFDsaSUwQiLgJNFQ",
-  authDomain: "commentspagetests.firebaseapp.com",
-  projectId: "commentspagetests",
-  storageBucket: "commentspagetests.firebasestorage.app",
-  messagingSenderId: "560501874254",
-  appId: "1:560501874254:web:2cab2358cb517c3418ad1f",
-  measurementId: "G-HYDSZ89BLH",
-};
+      const firebaseConfig = {
+        apiKey: "AIzaSyC0xyl8b3FUzxfpDEDwTOiLgqTLNR0F57Y",
+        authDomain: "namesuggest-77989.firebaseapp.com",
+        projectId: "namesuggest-77989",
+        storageBucket: "namesuggest-77989.firebasestorage.app",
+        messagingSenderId: "1091740366992",
+        appId: "1:1091740366992:web:fc413dc73b42c8788c8015",
+        measurementId: "G-9WLDJGMX2L",
+      };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const appname = "sendup";
-const feedbackForm = document.getElementById("feedbackForm");
-const commentTextarea = document.getElementById("comment");
-const commentsList = document.getElementById("comments-list");
-let commentsArray = [];
-let userArray = [];
-function getLog(){
-    const inputElement = document.getElementById("rollNoInput");
-    let rollNoInput = inputElement.value;
-    let extras = extra.checked;
-    let rollNo, grade;
-    let logs = "MS";
-  if(validate(rollNoInput)){
-    rollNo = extract(rollNoInput).rollNo;
-    grade = extract(rollNoInput).grade;} else{
-    rollNo = 0; grade = 0;
-    } 
-    logs = logs + rollNo.toString() + grade.toString();
-    logs += extras ? "Y" : "N";
-    const art = document.getElementById("ART").checked;
-    const com = document.getElementById("COM").checked;
-    const gs = document.getElementById("GS").checked;
-    let selected = document.querySelector('input[name="subject"]:checked');
-    let newadd = "I";
-    if (selected.value != "ICS") {
-      if (selected.value == "PE") {
-        newadd = "E";
-      }
-      if (selected.value == "PM") {
-        newadd = "M";
-      }
-    }
-    if (art) {
-      newadd += "A";
-    }
-    if (com) {
-      newadd += "C";
-    }
-    if (gs) {
-      newadd += "G";
-    }
-    logs += newadd;
-    return logs;
-}
-async function addComment(commentText) {
-  try {
-    await addDoc(collection(db, "sendup"), {
-      text: commentText,
-      timestamp: serverTimestamp(),
-      roll: getLog()
-    });
-    console.log("Comment added!");
-  } catch (error) {
-    console.error("Error adding comment: ", error);
-  }
-}
-function fetchVersion(){
-  const versionCheck = query(collection(db, "version"));
-  onSnapshot(versionCheck, (snapshot) => {
-    snapshot.forEach((doc) => {
-      let name = doc.data();
-      let version = doc.id;
-      if(version == appname){ setversion(name.version);} 
-         
-    });
-  });
-}
-function fetchComments() {
-  const commentsRef = query(collection(db, "sendup"), orderBy("timestamp"));
-  onSnapshot(commentsRef, (snapshot) => {
-    commentsArray = []; 
-    snapshot.forEach((doc) => {
-      const commentData = doc.data();
-      commentData.id = doc.id;
-      commentsArray.push(commentData); 
-    });
-    displayCommentsWithDelay(true);
-  });
-}
-function fetchUsers() {
-  const userRef = query(collection(db, "user"));
-  onSnapshot(userRef, (snapshot) => {
-    userArray = []; 
-    snapshot.forEach((doc) => {
-      const userData = doc.data();
-      userData.id = doc.id; 
-      userArray.push(userData); 
-    });
-
-    fetchComments();
-  });
-} 
-function formatTimeAgo(timestamp) {
-  const now = new Date();
-  
-const diffInSeconds = Math.floor((now - timestamp) / 1000);
-if (diffInSeconds < 60) {
-  return diffInSeconds <= 0 ? "Just now" : `${diffInSeconds} second${diffInSeconds === 1 ? "" : "s"} ago`;
-}
-const diffInMinutes = Math.floor(diffInSeconds / 60);
-if (diffInMinutes < 60) {
-  return `${diffInMinutes} minute${diffInMinutes === 1 ? "" : "s"} ago`;
-}
-const diffInHours = Math.floor(diffInMinutes / 60);
-if (diffInHours < 24) {
-  return `${diffInHours} hour${diffInHours === 1 ? "" : "s"} ago`;
-}
-const diffInDays = Math.floor(diffInHours / 24);
-if (diffInDays <= 14) {
-  return `${diffInDays} day${diffInDays === 1 ? "" : "s"} ago`;
-} 
-  return timestamp.toLocaleDateString("en-US", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
-}
-
-function refreshCom(){
-  let newArray = [];
-  const commentsRef = query(collection(db, "sendup"), orderBy("timestamp"));
-  onSnapshot(commentsRef, (snapshot) => {
-    snapshot.forEach((doc) => {
-      const commentData = doc.data();
-      commentData.id = doc.id;
-      newArray.push(commentData); 
-    });
-    if (JSON.stringify(newArray) !== JSON.stringify(commentsArray)) {
-  commentsArray = newArray;
-  displayCommentsWithDelay(false);
-    }
-  });
-} 
-function forceRefresh(){
-  let newArray = [];
-  const commentsRef = query(collection(db, "sendup"), orderBy("timestamp"));
-  onSnapshot(commentsRef, (snapshot) => {
-    snapshot.forEach((doc) => {
-      const commentData = doc.data();
-      commentData.id = doc.id;
-      newArray.push(commentData); 
-    });
-      commentsArray = newArray;
-      displayCommentsWithDelay(false);
-  });
-} 
-function scrollToBottom() {
-  const commentsContainer = document.getElementById("comments-section");
-  commentsContainer.scrollTop = commentsContainer.scrollHeight;
-}
-let adding = false;
-async function displayCommentsWithDelay(scrolll) {
-  if(adding) return;
-  adding = true;
-  commentsList.innerHTML = "";
-  for (const comment of commentsArray) {
-    if(scrolll) { await new Promise((resolve) => setTimeout(resolve, 10));} // 50ms delay
-    const timestamp = comment.timestamp
-      ? comment.timestamp.toDate()
-      : new Date();
-    let name = "";
-    const timeAgo = formatTimeAgo(timestamp);
-    const roll = comment.roll;
-    if(roll!=null) {
-      for(const dat of userArray){
-        
-        if(roll.includes(dat.roll.trim())){
-          name = dat.name;
-          break;
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      const appname = "sendup";
+      const feedbackForm = document.getElementById("feedbackForm");
+      const commentTextarea = document.getElementById("comment");
+      const commentsList = document.getElementById("comments-list");
+      let commentsArray = [];
+      let userArray = [];
+      function getLog() {
+        const inputElement = document.getElementById("rollNoInput");
+        let rollNoInput = inputElement.value;
+        let extras = extra.checked;
+        let rollNo, grade;
+        let logs = "MS";
+        if (validate(rollNoInput)) {
+          rollNo = extract(rollNoInput).rollNo;
+          grade = extract(rollNoInput).grade;
+        } else {
+          rollNo = 0;
+          grade = 0;
         }
-      } 
-    } 
-    const commentElement = document.createElement("div");
-    commentElement.classList.add("comment");
-    if(name!=""){
-      commentElement.innerHTML = `
-      <p><strong>${name} </strong> ${comment.text}</p>
-      <div class="comment-time">${timeAgo}</div>
-    `;
-    } 
-    else{
-    commentElement.innerHTML = `
-      <p>${comment.text}</p>
-      <div class="comment-time">${timeAgo}</div>
-    `;
- }   
-    commentsList.appendChild(commentElement);
-  }
-  await new Promise((resolve) => setTimeout(resolve, 50));
-  if(scrolll) scrollToBottom();
-  adding = false;
-}
+        logs = logs + rollNo.toString() + grade.toString();
+        logs += extras ? "Y" : "N";
+        const art = document.getElementById("ART").checked;
+        const com = document.getElementById("COM").checked;
+        const gs = document.getElementById("GS").checked;
+        let selected = document.querySelector('input[name="subject"]:checked');
+        let newadd = "I";
+        if (selected.value != "ICS") {
+          if (selected.value == "PE") {
+            newadd = "E";
+          }
+          if (selected.value == "PM") {
+            newadd = "M";
+          }
+        }
+        if (art) {
+          newadd += "A";
+        }
+        if (com) {
+          newadd += "C";
+        }
+        if (gs) {
+          newadd += "G";
+        }
+        logs += newadd;
+        return logs;
+      }
+      async function addComment(commentText) {
+        try {
+          await addDoc(collection(db, "sendup"), {
+            text: commentText,
+            timestamp: serverTimestamp(),
+            roll: getLog(),
+          });
+          console.log("Comment added!");
+        } catch (error) {
+          console.error("Error adding comment: ", error);
+        }
+      }
+      function fetchVersion() {
+        const versionCheck = query(collection(db, "version"));
+        onSnapshot(versionCheck, (snapshot) => {
+          snapshot.forEach((doc) => {
+            let name = doc.data();
+            let version = doc.id;
+            if (version == appname) {
+              setversion(name.version);
+            }
+          });
+        });
+      }
+      function fetchComments() {
+        const commentsRef = query(
+          collection(db, "sendup"),
+          orderBy("timestamp")
+        );
+        onSnapshot(commentsRef, (snapshot) => {
+          commentsArray = [];
+          snapshot.forEach((doc) => {
+            const commentData = doc.data();
+            commentData.id = doc.id;
+            commentsArray.push(commentData);
+          });
+          displayCommentsWithDelay(true);
+        });
+      }
+      function fetchUsers() {
+        const userRef = query(collection(db, "user"));
+        onSnapshot(userRef, (snapshot) => {
+          userArray = [];
+          snapshot.forEach((doc) => {
+            const userData = doc.data();
+            userData.id = doc.id;
+            userArray.push(userData);
+          });
 
-document.getElementById("sub").addEventListener("click", () => {
-  const commentText = commentTextarea.value;
-  if (commentText) {
-    addComment(commentText);
-    commentTextarea.value = "";
-  }
-});
+          fetchComments();
+        });
+      }
+      function formatTimeAgo(timestamp) {
+        const now = new Date();
 
-document.addEventListener("DOMContentLoaded", () => {fetchUsers(); fetchVersion(); setInterval(refreshCom, 8000); setInterval(forceRefresh, 61234);}); 
+        const diffInSeconds = Math.floor((now - timestamp) / 1000);
+        if (diffInSeconds < 60) {
+          return diffInSeconds <= 0
+            ? "Just now"
+            : `${diffInSeconds} second${diffInSeconds === 1 ? "" : "s"} ago`;
+        }
+        const diffInMinutes = Math.floor(diffInSeconds / 60);
+        if (diffInMinutes < 60) {
+          return `${diffInMinutes} minute${diffInMinutes === 1 ? "" : "s"} ago`;
+        }
+        const diffInHours = Math.floor(diffInMinutes / 60);
+        if (diffInHours < 24) {
+          return `${diffInHours} hour${diffInHours === 1 ? "" : "s"} ago`;
+        }
+        const diffInDays = Math.floor(diffInHours / 24);
+        if (diffInDays <= 14) {
+          return `${diffInDays} day${diffInDays === 1 ? "" : "s"} ago`;
+        }
+        return timestamp.toLocaleDateString("en-US", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        });
+      }
+
+      function refreshCom() {
+        let newArray = [];
+        const commentsRef = query(
+          collection(db, "sendup"),
+          orderBy("timestamp")
+        );
+        onSnapshot(commentsRef, (snapshot) => {
+          snapshot.forEach((doc) => {
+            const commentData = doc.data();
+            commentData.id = doc.id;
+            newArray.push(commentData);
+          });
+          if (JSON.stringify(newArray) !== JSON.stringify(commentsArray)) {
+            commentsArray = newArray;
+            displayCommentsWithDelay(false);
+          }
+        });
+      }
+      function forceRefresh() {
+        let newArray = [];
+        const commentsRef = query(
+          collection(db, "sendup"),
+          orderBy("timestamp")
+        );
+        onSnapshot(commentsRef, (snapshot) => {
+          snapshot.forEach((doc) => {
+            const commentData = doc.data();
+            commentData.id = doc.id;
+            newArray.push(commentData);
+          });
+          commentsArray = newArray;
+          displayCommentsWithDelay(false);
+        });
+      }
+      function scrollToBottom() {
+        const commentsContainer = document.getElementById("comments-section");
+        commentsContainer.scrollTop = commentsContainer.scrollHeight;
+      }
+      let adding = false;
+      async function displayCommentsWithDelay(scrolll) {
+        if (adding) return;
+        adding = true;
+        commentsList.innerHTML = "";
+        for (const comment of commentsArray) {
+          if (scrolll) {
+            await new Promise((resolve) => setTimeout(resolve, 10));
+          }
+          const timestamp = comment.timestamp
+            ? comment.timestamp.toDate()
+            : new Date();
+          let name = "";
+          const timeAgo = formatTimeAgo(timestamp);
+          const roll = comment.roll;
+          let stc;
+          if (roll != null) {
+            console.log(roll, userArray);
+            for (const dat of userArray) {
+              console.log(dat);
+              if (roll.includes(dat.roll.trim())) {
+                name = dat.name;
+                stc = dat.stc;
+                break;
+              }
+            }
+          }
+          const commentElement = document.createElement("div");
+          commentElement.classList.add("comment");
+          if (name != "") {
+            commentElement.innerHTML = `
+<p><strong class="comment-name" style="${stc}">${name}: </strong> ${comment.text}</p>
+<div class="comment-time">${timeAgo}</div>
+`;
+          } else {
+            commentElement.innerHTML = `
+<p>${comment.text}</p>
+<div class="comment-time">${timeAgo}</div>
+`;
+          }
+          commentsList.appendChild(commentElement);
+        }
+        await new Promise((resolve) => setTimeout(resolve, 50));
+        if (scrolll) scrollToBottom();
+        adding = false;
+      }
+
+      document.getElementById("sub").addEventListener("click", () => {
+        const commentText = commentTextarea.value;
+        if (commentText) {
+          addComment(commentText);
+          commentTextarea.value = "";
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        fetchUsers();
+        fetchVersion();
+        setInterval(refreshCom, 8000);
+        setInterval(forceRefresh, 61234);
+      });
     </script>
     <script src="generate.js"></script>
   </body>

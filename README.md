@@ -11,14 +11,12 @@ MadSchedule v1.6.1
 ## How to Use
 
 1. Clone the repository:
-
    ```bash
    git clone https://github.com/alimadcorp/sendup.git
 
 2. Open the project folder:
    ```bash
    cd sendup-main
-
 
 4. Open the index.html file in your browser.
 
