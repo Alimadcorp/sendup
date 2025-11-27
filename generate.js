@@ -42,15 +42,20 @@ function setversion(ver) {
   }
 }
 document.addEventListener("DOMContentLoaded", function () {
-  fetchCSV(schedule, (data) => {
-    schedule = data;
-    mapschedule();
-  });
+  fetch("/data.csv").then((r)=>r.text()).then(data=>{datac=data; if(other) doo(); other = true;});
+  fetch("/schedule.csv").then((r)=>r.text()).then(data=>{schedule=data; if(other) doo(); other = true});
 
-  fetchCSV(datac, (data) => {
-    datac = data;
-    mapdata();
-  });
+  function doo(){
+    fetchCSV(schedule, (data) => {
+      schedule = data;
+      mapschedule();
+    });
+
+    fetchCSV(datac, (data) => {
+      datac = data;
+      mapdata();
+    });
+  }
 
   document.getElementById("logg").innerHTML = "&nbsp&nbsp" + v;
   history.pushState(null, null, location.href);

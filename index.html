@@ -319,9 +319,7 @@
             timestamp: serverTimestamp(),
             roll: getLog(),
           });
-          console.log("Comment added!");
         } catch (error) {
-          console.error("Error adding comment: ", error);
         }
       }
       function fetchVersion() {
@@ -447,9 +445,7 @@
           const roll = comment.roll;
           let stc;
           if (roll != null) {
-            console.log(roll, userArray);
             for (const dat of userArray) {
-              console.log(dat);
               if (roll.includes(dat.roll.trim())) {
                 name = dat.name;
                 stc = dat.stc;

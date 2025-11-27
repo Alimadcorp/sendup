@@ -11,8 +11,6 @@ const transposeArray = (arr) => arr[0].map((_, i) => arr.map((row) => row[i]));
 
 let schedule = ``;
 let datac = ``;
+let other = false;
 
-document.onload = () => {
-  fetch("/data.csv").then((r)=>r.json()).then(data=>{datac=data});
-  fetch("/schedule.csv").then((r)=>r.json()).then(data=>{schedule=data});
-}
+setTimeout(()=>console.log(schedule.length, datac.length), 5000);
