@@ -13,9 +13,9 @@ let dates,
 let ICS1 = "I Comp. Sc. I English I Math I Islamic Studies I Urdu I Physics I Al Quran";
 let PE1 = "I Chem I English I Math I Islamic Studies I Urdu I Physics I Al Quran";
 let PM1 = "I Chem I English I Biology I Islamic Studies I Urdu I Physics I Al Quran";
-let ICS2 = "II Comp. Sc. II English II Math II Pak. St. II Urdu II Physics II Al Quran";
-let PE2 = "II Chem II English II Math II Pak. St. II Urdu II Physics II Al Quran";
-let PM2 = "II Chem II English II Biology II Pak. St. II Urdu II Physics II Al Quran";
+let ICS2 = "II Comp. Sc. II English II Math II Pakistan Studies II Urdu II Physics II Al Quran";
+let PE2 = "II Chem II English II Math II Pakistan Studies II Urdu II Physics II Al Quran";
+let PM2 = "II Chem II English II Biology II Pakistan Studies II Urdu II Physics II Al Quran";
 
 let ART1 = "I English Lit. I Persian I Punjabi I H. & P. Edu. I Fine Arts I Geog I Islamic Studies (Ele) I History of Pakistan I History of Muslim India I Ethics I Edu I Phil. I Pak Culture I Civics I French I Urdu Advance I Urdu Adv.";
 let ART2 = "II English Lit. II Persian II Punjabi II H. & P. Edu. II Fine Arts II Geog II Islamic Studies (Ele) II History of Pakistan II History of Muslim India II Ethics II Edu II Philosophy II Pak Culture II Civics II French II Urdu Advance II Psy";
@@ -90,7 +90,9 @@ function rem(arr) {
 }
 
 function extract(input) {
-  let [rollNo, grade] = input.split("-").map(Number);
+  let [rollNo, _, grade] = input.split("-").map(Number);
+  if(grade > 2000) grade -= 2000;
+  grade = grade == 25 ? 1 : 2;
   return rollNo && grade ? { rollNo, grade } : null;
 }
 

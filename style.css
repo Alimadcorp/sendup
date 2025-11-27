@@ -1,5 +1,10 @@
+@font-face {
+  font-family: 'Geist';
+  src: url('https://corsproxy.io/?url=https://cdn.alimad.co/f/geist.woff2');
+  font-weight: normal, bold;
+}
+
 body {
-  font-family: "Lexend Deca", sans-serif;
   background: linear-gradient(135deg, #040409, #1a1a2e);
   text-align: center;
   margin: 0;
@@ -8,6 +13,14 @@ body {
   font-size: 17px;
   color: #fff;
   overflow-x: hidden;
+}
+
+strong {
+  font-weight: bold;
+}
+
+* {
+  font-family: "Geist", sans-serif;
 }
 
 a {
@@ -272,7 +285,6 @@ tr:hover {
     transform: translateX(0);
   }
 }
-/* Custom scrollbar styles */
 ::-webkit-scrollbar {
   width: 6px;
   height: 5px;
@@ -289,8 +301,8 @@ tr:hover {
 }
 
   .feedback-container {
-    position: static; /* Let it flow with the page */
-    margin-top: 1.5rem; /* Space between buttons and comments */
+    position: static;
+    margin-top: 1.5rem;
     background-color: rgba(255, 255, 255, 0.05);
     padding: 1rem;
     border-radius: 8px;
@@ -308,18 +320,18 @@ textarea {
   font-size: 1rem;
 }
   #sub {
-    margin: 1rem 0; /* Adjust spacing */
+    margin: 1rem 0;
   }
 
 .feedback-container h1,
 .feedback-container h2 {
   color: #eee;
   text-align: center;
-  font-size: 1rem; /* Increased size for readability */
+  font-size: 1rem;
 }
 
 textarea {
-  height: 5rem; /* Adjusted height */
+  height: 5rem;
   padding: 1rem;
   border-radius: 5px;
   resize: none;
@@ -361,11 +373,11 @@ textarea {
   border: 1px solid #888;
 }
 #sub {
-  margin: 0.5rem auto; /* Center horizontally */
-  display: block; /* Make it a block element */
+  margin: 0.5rem auto;
+  display: block;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
   font-size: 13px;
-  width: 80%; /* Adjust width as needed */
+  width: 80%;
   color: #fff;
   background-color: #222a;
   padding: 6px;

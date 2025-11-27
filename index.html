@@ -37,7 +37,19 @@
         <input id="rollNoInput" placeholder="e.g., 3686-1-24" /><br />
         <div class="radio-group">
           <label class="radio-container"
-            >ICS<input type="radio" name="subject" value="ICS" /><span
+            >Morning<input type="radio" name="time" value="morning" checked/><span
+              class="radio-mark"
+            ></span
+          ></label>
+          <label class="radio-container"
+            >Evening<input type="radio" name="time" value="evening" /><span
+              class="radio-mark"
+            ></span
+          ></label>
+        </div>
+        <div class="radio-group">
+          <label class="radio-container"
+            >ICS<input type="radio" name="subject" value="ICS" checked/><span
               class="radio-mark"
             ></span
           ></label>
@@ -52,7 +64,6 @@
             ></span
           ></label>
         </div>
-        <br />
         <div id="more">
           <label class="container" for="ART"
             >ARTS&nbsp

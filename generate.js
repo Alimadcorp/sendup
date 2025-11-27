@@ -28,6 +28,10 @@ function setversion(ver) {
         newadd = "M";
       }
     }
+    let baana = document.querySelector('input[name="time"]:checked');
+    if (baana.value == "morning") {
+      newadd += 'M';
+    } else newadd += 'E';
     if (art) {
       newadd += "A";
     }
@@ -131,8 +135,12 @@ function nullCheck() {
 setInterval(nullCheck, 500);
 window.onload = () => {
   const savedOption = localStorage.getItem("selectedSubject") || "ICS";
+  const sO2 = localStorage.getItem("baana") || 'morning';
   document.querySelector(
     `input[name="subject"][value="${savedOption}"]`
+  ).checked = true;
+  document.querySelector(
+    `input[name="time"][value="${sO2}"]`
   ).checked = true;
 };
 
@@ -155,6 +163,7 @@ function back() {
   document.getElementById("time").innerHTML = "";
   document.getElementById("logg").style.display = "inline";
 }
+
 async function generateSchedule() {
   const inputElement = document.getElementById("rollNoInput");
   let rollNoInput = inputElement.value;
@@ -180,7 +189,6 @@ async function generateSchedule() {
     document.getElementById("logg").style.display = "none";
     document.getElementById("log").style.display = "inline";
     document.getElementById("down").style.display = "inline";
-
     document.getElementById("more").style.display = "none";
     let rollNo, grade;
     rollNo = extract(rollNoInput).rollNo;
@@ -197,6 +205,11 @@ async function generateSchedule() {
         newadd = "M";
       }
     }
+    let baana = document.querySelector('input[name="time"]:checked');
+    if (baana.value == "morning") {
+      newadd += 'M';
+    } else newadd += 'E';
+    localStorage.setItem("baana", baana.value);
     if (art) {
       newadd += "A";
     }
@@ -414,6 +427,7 @@ async function generateSchedule() {
     );
   generating = false;
 }
+
 function formatDate(inputDate) {
   const months = [
     "Jan",
