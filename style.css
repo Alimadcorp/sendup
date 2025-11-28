@@ -18,6 +18,7 @@ strong {
 }
 * {
   font-family: "Geist", sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 a {
   color: #77f;
@@ -66,6 +67,9 @@ button {
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
 }
+button:disabled{
+  background: #333;
+}
 button:hover {
   transform: scale(1.1);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -92,7 +96,7 @@ table {
 }
 @media (orientation: portrait) {
   table {
-    font-size: clamp(6px, 3.6vw, 15px);
+    font-size: clamp(6px, 3.0vw, 15px);
   }
 }
 th,

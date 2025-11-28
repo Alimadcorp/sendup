@@ -1,8 +1,12 @@
 let initialhtm;
 let generating = false;
-let v = "2.1.1";
+let v = "2.1.3"; let initialV = false;
 function setversion(ver, db = false) {
-  if(db && ver != v) ver = v + '->' + ver;
+  if(db && ver != v) {
+    ver = v + '->' + ver;
+    if(initialV) alert("Website updated, please refresh the page!")
+  }
+  initialV = true;
   v = ver + "v";
   document.getElementById("logg").innerHTML = "&nbsp&nbsp" + v;
   if (log.style.display != "none") {
@@ -57,19 +61,20 @@ document.addEventListener("DOMContentLoaded", function () {
       datac = data;
       mapdata();
     }, 'schedule');
-    const roll = localStorage.getItem("roll");
-    const xtra = localStorage.getItem("xtra");
-    if (roll) {
-      document.getElementById("rollNoInput").value = roll;
-      document.getElementById("ART").checked =
-        localStorage.getItem("art") == "true";
-      document.getElementById("COM").checked =
-        localStorage.getItem("com") == "true";
-      document.getElementById("GS").checked =
-        localStorage.getItem("gs") == "true";
-    }
-    if (xtra === "yes") document.getElementById("extra").checked = true;
+    theButton.disabled = false;
   }
+  const roll = localStorage.getItem("roll");
+  const xtra = localStorage.getItem("xtra");
+  if (roll) {
+    document.getElementById("rollNoInput").value = roll;
+    document.getElementById("ART").checked =
+      localStorage.getItem("art") == "true";
+    document.getElementById("COM").checked =
+      localStorage.getItem("com") == "true";
+    document.getElementById("GS").checked =
+      localStorage.getItem("gs") == "true";
+  }
+  if (xtra === "yes") document.getElementById("extra").checked = true;
   document.getElementById("logg").innerHTML = "&nbsp&nbsp" + v;
   history.pushState(null, null, location.href);
   window.addEventListener("popstate", () => {
@@ -147,6 +152,7 @@ document.querySelectorAll('input[name="subject"]').forEach((radio) =>
     localStorage.setItem("selectedSubject", this.value);
   })
 );
+let gt = "Soemthing";
 const delay = (ms = 30) => new Promise((resolve) => setTimeout(resolve, ms));
 function back() {
   document.getElementById("log").style.display = "none";
@@ -204,7 +210,7 @@ async function generateSchedule() {
     if (baana.value == "morning") {
       newadd += 'M';
     } else newadd += 'E';
-    timing = baana.value;
+    timing = gt = baana.value;
     localStorage.setItem("baana", baana.value);
     if (art) {
       newadd += "A";
@@ -460,9 +466,9 @@ function addRow(number, day, date, subject, room, time) {
   newCell5.textContent = room;
   newRow.appendChild(newCell5);
   newRow.classList.add("new-row");
-  if(time){
+  if(time || tds.style.display == 'table-cell'){
   const newCell6 = document.createElement("td");
-  newCell6.textContent = time.replace(/\w\S*/g, t => t[0].toUpperCase() + t.slice(1).toLowerCase());;
+  newCell6.textContent = (time || gt || "Uhhhh").replace(/\w\S*/g, t => t[0].toUpperCase() + t.slice(1).toLowerCase());;
   newRow.appendChild(newCell6); tds.style.display = 'table-cell';}
   tableBody.appendChild(newRow);
   document
