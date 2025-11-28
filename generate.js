@@ -1,6 +1,6 @@
 let initialhtm;
 let generating = false;
-let v = "2.1.6"; let initialV = false;
+let v = "2.1.7"; let initialV = false;
 function setversion(ver, db = false) {
   if(db && ver != v) {
     ver = v + '->' + ver;
