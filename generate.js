@@ -48,17 +48,27 @@ function setversion(ver) {
 document.addEventListener("DOMContentLoaded", function () {
   fetch("/data.csv").then((r)=>r.text()).then(data=>{datac=data; if(other) doo(); other = true;});
   fetch("/schedule.csv").then((r)=>r.text()).then(data=>{schedule=data; if(other) doo(); other = true});
-
   function doo(){
     fetchCSV(schedule, (data) => {
       schedule = data;
       mapschedule();
     });
-
     fetchCSV(datac, (data) => {
       datac = data;
       mapdata();
-    });
+    }, 'schedule');
+    const roll = localStorage.getItem("roll");
+    const xtra = localStorage.getItem("xtra");
+    if (roll) {
+      document.getElementById("rollNoInput").value = roll;
+      document.getElementById("ART").checked =
+        localStorage.getItem("art") == "true";
+      document.getElementById("COM").checked =
+        localStorage.getItem("com") == "true";
+      document.getElementById("GS").checked =
+        localStorage.getItem("gs") == "true";
+    }
+    if (xtra === "yes") document.getElementById("extra").checked = true;
   }
 
   document.getElementById("logg").innerHTML = "&nbsp&nbsp" + v;
@@ -255,9 +265,9 @@ async function generateSchedule() {
               }
             }
             n++;
-            addRow(n, da, dat, sub, room, time);
+            addRow(n, da, dat, sub, room, timerz[i]);
           } else {
-            if (rollNo >= mins[i] && rollNo <= maxes[i]) {
+            if (rollNo >= mins[i] && rollNo <= maxes[i] && timerz[i] == timing) {
               let room = centers[i];
               let sub = fsubjects[i];
               let da, dat;
@@ -322,7 +332,7 @@ async function generateSchedule() {
                 }
               }
               n++;
-              addRow(n, da, dat, sub, room, time);
+              addRow(n, da, dat, sub, room);
             }
           }
         }
@@ -346,7 +356,7 @@ async function generateSchedule() {
               }
             }
             n++;
-            addRow(n, da, dat, sub, room, time);
+            addRow(n, da, dat, sub, room);
           } else {
             if (rollNo >= mins[i] && rollNo <= maxes[i]) {
               let room = centers[i];
@@ -412,7 +422,7 @@ async function generateSchedule() {
                 }
               }
               n++;
-              addRow(n, da, dat, sub, room, time);
+              addRow(n, da, dat, sub, room);
             }
           }
         }
@@ -473,10 +483,10 @@ function addRow(number, day, date, subject, room, time) {
   newCell5.textContent = room;
   newRow.appendChild(newCell5);
   newRow.classList.add("new-row"); // Initially invisible
-
-  /*const newCell6 = document.createElement("td");
+  if(time){
+  const newCell6 = document.createElement("td");
   newCell6.textContent = time;
-  newRow.appendChild(newCell6);*/
+  newRow.appendChild(newCell6);}
 
   tableBody.appendChild(newRow);
   document

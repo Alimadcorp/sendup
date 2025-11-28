@@ -9,6 +9,7 @@ let dates,
   maxes,
   fsubjects,
   ssubjects,
+  timerz,
   centers;
 let ICS1 = "I Comp. Sc. I English I Math I Islamic Studies I Urdu I Physics I Al Quran";
 let PE1 = "I Chem I English I Math I Islamic Studies I Urdu I Physics I Al Quran";
@@ -31,20 +32,10 @@ function mapdata() {
   ssubjects = rem(datac[0].map((x, i) => (fsubjects[i] == null ? x : null)));
   ranges = datac[1];
   centers = datac[2];
+  timerz = datac[3];
   mins = ranges.map((r) => parseRange(r).min);
   maxes = ranges.map((r) => parseRange(r).max);
-  const roll = localStorage.getItem("roll");
-  const xtra = localStorage.getItem("xtra");
-  if (roll) {
-    document.getElementById("rollNoInput").value = roll;
-    document.getElementById("ART").checked =
-      localStorage.getItem("art") == "true";
-    document.getElementById("COM").checked =
-      localStorage.getItem("com") == "true";
-    document.getElementById("GS").checked =
-      localStorage.getItem("gs") == "true";
-  }
-  if (xtra === "yes") document.getElementById("extra").checked = true;
+  console.log(datac);
 }
 
 function mapschedule() {

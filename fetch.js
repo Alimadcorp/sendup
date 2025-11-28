@@ -1,16 +1,45 @@
-const fetchCSV = (csv, callback) => {
-  callback(transposeArray(csvToArray(csv)));
+const fetchCSV = (csv, callback, mode) => {
+  const rows = csv.split("\n").map(l => l.trim());
+  if (mode !== "schedule") {
+    const good = rows.filter(l => l).map(r => r.split(",").map(c => c.trim()));
+    return callback(transpose(good));
+  }
+
+  const blocks = rows.reduce((acc, l) => {
+    if (!l) acc.push([]);
+    else acc[acc.length - 1].push(l.split(",").map(c => c.trim()));
+    return acc;
+  }, [[]]);
+
+  const flatRows = [];
+  const labels = [];
+  let flag = "morning";
+  for (const block of blocks) {
+    if (block.length === 0) {
+      flag = flag === "morning" ? "evening" : "morning";
+      continue;
+    }
+    for (const r of block) {
+      flatRows.push(r);
+      labels.push(flag);
+    }
+    flag = flag === "morning" ? "evening" : "morning";
+  }
+  const COLS = 3;
+  const cols = Array.from({ length: COLS }, () => []);
+  for (const r of flatRows) {
+    for (let i = 0; i < COLS; i++) cols[i].push(r[i] ?? "");
+  }
+
+  callback([...cols, labels]);
 };
 
-const csvToArray = (csv) =>
-  csv
-    .trim()
-    .split("\n")
-    .map((row) => row.split(","));
-const transposeArray = (arr) => arr[0].map((_, i) => arr.map((row) => row[i])); 
+const transpose = arr => {
+  if (!arr.length) return [];
+  const cols = arr[0].length;
+  return Array.from({ length: cols }, (_, i) => arr.map(r => r[i] ?? ""));
+};
 
 let schedule = ``;
 let datac = ``;
 let other = false;
-
-setTimeout(()=>console.log(schedule.length, datac.length), 5000);
