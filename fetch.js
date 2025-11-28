@@ -1,14 +1,28 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyC0xyl8b3FUzxfpDEDwTOiLgqTLNR0F57Y",
+  authDomain: "namesuggest-77989.firebaseapp.com",
+  projectId: "namesuggest-77989",
+  storageBucket: "namesuggest-77989.firebasestorage.app",
+  messagingSenderId: "1091740366992",
+  appId: "1:1091740366992:web:fc413dc73b42c8788c8015",
+  measurementId: "G-9WLDJGMX2L",
+};
 const fetchCSV = (csv, callback, mode) => {
-  const rows = csv.split("\n").map(l => l.trim());
+  const rows = csv.split("\n").map((l) => l.trim());
   if (mode !== "schedule") {
-    const good = rows.filter(l => l).map(r => r.split(",").map(c => c.trim()));
+    const good = rows
+      .filter((l) => l)
+      .map((r) => r.split(",").map((c) => c.trim()));
     return callback(transpose(good));
   }
-  const blocks = rows.reduce((acc, l) => {
-    if (!l) acc.push([]);
-    else acc[acc.length - 1].push(l.split(",").map(c => c.trim()));
-    return acc;
-  }, [[]]);
+  const blocks = rows.reduce(
+    (acc, l) => {
+      if (!l) acc.push([]);
+      else acc[acc.length - 1].push(l.split(",").map((c) => c.trim()));
+      return acc;
+    },
+    [[]]
+  );
   const flatRows = [];
   const labels = [];
   let flag = "morning";
@@ -30,10 +44,10 @@ const fetchCSV = (csv, callback, mode) => {
   }
   callback([...cols, labels]);
 };
-const transpose = arr => {
+const transpose = (arr) => {
   if (!arr.length) return [];
   const cols = arr[0].length;
-  return Array.from({ length: cols }, (_, i) => arr.map(r => r[i] ?? ""));
+  return Array.from({ length: cols }, (_, i) => arr.map((r) => r[i] ?? ""));
 };
 let schedule = ``;
 let datac = ``;

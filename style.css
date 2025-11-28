@@ -67,6 +67,9 @@ button {
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
 }
+#subscribeBtn{
+  background: linear-gradient(135deg, #ff0909, #ff0048);
+}
 button:disabled{
   background: #333;
 }

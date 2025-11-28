@@ -1,5 +1,5 @@
 # Personal Sendup Schedule Generator
-ScheduleMad v2.1.7
+ScheduleMad v2.1.8
 
 ## Technologies Used
 

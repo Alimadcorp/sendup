@@ -34,12 +34,14 @@
         <label for="rollNoInput" style="font-size: 20px"
           >Enter Your Complete Roll Number:</label
         >
-        <input id="rollNoInput" placeholder="e.g., 3686-1-24" /><br />
+        <input id="rollNoInput" placeholder="e.g. 3686-1-24" /><br />
         <div class="radio-group">
           <label class="radio-container"
-            >Morning<input type="radio" name="time" value="morning" checked/><span
-              class="radio-mark"
-            ></span
+            >Morning<input
+              type="radio"
+              name="time"
+              value="morning"
+              checked /><span class="radio-mark"></span
           ></label>
           <label class="radio-container"
             >Evening<input type="radio" name="time" value="evening" /><span
@@ -49,7 +51,7 @@
         </div>
         <div class="radio-group">
           <label class="radio-container"
-            >ICS<input type="radio" name="subject" value="ICS" checked/><span
+            >ICS<input type="radio" name="subject" value="ICS" checked /><span
               class="radio-mark"
             ></span
           ></label>
@@ -89,7 +91,12 @@
           ></span
         ></label>
         <br /><br />
-        <button onclick="generateSchedule()" id="theButton" style="padding: 10px 20px" disabled>
+        <button
+          onclick="generateSchedule()"
+          id="theButton"
+          style="padding: 10px 20px"
+          disabled
+        >
           <strong>Get Schedule</strong></button
         ><br /><br />
       </div>
@@ -103,13 +110,13 @@
           <th>Date</th>
           <th>Subject</th>
           <th>Room</th>
-          <th style="display: none;" id="tds">Time</th>
+          <th style="display: none" id="tds">Time</th>
         </tr>
       </thead>
       <tbody></tbody>
     </table>
     <p id="log" style="display: none"></p>
-    <center><p id="logg" style="display: inline;"></p></center>
+    <center><p id="logg" style="display: inline"></p></center>
     <p id="time"></p>
     <button onclick="download()" id="down" style="display: none">
       Download
@@ -175,26 +182,55 @@
       <strong>GS</strong> - General Sciences<br />
     </details>
     <div class="feedback-container">
-      <a target="_blank" href="https://live.alimad.co/stats/view?app=sendup-alimad-co"><div id="live-counter" style="font-family: sans-serif; color: #4CAF50; display: inline-flex; align-items: center; gap: 6px;">
-  <span style="width: 10px; height: 10px; border-radius: 50%; background: #4CAF50;" id="live-dot"></span>
-  <span id="live-count">Loading...</span>
-</div></a>
-<script>
-async function udpp() {
-  const dot = document.getElementById('live-dot');
-  const count = document.getElementById('live-count');
-  try {
-    const response = await fetch('https://live.alimad.co/ping?app=sendup-alimad-co');
-    if (response.ok) {
-      const userCount = await response.text();
-      dot.style.background = '#4CAF50';
-      count.textContent = userCount + ' online';
-    } else {
-      throw new Error('API error');
-    }
-  } catch (error) {
-    dot.style.background = '#f44336';
-    count.textContent = 'Offline';}};setInterval(udpp, 20000); udpp();</script>
+      <a
+        target="_blank"
+        href="https://live.alimad.co/stats/view?app=sendup-alimad-co-2"
+        ><div
+          id="live-counter"
+          style="
+            font-family: sans-serif;
+            color: #4caf50;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+          "
+        >
+          <span
+            style="
+              width: 10px;
+              height: 10px;
+              border-radius: 50%;
+              background: #4caf50;
+            "
+            id="live-dot"
+          ></span>
+          <span id="live-count">Loading...</span>
+        </div></a
+      >
+      <script>
+        async function udpp() {
+          const dot = document.getElementById("live-dot");
+          const count = document.getElementById("live-count");
+          try {
+            const response = await fetch(
+              "https://live.alimad.co/ping?app=sendup-alimad-co-2"
+            );
+            if (response.ok) {
+              const userCount = await response.text();
+              dot.style.background = "#4CAF50";
+              count.textContent = userCount + " online";
+            } else {
+              throw new Error("API error");
+            }
+          } catch (error) {
+            dot.style.background = "#f44336";
+            count.style.color = "#f44336";
+            count.textContent = "Offline";
+          }
+        }
+        setInterval(udpp, 20000);
+        udpp();
+      </script>
       <div id="comments-section">
         <div id="comments-list"></div>
       </div>
@@ -216,12 +252,10 @@ async function udpp() {
       >.
     </p>
     <p style="font-size: 9px">
-      All data is taken from 
-      <a
-        href="/extract/input.pdf"
-        >The Gazzette</a
+      All data is taken from
+      <a href="/extract/input.pdf">The Gazzette</a
       ><a
-        style="display: none;"
+        style="display: none"
         href="https://gcu.edu.pk/Events/Updates/Gazzette-Inter-Part-IandII-SendUpTest-2024.pdf"
         >GCU website</a
       >.
@@ -285,15 +319,6 @@ async function udpp() {
         addDoc,
         serverTimestamp,
       } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
-      const firebaseConfig = {
-        apiKey: "AIzaSyC0xyl8b3FUzxfpDEDwTOiLgqTLNR0F57Y",
-        authDomain: "namesuggest-77989.firebaseapp.com",
-        projectId: "namesuggest-77989",
-        storageBucket: "namesuggest-77989.firebasestorage.app",
-        messagingSenderId: "1091740366992",
-        appId: "1:1091740366992:web:fc413dc73b42c8788c8015",
-        measurementId: "G-9WLDJGMX2L",
-      };
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
       let firstSaturate = true;
@@ -350,8 +375,7 @@ async function udpp() {
             timestamp: serverTimestamp(),
             roll: getLog(),
           });
-        } catch (error) {
-        }
+        } catch (error) {}
       }
       function fetchVersion() {
         const versionCheck = query(collection(db, "version"));
@@ -432,24 +456,8 @@ async function udpp() {
           });
           if (JSON.stringify(newArray) !== JSON.stringify(commentsArray)) {
             commentsArray = newArray;
-            displayCommentsWithDelay(false);
+            displayCommentsWithDelay(true);
           }
-        });
-      }
-      function forceRefresh() {
-        let newArray = [];
-        const commentsRef = query(
-          collection(db, "sendup"),
-          orderBy("timestamp")
-        );
-        onSnapshot(commentsRef, (snapshot) => {
-          snapshot.forEach((doc) => {
-            const commentData = doc.data();
-            commentData.id = doc.id;
-            newArray.push(commentData);
-          });
-          commentsArray = newArray;
-          displayCommentsWithDelay(false);
         });
       }
       function scrollToBottom() {
@@ -515,8 +523,7 @@ async function udpp() {
       document.addEventListener("DOMContentLoaded", () => {
         fetchUsers();
         fetchVersion();
-        setInterval(refreshCom, 8000);
-        setInterval(forceRefresh, 61234);
+        refreshCom();
       });
     </script>
     <script src="generate.js"></script>
