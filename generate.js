@@ -1,7 +1,8 @@
 let initialhtm;
 let generating = false;
 let v = "2.1.1";
-function setversion(ver) {
+function setversion(ver, db = false) {
+  if(db && ver != v) ver = v + '->' + ver;
   v = ver + "v";
   document.getElementById("logg").innerHTML = "&nbsp&nbsp" + v;
 
