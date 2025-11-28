@@ -296,6 +296,7 @@ async function udpp() {
       };
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
+      let firstSaturate = true;
       const appname = "sendup";
       const feedbackForm = document.getElementById("feedbackForm");
       const commentTextarea = document.getElementById("comment");
@@ -461,7 +462,7 @@ async function udpp() {
         adding = true;
         commentsList.innerHTML = "";
         for (const comment of commentsArray) {
-          if (scrolll) {
+          if (scrolll && firstSaturate) {
             await new Promise((resolve) => setTimeout(resolve, 10));
           }
           const timestamp = comment.timestamp
@@ -499,6 +500,7 @@ async function udpp() {
           commentElement.appendChild(timeDiv);
           commentsList.appendChild(commentElement);
         }
+        firstSaturate = false;
         await new Promise((resolve) => setTimeout(resolve, 50));
         if (scrolll) scrollToBottom();
         adding = false;
