@@ -1,6 +1,6 @@
 let initialhtm;
 let generating = false;
-let v = "1.8.9b";
+let v = "2.1.1";
 function setversion(ver) {
   v = ver + "v";
   document.getElementById("logg").innerHTML = "&nbsp&nbsp" + v;
@@ -175,6 +175,7 @@ function back() {
 }
 
 async function generateSchedule() {
+  tds.style.display = 'none';
   const inputElement = document.getElementById("rollNoInput");
   let rollNoInput = inputElement.value;
   if (validate(rollNoInput)) {
@@ -356,9 +357,9 @@ async function generateSchedule() {
               }
             }
             n++;
-            addRow(n, da, dat, sub, room);
+            addRow(n, da, dat, sub, room, timerz[i]);
           } else {
-            if (rollNo >= mins[i] && rollNo <= maxes[i]) {
+            if (rollNo >= mins[i] && rollNo <= maxes[i] && timerz[i] == timing) {
               let room = centers[i];
               let sub = ssubjects[i];
               let da, dat;
@@ -482,11 +483,11 @@ function addRow(number, day, date, subject, room, time) {
   const newCell5 = document.createElement("td");
   newCell5.textContent = room;
   newRow.appendChild(newCell5);
-  newRow.classList.add("new-row"); // Initially invisible
+  newRow.classList.add("new-row");
   if(time){
   const newCell6 = document.createElement("td");
-  newCell6.textContent = time;
-  newRow.appendChild(newCell6);}
+  newCell6.textContent = time.replace(/\w\S*/g, t => t[0].toUpperCase() + t.slice(1).toLowerCase());;
+  newRow.appendChild(newCell6); tds.style.display = 'table-cell';}
 
   tableBody.appendChild(newRow);
   document
