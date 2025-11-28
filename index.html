@@ -482,17 +482,21 @@ async function udpp() {
           }
           const commentElement = document.createElement("div");
           commentElement.classList.add("comment");
-          if (name != "") {
-            commentElement.innerHTML = `
-<p><strong class="comment-name" style="${stc}">${name}: </strong> ${comment.text}</p>
-<div class="comment-time">${timeAgo}</div>
-`;
-          } else {
-            commentElement.innerHTML = `
-<p>${comment.text}</p>
-<div class="comment-time">${timeAgo}</div>
-`;
+          const p = document.createElement("p");
+          if (name !== "") {
+            const strong = document.createElement("strong");
+            strong.classList.add("comment-name");
+            strong.style.cssText = stc;
+            strong.textContent = name + ": ";
+            p.appendChild(strong);
           }
+          const textNode = document.createTextNode(comment.text);
+          p.appendChild(textNode);
+          commentElement.appendChild(p);
+          const timeDiv = document.createElement("div");
+          timeDiv.classList.add("comment-time");
+          timeDiv.textContent = timeAgo;
+          commentElement.appendChild(timeDiv);
           commentsList.appendChild(commentElement);
         }
         await new Promise((resolve) => setTimeout(resolve, 50));
