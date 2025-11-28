@@ -1,5 +1,5 @@
 # Personal Sendup Schedule Generator
-MadSchedule v1.6.1
+ScheduleMad v2.1.1
 
 ## Technologies Used
 
@@ -18,7 +18,7 @@ MadSchedule v1.6.1
    ```bash
    cd sendup-main
 
-4. Open the index.html file in your browser.
+4. Run on localhost or Open the index.html file in your browser.
 
 ## License
 

@@ -1,21 +1,17 @@
 function cleanup() {
   showPopup("Clean Up", "Enter a range of rows to remove");
 }
-
 function showPopup(title, description) {
   document.getElementById("popup-title").innerText = title;
   document.getElementById("popup-description").innerText = description;
   document.getElementById("popup-overlay").style.display = "flex";
-
   document.getElementById("cleanerr").textContent = "";
   document.getElementById("popup-input").value =
     localStorage.getItem("cin") || "";
 }
-
 function hidePopup() {
   document.getElementById("popup-overlay").style.display = "none";
 }
-
 document.getElementById("popup-ok").addEventListener("click", () => {
   const input = document.getElementById("popup-input").value;
   let errore = false;
@@ -27,7 +23,6 @@ document.getElementById("popup-ok").addEventListener("click", () => {
       throwError("Invalid Input");
       errore = true;
     }
-
     ranges.forEach((range) => {
       if (range.includes("-")) {
         const [start, end] = range.split("-").map(Number);
@@ -60,11 +55,9 @@ document.getElementById("popup-ok").addEventListener("click", () => {
     perform();
   }
 });
-
 function perform() {
   const input = document.getElementById("popup-input").value;
   const ranges = input.split(",").map((range) => range.trim());
-
   ranges.forEach((range) => {
     if (range.includes("-")) {
       const [start, end] = range.split("-").map(Number);
@@ -84,11 +77,9 @@ function perform() {
   hidePopup();
   localStorage.setItem("cin", input);
 }
-
 function throwError(err) {
   document.getElementById("cleanerr").textContent = err;
 }
-
 function func(inp) {
   if(inp > 0){
     try{
@@ -100,28 +91,23 @@ function func(inp) {
     }
   }
 }
-
 function settb(val) {
   var table = document.getElementById("scheduleTable");
   if (!table) {
     console.error("Table with ID 'table' not found.");
     return;
   }
-
   var rows = table.getElementsByTagName('tr');
   if (val < 0 || val >= rows.length) {
     console.error("Invalid row index: " + val);
     return;
   }
-
   var tr = rows[val];
   var tds = tr.getElementsByTagName('td');
   if (tds.length === 0) {
     console.error("No <td> elements found in row " + val);
     return;
   }
-
   tds[0].innerHTML = val;
 }
-
 document.getElementById("popup-cancel").addEventListener("click", hidePopup);

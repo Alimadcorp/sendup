@@ -3,7 +3,6 @@
   src: url('https://corsproxy.io/?url=https://cdn.alimad.co/f/geist.woff2');
   font-weight: normal, bold;
 }
-
 body {
   background: linear-gradient(135deg, #040409, #1a1a2e);
   text-align: center;
@@ -14,42 +13,34 @@ body {
   color: #fff;
   overflow-x: hidden;
 }
-
 strong {
   font-weight: bold;
 }
-
 * {
   font-family: "Geist", sans-serif;
 }
-
 a {
   color: #77f;
 }
-
 h1 {
   color: #d6e6ff;
   margin-top: 50px;
   font-size: 5vw;
   animation: fadeIn 2s ease-out;
 }
-
 #time {
   font-size: 3vw;
   color: #aad4ff;
 }
-
 #log, #logg{
   font-size: 9px;
   color: #ccccffaa;
   text-align: left;
 }
-
 .input-container {
   margin-top: 20px;
   animation: slideIn 1s ease-out;
 }
-
 input {
   padding: 10px;
   font-size: 16px;
@@ -60,13 +51,11 @@ input {
   color: #fff;
   transition: border-color 0.3s, transform 0.3s;
 }
-
 input:focus {
   border-color: #4caf50;
   outline: none;
   transform: scale(1.05);
 }
-
 button {
   padding: 5px 10px;
   font-size: 16px;
@@ -77,12 +66,10 @@ button {
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
 }
-
 button:hover {
   transform: scale(1.1);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
-
 .table-container {
   width: 100%;
   max-width: 100%;
@@ -93,25 +80,21 @@ button:hover {
   background: linear-gradient(135deg, #0a0f2d, #111733);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
-
 table {
   width: 100%;
   border-collapse: collapse;
   background: linear-gradient(135deg, #0a0f2d, #111733);
 }
-
 @media (orientation: landscape) {
   table {
     font-size: 18px;
   }
 }
-
 @media (orientation: portrait) {
   table {
     font-size: clamp(6px, 3.6vw, 15px);
   }
 }
-
 th,
 td {
   padding: 10px;
@@ -119,32 +102,25 @@ td {
   color: #eef;
   border: none;
 }
-
 th {
   background: linear-gradient(135deg, #223566, #1b2c4a);
 }
-
 tr.new-row {
   opacity: 0;
   transition: opacity 0.5s ease, height 0.5s ease, width 0.5s ease;
 }
-
 tr.new-row.visible {
   opacity: 1;
 }
-
 tr {
   transition: background-color 0.3s;
 }
-
 tr:nth-child(even) {
   background-color: rgba(255, 255, 255, 0.05);
 }
-
 tr:hover {
   background-color: #446c99aa;
 }
-
 .footer {
   text-align: center;
   font-size: 15px;
@@ -157,7 +133,6 @@ tr:hover {
   cursor: pointer;
   user-select: none;
 }
-
 .container input {
   position: absolute;
   opacity: 0;
@@ -165,7 +140,6 @@ tr:hover {
   height: 0;
   width: 0;
 }
-
 .checkmark {
   position: absolute;
   top: 0;
@@ -176,21 +150,17 @@ tr:hover {
   background: linear-gradient(135deg, #333, #555);
   transition: background-color 0.3s, transform 0.3s;
 }
-
 .container:hover input ~ .checkmark {
   background-color: #666;
 }
-
 .container input:checked ~ .checkmark {
   background-color: #2196F3;
 }
-
 .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
-
 .container input:checked ~ .checkmark:after {
   display: block;
   left: 9px;
@@ -201,7 +171,6 @@ tr:hover {
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
 }
-
 .radio-group {
   display: flex;
   justify-content: center;
@@ -209,7 +178,6 @@ tr:hover {
   margin: 10px 0;
   animation: fadeIn 1.5s ease-out;
 }
-
 .radio-container {
   position: relative;
   padding-left: 35px;
@@ -218,7 +186,6 @@ tr:hover {
   user-select: none;
   color: #aad4ff;
 }
-
 .radio-container input {
   position: absolute;
   opacity: 0;
@@ -226,7 +193,6 @@ tr:hover {
   height: 0;
   width: 0;
 }
-
 .radio-mark {
   position: absolute;
   top: 0;
@@ -237,23 +203,19 @@ tr:hover {
   border-radius: 50%;
   transition: transform 0.3s, background-color 0.3s;
 }
-
 .radio-container:hover input ~ .radio-mark {
   background-color: #666;
   transform: scale(1.1);
 }
-
 .radio-container input:checked ~ .radio-mark {
   background-color: #2196F3;
   transform: scale(1.1);
 }
-
 .radio-mark:after {
   content: "";
   position: absolute;
   display: none;
 }
-
 .radio-container input:checked ~ .radio-mark:after {
   display: block;
   left: 9px;
@@ -263,7 +225,6 @@ tr:hover {
   border-radius: 50%;
   background: #fff;
 }
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -274,7 +235,6 @@ tr:hover {
     transform: translateY(0);
   }
 }
-
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -299,7 +259,6 @@ tr:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: #5558; 
 }
-
   .feedback-container {
     position: static;
     margin-top: 1.5rem;
@@ -322,14 +281,12 @@ textarea {
   #sub {
     margin: 1rem 0;
   }
-
 .feedback-container h1,
 .feedback-container h2 {
   color: #eee;
   text-align: center;
   font-size: 1rem;
 }
-
 textarea {
   height: 5rem;
   padding: 1rem;
@@ -337,7 +294,6 @@ textarea {
   resize: none;
   width: 90%;
 }
-
 .feedback-container button {
   background-color: #4CAF50;
   color: white;
@@ -348,13 +304,11 @@ textarea {
   margin-top: 1rem;
   width: 80%;
 }
-
 #comments-section {
   margin-top: 1.5rem;
   max-height: 50vh;
   overflow-y: auto;
 }
-
 .comment-time {
   font-size: 11px;
   color: #888;
@@ -383,8 +337,6 @@ textarea {
   padding: 6px;
   cursor: pointer;
 }
-
-
 .comment p {
   margin: 0;
   font-size: 13px;

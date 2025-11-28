@@ -5,7 +5,6 @@ function setversion(ver, db = false) {
   if(db && ver != v) ver = v + '->' + ver;
   v = ver + "v";
   document.getElementById("logg").innerHTML = "&nbsp&nbsp" + v;
-
   if (log.style.display != "none") {
     const inputElement = document.getElementById("rollNoInput");
     let rollNoInput = inputElement.value;
@@ -71,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     if (xtra === "yes") document.getElementById("extra").checked = true;
   }
-
   document.getElementById("logg").innerHTML = "&nbsp&nbsp" + v;
   history.pushState(null, null, location.href);
   window.addEventListener("popstate", () => {
@@ -79,19 +77,16 @@ document.addEventListener("DOMContentLoaded", function () {
     history.pushState(null, null, location.href);
   });
 });
-
 function download() {
   const rollNo = document.getElementById("rollNoInput").value || "Schedule";
   const fileName = `${rollNo}_Schedule.png`;
   const table = document.getElementById("scheduleTable");
   const log = document.getElementById("log");
   const timeElement = document.getElementById("time");
-
   if (!table || !log || !timeElement || timeElement.innerText.trim() === "") {
     alert("Please generate the schedule before downloading!");
     return;
   }
-
   const container = document.createElement("div");
   container.style.position = "absolute";
   container.style.background = "#040409";
@@ -99,12 +94,10 @@ function download() {
   container.style.top = "0";
   container.style.left = "0";
   container.style.width = `${table.offsetWidth}px`;
-
   container.appendChild(log.cloneNode(true));
   container.appendChild(table.cloneNode(true));
   container.appendChild(timeElement.cloneNode(true));
   document.body.appendChild(container);
-
   html2canvas(container, {
     backgroundColor: null,
     scrollX: 0,
@@ -112,17 +105,13 @@ function download() {
     useCORS: true,
     scale: 2,
   }).then((canvas) => {
-    // Generate a Blob from the canvas
     canvas.toBlob((blob) => {
-      const url = window.URL.createObjectURL(blob); // Create URL from Blob
-      saveFile(fileName, url); // Use the saveFile function
+      const url = window.URL.createObjectURL(blob);
+      saveFile(fileName, url);
     }, "image/png");
-
     document.body.removeChild(container);
   });
 }
-
-// saveFile function
 function saveFile(fileName, urlFile) {
   let a = document.createElement("a");
   a.style = "display: none";
@@ -130,10 +119,9 @@ function saveFile(fileName, urlFile) {
   a.href = urlFile;
   a.download = fileName;
   a.click();
-  window.URL.revokeObjectURL(urlFile); // Revoke the created URL
+  window.URL.revokeObjectURL(urlFile);
   a.remove();
 }
-
 function nullCheck() {
   const table = document.getElementById("scheduleTable");
   if (table.style.display != "none") {
@@ -154,15 +142,12 @@ window.onload = () => {
     `input[name="time"][value="${sO2}"]`
   ).checked = true;
 };
-
 document.querySelectorAll('input[name="subject"]').forEach((radio) =>
   radio.addEventListener("change", function () {
     localStorage.setItem("selectedSubject", this.value);
   })
 );
-
 const delay = (ms = 30) => new Promise((resolve) => setTimeout(resolve, ms));
-
 function back() {
   document.getElementById("log").style.display = "none";
   document.getElementById("scheduleTable").style.display = "none";
@@ -174,7 +159,6 @@ function back() {
   document.getElementById("time").innerHTML = "";
   document.getElementById("logg").style.display = "inline";
 }
-
 async function generateSchedule() {
   tds.style.display = 'none';
   const inputElement = document.getElementById("rollNoInput");
@@ -193,7 +177,6 @@ async function generateSchedule() {
     localStorage.setItem("art", art);
     localStorage.setItem("com", com);
     localStorage.setItem("gs", gs);
-
     let extras = extra.checked;
     let logs = "&nbsp&nbsp" + v + "MS";
     localStorage.setItem("xtra", extra.checked ? "yes" : "no");
@@ -247,7 +230,6 @@ async function generateSchedule() {
       initialhtm = table.innerHTML;
     }
     table.innerHTML = initialhtm;
-
     if (grade == 1) {
       let n = 0;
       for (let i = 0; i < fsubjects.length; i++) {
@@ -273,7 +255,6 @@ async function generateSchedule() {
               let room = centers[i];
               let sub = fsubjects[i];
               let da, dat;
-
               let elig = false;
               let selected = document.querySelector(
                 'input[name="subject"]:checked'
@@ -439,7 +420,6 @@ async function generateSchedule() {
     );
   generating = false;
 }
-
 function formatDate(inputDate) {
   const months = [
     "Jan",
@@ -464,23 +444,18 @@ function addRow(number, day, date, subject, room, time) {
   }
   const tableBody = document.querySelector("#scheduleTable tbody");
   const newRow = document.createElement("tr");
-
   const newCell1 = document.createElement("td");
   newCell1.textContent = number;
   newRow.appendChild(newCell1);
-
   const newCell2 = document.createElement("td");
   newCell2.textContent = day;
   newRow.appendChild(newCell2);
-
   const newCell3 = document.createElement("td");
   newCell3.textContent = date;
   newRow.appendChild(newCell3);
-
   const newCell4 = document.createElement("td");
   newCell4.textContent = subject;
   newRow.appendChild(newCell4);
-
   const newCell5 = document.createElement("td");
   newCell5.textContent = room;
   newRow.appendChild(newCell5);
@@ -489,7 +464,6 @@ function addRow(number, day, date, subject, room, time) {
   const newCell6 = document.createElement("td");
   newCell6.textContent = time.replace(/\w\S*/g, t => t[0].toUpperCase() + t.slice(1).toLowerCase());;
   newRow.appendChild(newCell6); tds.style.display = 'table-cell';}
-
   tableBody.appendChild(newRow);
   document
     .querySelectorAll("th")

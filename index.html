@@ -111,11 +111,9 @@
     <p id="log" style="display: none"></p>
     <center><p id="logg" style="display: inline;"></p></center>
     <p id="time"></p>
-
     <button onclick="download()" id="down" style="display: none">
       Download
     </button>
-
     <button onclick="cleanup()" id="clean" style="display: none">
       Clean Up
     </button>
@@ -150,7 +148,6 @@
         }, 6000);
         if (lastClick) {
           const timeSinceLastClick = (currentTime - lastClick) / 1000;
-
           if (timeSinceLastClick >= 6) {
             statusText.textContent = "Thank you for subscribing!";
             localStorage.setItem("subbed", "Y");
@@ -163,7 +160,6 @@
           statusText.textContent =
             "Please click again after 6 seconds to confirm subscription.";
         }
-
         localStorage.setItem("lastSubscribeClick", currentTime);
       });
     </script>
@@ -269,7 +265,6 @@
         addDoc,
         serverTimestamp,
       } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
-
       const firebaseConfig = {
         apiKey: "AIzaSyC0xyl8b3FUzxfpDEDwTOiLgqTLNR0F57Y",
         authDomain: "namesuggest-77989.firebaseapp.com",
@@ -279,7 +274,6 @@
         appId: "1:1091740366992:web:fc413dc73b42c8788c8015",
         measurementId: "G-9WLDJGMX2L",
       };
-
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
       const appname = "sendup";
@@ -374,13 +368,11 @@
             userData.id = doc.id;
             userArray.push(userData);
           });
-
           fetchComments();
         });
       }
       function formatTimeAgo(timestamp) {
         const now = new Date();
-
         const diffInSeconds = Math.floor((now - timestamp) / 1000);
         if (diffInSeconds < 60) {
           return diffInSeconds <= 0
@@ -405,7 +397,6 @@
           year: "numeric",
         });
       }
-
       function refreshCom() {
         let newArray = [];
         const commentsRef = query(
@@ -488,7 +479,6 @@
         if (scrolll) scrollToBottom();
         adding = false;
       }
-
       document.getElementById("sub").addEventListener("click", () => {
         const commentText = commentTextarea.value;
         if (commentText) {
@@ -496,7 +486,6 @@
           commentTextarea.value = "";
         }
       });
-
       document.addEventListener("DOMContentLoaded", () => {
         fetchUsers();
         fetchVersion();
