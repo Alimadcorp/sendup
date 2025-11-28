@@ -190,7 +190,7 @@ async function generateSchedule() {
     document.getElementById("log").style.display = "inline";
     document.getElementById("down").style.display = "inline";
     document.getElementById("more").style.display = "none";
-    let rollNo, grade;
+    let rollNo, grade, timing;
     rollNo = extract(rollNoInput).rollNo;
     grade = extract(rollNoInput).grade;
     logs = logs + rollNo.toString() + grade.toString();
@@ -209,6 +209,7 @@ async function generateSchedule() {
     if (baana.value == "morning") {
       newadd += 'M';
     } else newadd += 'E';
+    timing = baana.value;
     localStorage.setItem("baana", baana.value);
     if (art) {
       newadd += "A";
@@ -223,11 +224,10 @@ async function generateSchedule() {
     log.innerHTML = logs;
     localStorage.setItem("roll", rollNoInput);
     let time = "Unavailable";
-    if (grade == 2) {
-      time = "9 AM to 12 PM";
-    } else if (grade == 1) {
-      time = "1 PM to 4 PM";
-    }
+      if(timing == 'morning'){ 
+        time = grade == 2 ? "12PM to 3PM" : "8:30AM to 11:30AM";
+       }
+      else{ time = "3:30PM to 6:30PM" }
     document.getElementById("time").innerHTML = "Exam Time: " + time;
     table.style.display = "table";
     other.style.display = "none";
