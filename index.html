@@ -115,9 +115,11 @@
       </thead>
       <tbody></tbody>
     </table>
-    <p id="log" style="display: none"></p>
-    <center><p id="logg" style="display: inline"></p></center>
+    <p id="naem"></p>
+    <p id="classs"></p>
     <p id="time"></p>
+    <p id="log" style="display: none;"></p>
+    <center><p id="logg" style="display: inline"></p></center>
     <button onclick="download()" id="down" style="display: none">
       Download
     </button>
@@ -218,6 +220,7 @@
             if (response.ok) {
               const userCount = await response.text();
               dot.style.background = "#4CAF50";
+              count.style.color = "#4CAF50";
               count.textContent = userCount + " online";
             } else {
               throw new Error("API error");

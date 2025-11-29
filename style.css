@@ -29,14 +29,16 @@ h1 {
   font-size: 5vw;
   animation: fadeIn 2s ease-out;
 }
-#time {
+#time, #naem, #classs {
   font-size: 3vw;
   color: #aad4ff;
+  text-align: center;
 }
 #log, #logg{
   font-size: 9px;
   color: #ccccffaa;
   text-align: left;
+  margin-bottom: 25px;
 }
 .input-container {
   margin-top: 20px;
@@ -65,6 +67,8 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 #subscribeBtn{

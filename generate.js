@@ -1,10 +1,11 @@
 let initialhtm;
 let generating = false;
-let v = "2.2.1"; let initialV = false;
+let v = "2.2.3";
+let initialV = false;
 function setversion(ver, db = false) {
-  if(db && ver != v) {
-    ver = v + '->' + ver;
-    if(initialV) alert("Website updated, please refresh the page!")
+  if (db && ver != v) {
+    ver = v + "->" + ver;
+    if (initialV) alert("Website updated, please refresh the page!");
   }
   initialV = true;
   v = ver + "v";
@@ -34,8 +35,8 @@ function setversion(ver, db = false) {
     }
     let baana = document.querySelector('input[name="time"]:checked');
     if (baana.value == "morning") {
-      newadd += 'M';
-    } else newadd += 'E';
+      newadd += "M";
+    } else newadd += "E";
     if (art) {
       newadd += "A";
     }
@@ -50,17 +51,33 @@ function setversion(ver, db = false) {
   }
 }
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("/data.csv").then((r)=>r.text()).then(data=>{datac=data; if(other) doo(); other = true;});
-  fetch("/schedule.csv").then((r)=>r.text()).then(data=>{schedule=data; if(other) doo(); other = true});
-  function doo(){
+  fetch("/data.csv")
+    .then((r) => r.text())
+    .then((data) => {
+      datac = data;
+      if (other) doo();
+      other = true;
+    });
+  fetch("/schedule.csv")
+    .then((r) => r.text())
+    .then((data) => {
+      schedule = data;
+      if (other) doo();
+      other = true;
+    });
+  function doo() {
     fetchCSV(schedule, (data) => {
       schedule = data;
       mapschedule();
     });
-    fetchCSV(datac, (data) => {
-      datac = data;
-      mapdata();
-    }, 'schedule');
+    fetchCSV(
+      datac,
+      (data) => {
+        datac = data;
+        mapdata();
+      },
+      "schedule"
+    );
     theButton.disabled = false;
   }
   const roll = localStorage.getItem("roll");
@@ -88,6 +105,8 @@ function download() {
   const table = document.getElementById("scheduleTable");
   const log = document.getElementById("log");
   const timeElement = document.getElementById("time");
+  const naemel = document.getElementById("naem");
+  const classel = document.getElementById("classs");
   if (!table || !log || !timeElement || timeElement.innerText.trim() === "") {
     alert("Please generate the schedule before downloading!");
     return;
@@ -102,6 +121,8 @@ function download() {
   container.appendChild(log.cloneNode(true));
   container.appendChild(table.cloneNode(true));
   container.appendChild(timeElement.cloneNode(true));
+  container.appendChild(naemel.cloneNode(true));
+  container.appendChild(classel.cloneNode(true));
   document.body.appendChild(container);
   html2canvas(container, {
     backgroundColor: null,
@@ -139,13 +160,11 @@ function nullCheck() {
 setInterval(nullCheck, 500);
 window.onload = () => {
   const savedOption = localStorage.getItem("selectedSubject") || "ICS";
-  const sO2 = localStorage.getItem("baana") || 'morning';
+  const sO2 = localStorage.getItem("baana") || "morning";
   document.querySelector(
     `input[name="subject"][value="${savedOption}"]`
   ).checked = true;
-  document.querySelector(
-    `input[name="time"][value="${sO2}"]`
-  ).checked = true;
+  document.querySelector(`input[name="time"][value="${sO2}"]`).checked = true;
 };
 document.querySelectorAll('input[name="subject"]').forEach((radio) =>
   radio.addEventListener("change", function () {
@@ -163,10 +182,12 @@ function back() {
   document.getElementById("more").style.display = "inline";
   document.getElementById("rest").style.display = "inline";
   document.getElementById("time").innerHTML = "";
+  document.getElementById("naem").innerHTML = "";
+  document.getElementById("classs").innerHTML = "";
   document.getElementById("logg").style.display = "inline";
 }
 async function generateSchedule() {
-  tds.style.display = 'none';
+  tds.style.display = "none";
   const inputElement = document.getElementById("rollNoInput");
   let rollNoInput = inputElement.value;
   if (validate(rollNoInput)) {
@@ -208,8 +229,8 @@ async function generateSchedule() {
     }
     let baana = document.querySelector('input[name="time"]:checked');
     if (baana.value == "morning") {
-      newadd += 'M';
-    } else newadd += 'E';
+      newadd += "M";
+    } else newadd += "E";
     timing = gt = baana.value;
     localStorage.setItem("baana", baana.value);
     if (art) {
@@ -225,13 +246,29 @@ async function generateSchedule() {
     log.innerHTML = logs;
     localStorage.setItem("roll", rollNoInput);
     let time = "Unavailable";
-      if(timing == 'morning'){ 
-        time = grade == 2 ? "12PM to 3PM" : "8:30AM to 11:30AM";
-       }
-      else{ time = "3:30PM to 6:30PM" }
+    if (timing == "morning") {
+      time = grade == 2 ? "12PM to 3PM" : "8:30AM to 11:30AM";
+    } else {
+      time = "3:30PM to 6:30PM";
+    }
     document.getElementById("time").innerHTML = "Exam Time: " + time;
     table.style.display = "table";
     other.style.display = "none";
+    async function assignName() {
+      let r = rollNoInput;
+      if(localStorage.getItem("naem"+r)){
+        document.getElementById("naem").innerHTML = "Name: " + localStorage.getItem('naem'+r);
+        return;
+      }
+      fetch("https://alimad.co/api/sendup/name?u=" + rollNoInput)
+        .then((e) => e.json())
+        .then((data) => {
+          document.getElementById("naem").innerHTML = "Name: " + data.name;
+          localStorage.setItem('naem'+rollNoInput, data.name);
+        });
+      }
+    assignName();
+    document.getElementById("classs").innerHTML = "Class: " + (grade == 2 ? "2nd Year " : "1st Year ") + selected.value + (timing == 'morning' ? " Morning" : " Evening");
     if (initialhtm == null) {
       initialhtm = table.innerHTML;
     }
@@ -257,7 +294,11 @@ async function generateSchedule() {
             n++;
             addRow(n, da, dat, sub, room, timerz[i]);
           } else {
-            if (rollNo >= mins[i] && rollNo <= maxes[i] && timerz[i] == timing) {
+            if (
+              rollNo >= mins[i] &&
+              rollNo <= maxes[i] &&
+              timerz[i] == timing
+            ) {
               let room = centers[i];
               let sub = fsubjects[i];
               let da, dat;
@@ -347,7 +388,11 @@ async function generateSchedule() {
             n++;
             addRow(n, da, dat, sub, room, timerz[i]);
           } else {
-            if (rollNo >= mins[i] && rollNo <= maxes[i] && timerz[i] == timing) {
+            if (
+              rollNo >= mins[i] &&
+              rollNo <= maxes[i] &&
+              timerz[i] == timing
+            ) {
               let room = centers[i];
               let sub = ssubjects[i];
               let da, dat;
@@ -466,10 +511,15 @@ function addRow(number, day, date, subject, room, time) {
   newCell5.textContent = room;
   newRow.appendChild(newCell5);
   newRow.classList.add("new-row");
-  if(time || tds.style.display == 'table-cell'){
-  const newCell6 = document.createElement("td");
-  newCell6.textContent = (time || gt || "Uhhhh").replace(/\w\S*/g, t => t[0].toUpperCase() + t.slice(1).toLowerCase());;
-  newRow.appendChild(newCell6); tds.style.display = 'table-cell';}
+  if (time || tds.style.display == "table-cell") {
+    const newCell6 = document.createElement("td");
+    newCell6.textContent = (time || gt || "Uhhhh").replace(
+      /\w\S*/g,
+      (t) => t[0].toUpperCase() + t.slice(1).toLowerCase()
+    );
+    newRow.appendChild(newCell6);
+    tds.style.display = "table-cell";
+  }
   tableBody.appendChild(newRow);
   document
     .querySelectorAll("th")
