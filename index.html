@@ -351,22 +351,6 @@
           });
         });
       }
-      function fetchComments() {
-        const commentsRef = query(
-          collection(db, "sendup"),
-          orderBy("timestamp")
-        );
-        onSnapshot(commentsRef, (snapshot) => {
-          commentsArray = [];
-          commentsList.innerHTML = "";
-          snapshot.forEach((doc) => {
-            const commentData = doc.data();
-            commentData.id = doc.id;
-            commentsArray.push(commentData);
-          });
-          displayCommentsWithDelay(true);
-        });
-      }
       function fetchUsers() {
         const userRef = query(collection(db, "user"));
         onSnapshot(userRef, (snapshot) => {
@@ -376,7 +360,6 @@
             userData.id = doc.id;
             userArray.push(userData);
           });
-          fetchComments();
         });
       }
       function formatTimeAgo(timestamp) {
@@ -412,15 +395,14 @@
           orderBy("timestamp")
         );
         onSnapshot(commentsRef, (snapshot) => {
+          newArray = [];
           snapshot.forEach((doc) => {
             const commentData = doc.data();
             commentData.id = doc.id;
             newArray.push(commentData);
           });
-          if (JSON.stringify(newArray) !== JSON.stringify(commentsArray)) {
-            commentsArray = newArray;
-            displayCommentsWithDelay(true);
-          }
+          commentsArray = newArray;
+          displayCommentsWithDelay(true);
         });
       }
       function scrollToBottom() {
