@@ -1,5 +1,5 @@
 # Personal Sendup Schedule Generator
-ScheduleMad v2.1.8
+ScheduleMad v2.2.1
 
 ## Technologies Used
 
@@ -7,6 +7,10 @@ ScheduleMad v2.1.8
 - **CSS**: For styling and animations.
 - **JavaScript**: To dynamically generate schedules, handle events, and create animations.
 - **Python**: Used `pdfplumber` library to extract data from the official PDF.
+
+
+No AI was used in the development of this app
+
 
 ## How to Use
 

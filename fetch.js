@@ -1,11 +1,11 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyC0xyl8b3FUzxfpDEDwTOiLgqTLNR0F57Y",
-  authDomain: "namesuggest-77989.firebaseapp.com",
-  projectId: "namesuggest-77989",
-  storageBucket: "namesuggest-77989.firebasestorage.app",
-  messagingSenderId: "1091740366992",
-  appId: "1:1091740366992:web:fc413dc73b42c8788c8015",
-  measurementId: "G-9WLDJGMX2L",
+  apiKey: "AIzaSyAozPqs-YCLBwrWRM_HmDlni77PP1qmr6o",
+  authDomain: "chatmadchat.firebaseapp.com",
+  projectId: "chatmadchat",
+  storageBucket: "chatmadchat.firebasestorage.app",
+  messagingSenderId: "168985263237",
+  appId: "1:168985263237:web:722e404b412a4f96f13dec",
+  measurementId: "G-0MN71K9491"
 };
 const fetchCSV = (csv, callback, mode) => {
   const rows = csv.split("\n").map((l) => l.trim());
