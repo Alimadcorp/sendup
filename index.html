@@ -358,6 +358,7 @@
         );
         onSnapshot(commentsRef, (snapshot) => {
           commentsArray = [];
+          commentsList.innerHTML = "";
           snapshot.forEach((doc) => {
             const commentData = doc.data();
             commentData.id = doc.id;
