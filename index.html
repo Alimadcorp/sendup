@@ -319,7 +319,7 @@
         addDoc,
         serverTimestamp,
       } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
-      const g = e => document.getElementById(e);
+      function g (e) { return document.getElementById(e); }
       function getLog(){let e=g("rollNoInput"),c=e.value,t=extra.checked,l,u,o="MS";validate(c)?(l=extract(c).rollNo,u=extract(c).grade):(l=0,u=0),o=o+l.toString()+u.toString(),o+=t?"Y":"N";let r=g("ART").checked,n=g("COM").checked,a=g("GS").checked,d=document.querySelector('input[name="subject"]:checked'),S="I";return"ICS"!=d.value&&("PE"==d.value&&(S="E"),"PM"==d.value&&(S="M")),r&&(S+="A"),n&&(S+="C"),a&&(S+="G"),o+=S}
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
@@ -342,9 +342,7 @@
       function fetchVersion() {
         const versionCheck = query(collection(db, "version"));
         onSnapshot(versionCheck, (snapshot) => {
-          console.log(JSON.stringify(snapshot));
           snapshot.forEach((doc) => {
-          console.log(JSON.stringify(doc));
             let name = doc.data();
             let version = doc.id;
             if (version == appname) {
@@ -359,10 +357,8 @@
           orderBy("timestamp")
         );
         onSnapshot(commentsRef, (snapshot) => {
-          console.log(JSON.stringify(snapshot));
           commentsArray = [];
           snapshot.forEach((doc) => {
-          console.log(JSON.stringify(doc));
             const commentData = doc.data();
             commentData.id = doc.id;
             commentsArray.push(commentData);
@@ -374,9 +370,7 @@
         const userRef = query(collection(db, "user"));
         onSnapshot(userRef, (snapshot) => {
           userArray = [];
-          console.log(JSON.stringify(snapshot));
           snapshot.forEach((doc) => {
-          console.log(JSON.stringify(doc));
             const userData = doc.data();
             userData.id = doc.id;
             userArray.push(userData);
