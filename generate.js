@@ -254,20 +254,6 @@ async function generateSchedule() {
     document.getElementById("time").innerHTML = "Exam Time: " + time;
     table.style.display = "table";
     other.style.display = "none";
-    async function assignName() {
-      let r = rollNoInput;
-      if(localStorage.getItem("naem"+r)){
-        document.getElementById("naem").innerHTML = "Name: " + localStorage.getItem('naem'+r);
-        return;
-      }
-      fetch("https://alimad.co/api/sendup/name?u=" + rollNoInput)
-        .then((e) => e.json())
-        .then((data) => {
-          document.getElementById("naem").innerHTML = "Name: " + data.name;
-          localStorage.setItem('naem'+rollNoInput, data.name);
-        });
-      }
-    assignName();
     document.getElementById("classs").innerHTML = "Class: " + (grade == 2 ? "2nd Year " : "1st Year ") + selected.value + (timing == 'morning' ? " Morning" : " Evening");
     if (initialhtm == null) {
       initialhtm = table.innerHTML;
