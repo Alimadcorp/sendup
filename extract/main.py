@@ -3,14 +3,13 @@ import pandas as pd
 import re
 
 pdf_path = "input.pdf"
-start_page = 5
-end_page = 5
+start_page = 11
+end_page = 11
 
-def clean_cell(v):
+def clean(v):
     if not v:
         return ""
-    v = re.sub(r"\s+", " ", v).strip()
-    return v
+    return re.sub(r"\s+", " ", v).strip()
 
 all_rows = []
 
@@ -27,14 +26,30 @@ with pdfplumber.open(pdf_path) as pdf:
         })
 
         for t in tables:
-            data = t.extract()
-            for row in data:
-                if not row:
+            for row, cells in zip(t.rows, t.cells):
+                # get bounding box for column 3
+                col3_cell = cells[2]
+                if not col3_cell:
                     continue
-                cleaned = [clean_cell(c) for c in row]
-                trimmed = [c for c in cleaned if c != ""]
-                if len(trimmed) >= 5:
-                    all_rows.append(trimmed[:5])
+                top = col3_cell
+                bottom = next_col3_cell
+                key = (round(top, 1), round(bottom, 1))
 
-df = pd.DataFrame(all_rows, columns=["col1", "col2", "col3", "col4", "col5"])
+                text_row = [clean(c) for c in row]
+                all_rows.append((key, text_row))
+
+# group by row-height key
+grouped = {}
+for key, row in all_rows:
+    grouped.setdefault(key, []).append(row)
+
+final = []
+for key, rows in grouped.items():
+    merged = []
+    for col in range(7):
+        merged_text = " ".join(clean(r[col]) for r in rows if r[col])
+        merged.append(clean(merged_text))
+    final.append(merged)
+
+df = pd.DataFrame(final, columns=["col1","col2","col3","col4","col5","col6","col7"])
 df.to_csv("sked.csv", index=False)
