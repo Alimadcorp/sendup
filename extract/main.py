@@ -35,5 +35,5 @@ with pdfplumber.open(pdf_path) as pdf:
                 if len(trimmed) >= 5:
                     all_rows.append(trimmed[:5])
 
-df = pd.DataFrame(all_rows, columns=["col1","col2","col3","col4","col5","col6","col7"])
+df = pd.DataFrame(all_rows, columns=["col1","col2","col3","col4","col5"])
 df.to_csv("raw_out.csv", index=False)
