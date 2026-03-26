@@ -1,6 +1,8 @@
 # Personal Sendup Schedule Generator
 ScheduleMad v2.2.3
 
+https://sendup.alimad.co
+
 ## Technologies Used
 
 - **HTML**: For the structure of the website.
@@ -30,4 +32,4 @@ This project is licensed under the MIT License.
 
 ## Acknowledgments
 
-Created by Muhammad Ali Mateeullah.
+Created by Muhammad Ali.
